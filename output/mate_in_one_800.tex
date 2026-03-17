@@ -1,0 +1,4487 @@
+\documentclass[12pt,twoside]{article}
+\usepackage[
+  paperwidth=6in,
+  paperheight=9in,
+  inner=0.45in,
+  outer=0.40in,
+  top=0.45in,
+  bottom=0.50in
+]{geometry}
+\usepackage[LSB,T1]{fontenc}
+\usepackage{xcolor}
+\usepackage{chessboard}
+\usepackage{chessfss}
+\usepackage{fancyhdr}
+\usepackage{changepage}
+
+\setcounter{page}{1}
+\setlength{\footskip}{18pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\newcommand{\coordfont}{\rmfamily\bfseries}
+\setfigfontfamily{merida}
+
+\setchessboard{
+  boardfontsize=18pt,
+  boardfontfamily=merida,
+  boardfontencoding=LSB,
+  blackfieldmaskcolor=white,
+  blackfieldcolor=black!75,
+  borderwidth=0.35pt,
+  bordercolor=black,
+  labelleft=true,
+  labelbottom=true,
+  labelfont=\coordfont,
+  labelfontsize=6pt
+}
+
+\newcommand{\PuzzleCell}[2]{%
+  \begin{minipage}[t]{0.46\textwidth}
+    \centering
+    \chessboard[setfen={#2}]
+
+    \vspace{0.15em}
+    {\small\bfseries Puzzle #1}
+
+    \vspace{0.45em}
+  \end{minipage}
+}
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\vspace*{0.22\textheight}
+
+\begin{center}
+{\Huge\bfseries Chess Puzzle Book\par}
+\vspace{1.5em}
+{\Large Mate in 1\par}
+\vspace{2em}
+{\Large by Joel Cato\par}
+\end{center}
+
+\vfill
+
+\newpage
+
+\thispagestyle{empty}
+
+\vspace*{0.72\textheight}
+
+\begin{center}
+\small
+Copyright © 2026 Joel Cato
+
+All rights reserved.
+
+No part of this publication may be reproduced, stored in a retrieval system,
+or transmitted in any form or by any means, electronic, mechanical,
+photocopying, recording, or otherwise, without prior written permission.
+\end{center}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{1}{2kr1b1r/p1p2pp1/2pqN3/7p/6n1/2NPB3/PPP2PPP/R2Q1RK1 b - - 0 13}
+\hspace{0.02\textwidth}
+\PuzzleCell{2}{6k1/p1p3pp/4N3/1p6/2q1r1n1/2B5/PP4PP/3R1R1K w - - 0 29}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{3}{8/6k1/1R5p/5p1P/5P1K/6P1/8/r7 b - - 3 58}
+\hspace{0.02\textwidth}
+\PuzzleCell{4}{5r1k/pp4pp/2p5/6q1/5R2/2P5/P1P2PPP/3rR1K1 w - - 0 28}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{1.} 1\ldots \symqueen{}xh2\# \\
+[0.2em]
+\noindent \textbf{2.} 1.\symrook{}f8\# \\
+[0.2em]
+\noindent \textbf{3.} 1\ldots \symrook{}h1\# \\
+[0.2em]
+\noindent \textbf{4.} 1.\symrook{}xf8\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{5}{r2r2k1/2q1bpp1/3p3p/1ppn4/1P1BP3/P5Q1/4RPPP/R5K1 w - - 0 21}
+\hspace{0.02\textwidth}
+\PuzzleCell{6}{7r/ppp2kp1/2nb1pp1/3p3r/3P2P1/2PQB3/PP3PP1/R3R1K1 b - - 0 18}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{7}{3r1n2/1bp1bkpp/p1q2n2/1p6/3P4/P1N3B1/1PP1QPPP/R3R1K1 b - - 6 18}
+\hspace{0.02\textwidth}
+\PuzzleCell{8}{rn2q1k1/pp3ppp/2pb4/3p1B2/2PN4/1Q6/PP3PPP/R1B4K b - - 0 15}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{5.} 1.\symqueen{}xg7\# \\
+[0.2em]
+\noindent \textbf{6.} 1\ldots \symrook{}h1\# \\
+[0.2em]
+\noindent \textbf{7.} 1\ldots \symqueen{}xg2\# \\
+[0.2em]
+\noindent \textbf{8.} 1\ldots \symqueen{}e1\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{9}{2kr3r/p2n2pp/2pB1bp1/5q2/2B5/8/PPP2PPP/3R1RK1 w - - 0 18}
+\hspace{0.02\textwidth}
+\PuzzleCell{10}{1Q6/5ppp/8/8/8/2pk3P/3p2P1/3K4 b - - 0 52}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{11}{8/6pp/6k1/5pN1/5P2/5rPb/4R2P/6K1 b - - 1 35}
+\hspace{0.02\textwidth}
+\PuzzleCell{12}{6k1/2p2ppp/pnp5/B7/2P3PP/1P2PPR1/r3b2r/3R2K1 w - - 2 30}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{9.} 1.\symbishop{}a6\# \\
+[0.2em]
+\noindent \textbf{10.} 1\ldots c2\# \\
+[0.2em]
+\noindent \textbf{11.} 1\ldots \symrook{}f1\# \\
+[0.2em]
+\noindent \textbf{12.} 1.\symrook{}d8\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{13}{Q4rk1/p1p3p1/6P1/8/3P4/7P/q3r3/B4RK1 w - - 2 35}
+\hspace{0.02\textwidth}
+\PuzzleCell{14}{rn2kb1r/pp2pp1p/2p2np1/4q3/8/2N4Q/PPPPBPPP/R1B1K2R w KQkq - 0 9}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{15}{2kr2r1/ppb2ppp/3qNn2/3p2B1/P7/2P2Q1P/1PB2PP1/R4RK1 b - - 0 18}
+\hspace{0.02\textwidth}
+\PuzzleCell{16}{rn2kb1r/pQ2pppp/2p2n2/8/3q2b1/8/PPP2PPP/RNB1KBNR b KQkq - 0 7}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{13.} 1.\symqueen{}xf8\# \\
+[0.2em]
+\noindent \textbf{14.} 1.\symqueen{}c8\# \\
+[0.2em]
+\noindent \textbf{15.} 1\ldots \symqueen{}h2\# \\
+[0.2em]
+\noindent \textbf{16.} 1\ldots \symqueen{}d1\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{17}{4r3/3R1pkp/6p1/1P6/1b6/5B2/1P1R1PPP/6K1 b - - 0 36}
+\hspace{0.02\textwidth}
+\PuzzleCell{18}{8/5k2/1P4RK/6P1/1r6/8/8/8 b - - 2 58}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{19}{3r1k1r/p1p2pp1/1p6/2pQ1b2/2Pn1P2/8/PP1P1KBq/R1B1R3 w - - 4 26}
+\hspace{0.02\textwidth}
+\PuzzleCell{20}{2k4r/pp3pp1/4pn2/2np2p1/8/1B1P1Pq1/PPPN3R/R2Q3K b - - 7 20}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{17.} 1\ldots \symrook{}e1\# \\
+[0.2em]
+\noindent \textbf{18.} 1\ldots \symrook{}h4\# \\
+[0.2em]
+\noindent \textbf{19.} 1.\symqueen{}xd8\# \\
+[0.2em]
+\noindent \textbf{20.} 1\ldots \symqueen{}xh2\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{21}{r2q1rk1/1b3ppp/p2p1b2/1p1Pn3/1P2Q3/P1NB3P/1B3PP1/R4RK1 w - - 3 18}
+\hspace{0.02\textwidth}
+\PuzzleCell{22}{r3kb1r/p4pp1/b1p4p/n3pQ2/4N3/2Nq4/PP1P1PPP/R1B2RK1 b kq - 1 14}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{23}{3r1k1r/5p1p/b2q1p2/P3p3/Bp2P3/2N2P2/3Q2PP/1R2K2R b K - 0 24}
+\hspace{0.02\textwidth}
+\PuzzleCell{24}{r4rk1/pb3ppp/1p2p3/3q4/3N4/2P4P/PPQ2PP1/R4RK1 b - - 2 18}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{21.} 1.\symqueen{}xh7\# \\
+[0.2em]
+\noindent \textbf{22.} 1\ldots \symqueen{}xf1\# \\
+[0.2em]
+\noindent \textbf{23.} 1\ldots \symqueen{}xd2\# \\
+[0.2em]
+\noindent \textbf{24.} 1\ldots \symqueen{}xg2\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{25}{2r3k1/5p1p/4pP2/3p3P/8/5P2/p5P1/1bR3K1 w - - 1 31}
+\hspace{0.02\textwidth}
+\PuzzleCell{26}{2k2bn1/ppp2Nrp/2b1p3/3q2BQ/8/2N5/PP3PPP/R4RK1 b - - 6 18}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{27}{r2q1rk1/ppp2ppp/2n5/3p2N1/3P4/1B5P/P1Q2PP1/R1B2bK1 w - - 0 17}
+\hspace{0.02\textwidth}
+\PuzzleCell{28}{1r3rk1/2p1qppb/p2n4/1p2p1Pp/4Qn1P/2P1N3/PPB2P1K/3R2R1 w - - 0 29}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{25.} 1.\symrook{}xc8\# \\
+[0.2em]
+\noindent \textbf{26.} 1\ldots \symqueen{}xg2\# \\
+[0.2em]
+\noindent \textbf{27.} 1.\symqueen{}xh7\# \\
+[0.2em]
+\noindent \textbf{28.} 1.\symqueen{}xh7\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{29}{r1b2rk1/ppb5/2p4p/2Ppqpp1/1P6/2NBP3/P4PPP/2RQ1RK1 b - - 1 16}
+\hspace{0.02\textwidth}
+\PuzzleCell{30}{r1b1k1nr/1pp2p2/p7/1q5p/6p1/4PP2/PPPQ1P2/2KR3R w kq - 0 18}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{31}{6r1/7p/2pk1p2/P2p4/P2KbP2/2N1P3/5R1P/8 b - - 2 35}
+\hspace{0.02\textwidth}
+\PuzzleCell{32}{6k1/5ppp/5Bq1/8/p3R3/P6P/5rB1/R5K1 w - - 0 30}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{29.} 1\ldots \symqueen{}xh2\# \\
+[0.2em]
+\noindent \textbf{30.} 1.\symqueen{}d8\# \\
+[0.2em]
+\noindent \textbf{31.} 1\ldots c5\# \\
+[0.2em]
+\noindent \textbf{32.} 1.\symrook{}e8\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{33}{5rk1/p4ppp/4p3/1Q6/1P1BN1b1/8/Pq3PPP/2R1KB1R b K - 0 18}
+\hspace{0.02\textwidth}
+\PuzzleCell{34}{6k1/6pp/p2B4/2pP4/P1q5/6P1/2P1p2P/5RK1 w - - 0 27}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{35}{rnb1k1nr/1ppp1ppp/8/p1bPp3/4P2q/2PB1N2/PP3PPP/RNBQK2R b KQkq - 4 6}
+\hspace{0.02\textwidth}
+\PuzzleCell{36}{2r4k/5p2/4pNp1/6Pp/qQ5P/7r/2P5/1RKN4 b - - 3 37}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{33.} 1\ldots \symqueen{}xc1\# \\
+[0.2em]
+\noindent \textbf{34.} 1.\symrook{}f8\# \\
+[0.2em]
+\noindent \textbf{35.} 1\ldots \symqueen{}xf2\# \\
+[0.2em]
+\noindent \textbf{36.} 1\ldots \symrook{}xc2\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{37}{R2r2k1/6pp/3N4/1nP5/6P1/1P3P2/P2K2n1/8 w - - 2 31}
+\hspace{0.02\textwidth}
+\PuzzleCell{38}{rn2qrk1/ppp2N2/3pPpp1/3n4/6b1/8/P1QN1PPP/R4RK1 w - - 0 19}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{39}{4r3/pp2rkp1/2p5/P2p2pP/R4bP1/2NQ4/1PP2P2/3KR3 b - - 0 25}
+\hspace{0.02\textwidth}
+\PuzzleCell{40}{r1bk4/pppp3p/2n5/2b1prN1/8/1B6/PPPP2PP/RNB2R1K b - - 2 14}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{37.} 1.\symrook{}xd8\# \\
+[0.2em]
+\noindent \textbf{38.} 1.\symqueen{}xg6\# \\
+[0.2em]
+\noindent \textbf{39.} 1\ldots \symrook{}xe1\# \\
+[0.2em]
+\noindent \textbf{40.} 1\ldots \symrook{}xf1\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{41}{8/8/n1R4p/r5p1/5p1k/7P/5PK1/8 w - - 0 51}
+\hspace{0.02\textwidth}
+\PuzzleCell{42}{rnb2rk1/5ppp/p2q4/1p1P4/2pN2n1/2N5/PP2BPPP/R2Q1RK1 b - - 1 14}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{43}{4r1k1/6pp/1R3p2/P7/1P1p1B2/2b4P/5PP1/5K2 b - - 3 31}
+\hspace{0.02\textwidth}
+\PuzzleCell{44}{2r3k1/p4p2/1p1pq3/2p2p2/7R/2Q4P/1P3PP1/6K1 w - - 2 35}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{41.} 1.\symrook{}xh6\# \\
+[0.2em]
+\noindent \textbf{42.} 1\ldots \symqueen{}xh2\# \\
+[0.2em]
+\noindent \textbf{43.} 1\ldots \symrook{}e1\# \\
+[0.2em]
+\noindent \textbf{44.} 1.\symqueen{}h8\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{45}{8/pp3Q1p/1n2B1pk/8/5PPq/7P/PPP5/2K5 b - - 0 31}
+\hspace{0.02\textwidth}
+\PuzzleCell{46}{3r2k1/5pp1/2p3np/2b5/Np2P1b1/1B4B1/1PP3PP/4KR2 b - - 1 21}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{47}{r1b1k2r/p1p2ppp/1pN2n2/2n5/2B1P3/P1b5/1PP2PPP/R1BR2K1 w kq - 0 14}
+\hspace{0.02\textwidth}
+\PuzzleCell{48}{6k1/5ppp/4p1b1/1n1pP3/1P6/r7/5PPP/2R2BK1 w - - 0 26}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{45.} 1\ldots \symqueen{}e1\# \\
+[0.2em]
+\noindent \textbf{46.} 1\ldots \symrook{}d1\# \\
+[0.2em]
+\noindent \textbf{47.} 1.\symrook{}d8\# \\
+[0.2em]
+\noindent \textbf{48.} 1.\symrook{}c8\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{49}{1kr1r3/1pp4p/p2b2p1/3N1p2/P7/3P1Q1P/2R2PP1/4R1K1 b - - 0 27}
+\hspace{0.02\textwidth}
+\PuzzleCell{50}{rnb1k2r/ppB2p2/8/3p2p1/3Q2np/2N2N1K/PPP1B1PP/R6R b kq - 1 14}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{51}{2r3k1/6pp/p1q2r2/1pn2p2/1B1pPP2/3Pn1QB/1PP2R1P/6RK w - - 4 25}
+\hspace{0.02\textwidth}
+\PuzzleCell{52}{r2q1k1r/pbp1bppp/1p2p3/1B1nN3/3P1Q2/8/PPP2PPP/R1B2RK1 w - - 6 13}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{49.} 1\ldots \symrook{}xe1\# \\
+[0.2em]
+\noindent \textbf{50.} 1\ldots \symknight{}f2\# \\
+[0.2em]
+\noindent \textbf{51.} 1.\symqueen{}xg7\# \\
+[0.2em]
+\noindent \textbf{52.} 1.\symqueen{}xf7\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{53}{r5k1/1b1pn1p1/1p5p/pq1PN2B/4P3/P6Q/6PP/5R1K b - - 0 26}
+\hspace{0.02\textwidth}
+\PuzzleCell{54}{r2q1r2/pp3pk1/2npbNp1/2pN4/2B4Q/3P4/PPP3PP/R5K1 w - - 2 18}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{55}{5r1k/1pr3pp/p3b3/P7/1P5Q/4q1P1/6PK/RB6 w - - 0 38}
+\hspace{0.02\textwidth}
+\PuzzleCell{56}{8/5ppk/p1Q4p/7P/1q2P3/5P2/1P4P1/1KRn4 b - - 3 45}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{53.} 1\ldots \symqueen{}xf1\# \\
+[0.2em]
+\noindent \textbf{54.} 1.\symqueen{}h7\# \\
+[0.2em]
+\noindent \textbf{55.} 1.\symqueen{}xh7\# \\
+[0.2em]
+\noindent \textbf{56.} 1\ldots \symqueen{}xb2\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{57}{2r4k/p5pp/1p2q3/2p3Q1/8/7P/PB3PP1/6K1 w - - 0 30}
+\hspace{0.02\textwidth}
+\PuzzleCell{58}{r2q3k/ppp3bp/3pPp2/2n1n3/4P2P/1B3P2/PPP3Q1/2K3RR w - - 0 24}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{59}{r2q1rk1/1b3pp1/p3p3/6b1/1pnN1n2/3Q4/PPP1NB2/1K1R1B1R w - - 0 21}
+\hspace{0.02\textwidth}
+\PuzzleCell{60}{r1b5/pp1nkpr1/2q1p3/8/3N4/3B4/P1P2PPP/R2Q1RK1 b - - 4 18}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{57.} 1.\symqueen{}xg7\# \\
+[0.2em]
+\noindent \textbf{58.} 1.\symqueen{}xg7\# \\
+[0.2em]
+\noindent \textbf{59.} 1.\symqueen{}h7\# \\
+[0.2em]
+\noindent \textbf{60.} 1\ldots \symqueen{}xg2\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{61}{5rk1/pp5p/2p1P1p1/3pN3/5r2/2P4Q/PP4PP/5R1K b - - 0 25}
+\hspace{0.02\textwidth}
+\PuzzleCell{62}{6rk/3R3p/4P2r/1p3p2/p7/P1P5/1P3Rp1/4Q1K1 b - - 2 42}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{63}{6nk/pRQ4p/6p1/5p2/3bp3/5nP1/q4PKP/5B2 w - - 4 32}
+\hspace{0.02\textwidth}
+\PuzzleCell{64}{1k1r3r/ppqn2p1/2p1p1p1/8/1B1PQ3/2P5/PP3PPP/R4RK1 b - - 2 18}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{61.} 1\ldots \symrook{}xf1\# \\
+[0.2em]
+\noindent \textbf{62.} 1\ldots \symrook{}h1\# \\
+[0.2em]
+\noindent \textbf{63.} 1.\symqueen{}xh7\# \\
+[0.2em]
+\noindent \textbf{64.} 1\ldots \symqueen{}xh2\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{65}{2rq1rk1/pb2bppp/np2p3/3pP3/3P4/P1nQB3/1P1N1PPP/1BR2RK1 w - - 0 17}
+\hspace{0.02\textwidth}
+\PuzzleCell{66}{r2q1rk1/2p1nppp/pbn5/1p1pP3/3P4/2NQ1b2/PPB2PPP/R1B2RK1 w - - 0 13}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{67}{1r6/p7/1p3k1K/P2p2R1/2p5/2P3P1/2P3P1/1R6 b - - 0 36}
+\hspace{0.02\textwidth}
+\PuzzleCell{68}{r2q1rk1/pp1n3p/2p3pb/5N2/2P1p3/1P2P1P1/PB3PBP/R2R2K1 w - - 0 20}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{65.} 1.\symqueen{}xh7\# \\
+[0.2em]
+\noindent \textbf{66.} 1.\symqueen{}xh7\# \\
+[0.2em]
+\noindent \textbf{67.} 1\ldots \symrook{}h8\# \\
+[0.2em]
+\noindent \textbf{68.} 1.\symknight{}xh6\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{69}{r1b4k/1pp1b1pp/p1np2q1/3Qp3/1PB1P3/P3Br1P/2P2PP1/R2R3K w - - 0 18}
+\hspace{0.02\textwidth}
+\PuzzleCell{70}{1r2kbnr/3b1ppp/pq1pp3/5P2/2pNP1P1/P1N1B3/1PPQ3P/2KR3R b k - 0 14}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{71}{8/8/8/1p6/knp5/7R/pK6/8 w - - 0 53}
+\hspace{0.02\textwidth}
+\PuzzleCell{72}{5r1k/p5pp/1p2p3/6PP/4P3/8/PPPr4/1K3R2 w - - 0 27}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{69.} 1.\symqueen{}g8\# \\
+[0.2em]
+\noindent \textbf{70.} 1\ldots \symqueen{}xb2\# \\
+[0.2em]
+\noindent \textbf{71.} 1.\symrook{}a3\# \\
+[0.2em]
+\noindent \textbf{72.} 1.\symrook{}xf8\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{73}{rn2q1k1/pb3p1p/1p1p2pB/3P3n/8/2bB1N1P/PP3PP1/4R1K1 w - - 0 19}
+\hspace{0.02\textwidth}
+\PuzzleCell{74}{5k2/R4p2/P6p/5p2/r3p3/2p3N1/2P1R1P1/2K5 b - - 2 44}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{75}{r4rk1/pb2qppp/1pn1p3/2p5/1nP5/1PQ1PN2/PB2BPPP/R4RK1 w - - 5 14}
+\hspace{0.02\textwidth}
+\PuzzleCell{76}{r4rk1/4qppp/b3p3/p2pP3/1p1P4/3Q4/PPB2PPP/R4RK1 w - - 0 18}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{73.} 1.\symrook{}xe8\# \\
+[0.2em]
+\noindent \textbf{74.} 1\ldots \symrook{}a1\# \\
+[0.2em]
+\noindent \textbf{75.} 1.\symqueen{}xg7\# \\
+[0.2em]
+\noindent \textbf{76.} 1.\symqueen{}xh7\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{77}{4kb2/2p4p/ppN1P1p1/2n5/2P5/r5P1/2K4P/3R4 w - - 4 35}
+\hspace{0.02\textwidth}
+\PuzzleCell{78}{rn3k1r/pp2p2p/2p3p1/8/2B1n3/4q3/PQP3PP/RN3K1R w - - 4 15}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{79}{rnb1k2r/bpqp1pp1/p3p3/7p/4P1n1/1NNB3P/PPP1QPP1/R1B2R1K b kq - 2 11}
+\hspace{0.02\textwidth}
+\PuzzleCell{80}{5q1k/7p/3Np1bP/4P3/3P2P1/2n5/8/5QK1 w - - 0 46}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{77.} 1.\symrook{}d8\# \\
+[0.2em]
+\noindent \textbf{78.} 1.\symqueen{}xh8\# \\
+[0.2em]
+\noindent \textbf{79.} 1\ldots \symqueen{}h2\# \\
+[0.2em]
+\noindent \textbf{80.} 1.\symqueen{}xf8\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{81}{r2qkbnr/pp1np2p/2p2p2/3p1p2/3P1B2/4P3/PPPN1PPP/R2QKB1R w KQkq - 0 8}
+\hspace{0.02\textwidth}
+\PuzzleCell{82}{rb3rk1/5ppp/p1pqbn2/2Np4/1P2p3/P3P2P/1B1PBPP1/2RQ1RK1 b - - 0 18}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{83}{r3kb1r/1p3ppp/p1n5/2p1q3/B3P1n1/2NP4/PP2N1PP/R1BQ1RK1 b kq - 1 13}
+\hspace{0.02\textwidth}
+\PuzzleCell{84}{4k3/4p2R/1pp1P1p1/8/3pN3/4b3/1rP3PP/5K2 w - - 0 26}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{81.} 1.\symqueen{}h5\# \\
+[0.2em]
+\noindent \textbf{82.} 1\ldots \symqueen{}h2\# \\
+[0.2em]
+\noindent \textbf{83.} 1\ldots \symqueen{}xh2\# \\
+[0.2em]
+\noindent \textbf{84.} 1.\symrook{}h8\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{85}{r2q1rk1/pp1b1pp1/2n1p1n1/2b1P1NQ/3p4/P7/1P3PPP/RNB2RK1 w - - 4 14}
+\hspace{0.02\textwidth}
+\PuzzleCell{86}{6k1/4pp2/3p2p1/8/1P1QP2p/5Pqb/6B1/2R3K1 b - - 0 38}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{87}{1B3k2/5P2/5K2/7p/P4P1P/8/8/2q5 w - - 0 48}
+\hspace{0.02\textwidth}
+\PuzzleCell{88}{r1b2rk1/p2n2bp/4pqp1/2pN4/5PPP/4B3/PPPQ4/2KR1B1R b - - 0 16}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{85.} 1.\symqueen{}h7\# \\
+[0.2em]
+\noindent \textbf{86.} 1\ldots \symqueen{}xg2\# \\
+[0.2em]
+\noindent \textbf{87.} 1.\symbishop{}d6\# \\
+[0.2em]
+\noindent \textbf{88.} 1\ldots \symqueen{}xb2\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{89}{6rk/1R6/6Pp/p1p5/6K1/8/3b4/7r w - - 6 44}
+\hspace{0.02\textwidth}
+\PuzzleCell{90}{r2q1rk1/pp1b1pb1/2n1p3/6NP/3P4/3Qn3/PP2BPP1/2KR3R w - - 0 19}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{91}{2kr1bnr/ppp2ppp/8/8/8/P4N2/b1PBPPPP/2KR1B1R b - - 0 11}
+\hspace{0.02\textwidth}
+\PuzzleCell{92}{1r6/8/3bk3/2p5/P2pN3/3P3P/R4PP1/6K1 b - - 0 47}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{89.} 1.\symrook{}h7\# \\
+[0.2em]
+\noindent \textbf{90.} 1.\symqueen{}h7\# \\
+[0.2em]
+\noindent \textbf{91.} 1\ldots \symbishop{}xa3\# \\
+[0.2em]
+\noindent \textbf{92.} 1\ldots \symrook{}b1\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{93}{6k1/5p2/1p2pn2/3pN3/1P1P1Pp1/P3r1Pp/2R2P1P/6K1 b - - 0 32}
+\hspace{0.02\textwidth}
+\PuzzleCell{94}{7k/6p1/2p4p/p3q3/P7/1P1B3P/2P3P1/5R1K w - - 0 33}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{95}{2r2rk1/p2bbpp1/2n1p2p/q2nP1N1/3P1B1P/2PQ4/P2N1PP1/R3K2R w KQ - 1 17}
+\hspace{0.02\textwidth}
+\PuzzleCell{96}{rn2k2r/ppq2p2/2p1pp2/8/2BN2p1/3P4/PPPB1P2/R2Q1RK1 b kq - 0 16}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{93.} 1\ldots \symrook{}e1\# \\
+[0.2em]
+\noindent \textbf{94.} 1.\symrook{}f8\# \\
+[0.2em]
+\noindent \textbf{95.} 1.\symqueen{}h7\# \\
+[0.2em]
+\noindent \textbf{96.} 1\ldots \symqueen{}h2\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{97}{2k5/r5p1/2K2p1p/8/7P/8/p7/4R3 w - - 0 62}
+\hspace{0.02\textwidth}
+\PuzzleCell{98}{3b1k2/pp3prp/8/1Bp5/4R3/1P6/P4PPP/1K6 w - - 1 23}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{99}{5b1k/pQ6/5qBp/5P2/6p1/7P/6PK/8 w - - 0 37}
+\hspace{0.02\textwidth}
+\PuzzleCell{100}{r1b1k2r/pp3ppp/2p1p3/4P1B1/Pbp1n3/2N1P3/1P3PPP/3RKB1R w Kkq - 1 11}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{97.} 1.\symrook{}e8\# \\
+[0.2em]
+\noindent \textbf{98.} 1.\symrook{}e8\# \\
+[0.2em]
+\noindent \textbf{99.} 1.\symqueen{}h7\# \\
+[0.2em]
+\noindent \textbf{100.} 1.\symrook{}d8\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{101}{r1k4r/pp3Qp1/2Bb3p/4q3/4N3/8/PP3PPP/R4RK1 b - - 0 18}
+\hspace{0.02\textwidth}
+\PuzzleCell{102}{k4n2/p2r1pp1/P1rBp2p/4P3/2P5/2K4P/5PP1/1R6 w - - 0 35}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{103}{r4r2/1pp1Nppk/3p4/p3n3/4P3/1PPP2P1/1P1K2P1/3R4 w - - 0 23}
+\hspace{0.02\textwidth}
+\PuzzleCell{104}{r6r/ppp1kBp1/2np4/4p3/4P1Q1/P2P3q/1PPN1P2/R4RK1 b - - 0 17}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{101.} 1\ldots \symqueen{}xh2\# \\
+[0.2em]
+\noindent \textbf{102.} 1.\symrook{}b8\# \\
+[0.2em]
+\noindent \textbf{103.} 1.\symrook{}h1\# \\
+[0.2em]
+\noindent \textbf{104.} 1\ldots \symqueen{}xg4\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{105}{8/8/3R4/6Pk/1p3K2/8/8/1r6 w - - 4 60}
+\hspace{0.02\textwidth}
+\PuzzleCell{106}{6k1/ppp2pp1/7p/8/2R5/2Pr4/PR4PP/7K b - - 0 26}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{107}{8/8/8/1P5R/4bk2/4R2P/5P1K/r7 b - - 2 43}
+\hspace{0.02\textwidth}
+\PuzzleCell{108}{6k1/5ppp/1P2p3/3p4/3nb3/6P1/1r5P/R5K1 w - - 1 34}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{105.} 1.\symrook{}h6\# \\
+[0.2em]
+\noindent \textbf{106.} 1\ldots \symrook{}d1\# \\
+[0.2em]
+\noindent \textbf{107.} 1\ldots \symrook{}h1\# \\
+[0.2em]
+\noindent \textbf{108.} 1.\symrook{}a8\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{109}{r4rk1/pb3ppp/2q2B2/4p3/8/2PB4/P1Q2PPP/R2R2K1 b - - 0 16}
+\hspace{0.02\textwidth}
+\PuzzleCell{110}{r3k2r/pN3pp1/2pqpn2/6p1/2P5/8/PPP1QPPP/R4RK1 b kq - 0 15}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{111}{r3r1k1/1pp2pp1/p1bb3p/6q1/2P2P2/1P2P2P/PBQN2P1/R4RK1 b - - 0 16}
+\hspace{0.02\textwidth}
+\PuzzleCell{112}{2q1rbk1/5p1p/2p2nP1/3p4/1p1P4/3BP2P/1PQ1NP2/6RK b - - 0 24}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{109.} 1\ldots \symqueen{}xg2\# \\
+[0.2em]
+\noindent \textbf{110.} 1\ldots \symqueen{}xh2\# \\
+[0.2em]
+\noindent \textbf{111.} 1\ldots \symqueen{}xg2\# \\
+[0.2em]
+\noindent \textbf{112.} 1\ldots \symqueen{}xh3\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{113}{8/6p1/4k1N1/5R1P/4n1PK/5P2/8/r7 b - - 0 60}
+\hspace{0.02\textwidth}
+\PuzzleCell{114}{r4rk1/1bppbppp/p1q5/1p2P3/3N1Q2/1B1P4/PPP2PPP/R4RK1 b - - 0 18}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{115}{r2q1rk1/1ppbbpp1/2np3p/1B6/4n3/2Q1PN2/PBP2PPP/R3K2R w KQ - 0 13}
+\hspace{0.02\textwidth}
+\PuzzleCell{116}{r2q3r/ppp2k1p/5np1/8/4p1b1/4Q2P/PPP2PP1/RNB1K2R b KQ - 0 13}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{113.} 1\ldots \symrook{}h1\# \\
+[0.2em]
+\noindent \textbf{114.} 1\ldots \symqueen{}xg2\# \\
+[0.2em]
+\noindent \textbf{115.} 1.\symqueen{}xg7\# \\
+[0.2em]
+\noindent \textbf{116.} 1\ldots \symqueen{}d1\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{117}{8/R7/8/5k2/3r3p/6pP/6P1/6K1 b - - 5 70}
+\hspace{0.02\textwidth}
+\PuzzleCell{118}{3Qq2k/6pp/8/2p5/P3p3/3p3P/1rr2PP1/1R3RK1 w - - 4 30}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{119}{3k4/8/6Q1/7p/p1q1P1pP/P1B5/1P5P/7K b - - 0 39}
+\hspace{0.02\textwidth}
+\PuzzleCell{120}{2bq2k1/6pp/5p2/1pb1pN2/2p1P1Q1/2P3P1/1P3PBP/6K1 w - - 0 30}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{117.} 1\ldots \symrook{}d1\# \\
+[0.2em]
+\noindent \textbf{118.} 1.\symqueen{}xe8\# \\
+[0.2em]
+\noindent \textbf{119.} 1\ldots \symqueen{}f1\# \\
+[0.2em]
+\noindent \textbf{120.} 1.\symqueen{}xg7\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{121}{r1bq1r1k/1pp5/p1np3p/2b4Q/4p3/P2P3P/BPP2PPN/R4RK1 w - - 0 16}
+\hspace{0.02\textwidth}
+\PuzzleCell{122}{3rkbnr/pp3ppp/4q3/2p1P3/8/1PB5/2PQ1PPP/2KRR3 w k - 5 19}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{123}{1rbr2k1/5pp1/p3p2p/1p6/4B3/8/PPP2PPP/2KR4 w - - 0 19}
+\hspace{0.02\textwidth}
+\PuzzleCell{124}{5r1k/6pp/3p2p1/pppP2q1/5RP1/3P4/PPPQ4/2K5 w - - 1 26}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{121.} 1.\symqueen{}xh6\# \\
+[0.2em]
+\noindent \textbf{122.} 1.\symqueen{}xd8\# \\
+[0.2em]
+\noindent \textbf{123.} 1.\symrook{}xd8\# \\
+[0.2em]
+\noindent \textbf{124.} 1.\symrook{}xf8\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{125}{5rk1/p2b3p/qp1Q1pp1/3N3n/4P3/5P2/P5PP/1RN4K b - - 0 28}
+\hspace{0.02\textwidth}
+\PuzzleCell{126}{6k1/2p2pp1/4p1np/1R6/3Pb3/2P3B1/5PPP/r3N1K1 b - - 2 24}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{127}{5kn1/5p2/2R2Pp1/1p3r2/1P1P4/r7/3R3K/8 w - - 1 38}
+\hspace{0.02\textwidth}
+\PuzzleCell{128}{1nkr1b1r/pppb4/4p1p1/PP3p1q/2PP1Bp1/6P1/5PBP/RN1Q1RK1 b - - 3 19}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{125.} 1\ldots \symqueen{}f1\# \\
+[0.2em]
+\noindent \textbf{126.} 1\ldots \symrook{}xe1\# \\
+[0.2em]
+\noindent \textbf{127.} 1.\symrook{}c8\# \\
+[0.2em]
+\noindent \textbf{128.} 1\ldots \symqueen{}xh2\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{129}{rnbq1rk1/1pp2ppn/p2pp3/6bQ/2PPP3/2N5/PP1N1PP1/R3KB1R w KQ - 0 11}
+\hspace{0.02\textwidth}
+\PuzzleCell{130}{6k1/p4p2/1p4pp/3p4/3Bq3/P6P/2r2QP1/5RK1 w - - 2 37}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{131}{rn1q1rk1/1b2bpp1/p3p2p/1p2P3/2pP4/2NQ1N2/PPB2PPP/3R1RK1 w - - 0 15}
+\hspace{0.02\textwidth}
+\PuzzleCell{132}{5k2/p4p1p/1p4p1/8/4P3/2r5/PR3PPP/6K1 b - - 1 23}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{129.} 1.\symqueen{}xh7\# \\
+[0.2em]
+\noindent \textbf{130.} 1.\symqueen{}xf7\# \\
+[0.2em]
+\noindent \textbf{131.} 1.\symqueen{}h7\# \\
+[0.2em]
+\noindent \textbf{132.} 1\ldots \symrook{}c1\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{133}{2r2k2/R6p/1p2B3/8/4P3/1P2P1P1/P2r3P/6K1 b - - 0 24}
+\hspace{0.02\textwidth}
+\PuzzleCell{134}{8/pp4p1/2b1p1k1/3q1n2/3P1Q2/4B3/5PPP/R5K1 b - - 4 28}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{135}{r2q2k1/ppp3p1/2np1n1B/2bbp3/4P3/3P2Q1/PPP2PPP/R4RK1 w - - 0 14}
+\hspace{0.02\textwidth}
+\PuzzleCell{136}{3r2kr/p5pp/1p2n3/2pNP3/8/4B3/PP4PP/5RK1 w - - 0 27}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{133.} 1\ldots \symrook{}c1\# \\
+[0.2em]
+\noindent \textbf{134.} 1\ldots \symqueen{}xg2\# \\
+[0.2em]
+\noindent \textbf{135.} 1.\symqueen{}xg7\# \\
+[0.2em]
+\noindent \textbf{136.} 1.\symknight{}e7\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{137}{rn1Br1k1/pp3ppp/2p5/3p4/3P4/5b1P/PPP2PP1/RN2R1K1 w - - 0 15}
+\hspace{0.02\textwidth}
+\PuzzleCell{138}{R7/8/5p2/8/7K/1P3k2/Pr6/8 b - - 3 46}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{139}{6rk/p1RR4/4qp1p/4p3/6Pn/P4P2/1P6/K7 w - - 0 45}
+\hspace{0.02\textwidth}
+\PuzzleCell{140}{5rk1/pR5p/3bpq1p/3p4/8/P2Q1NP1/5P1P/6K1 w - - 3 31}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{137.} 1.\symrook{}xe8\# \\
+[0.2em]
+\noindent \textbf{138.} 1\ldots \symrook{}h2\# \\
+[0.2em]
+\noindent \textbf{139.} 1.\symrook{}h7\# \\
+[0.2em]
+\noindent \textbf{140.} 1.\symqueen{}xh7\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{141}{3rk1nr/p4pp1/2p4p/1p2N3/6b1/1P6/1PP2PPP/RNB1K2R b KQk - 0 13}
+\hspace{0.02\textwidth}
+\PuzzleCell{142}{1R6/R5p1/p1b1k3/2P5/8/2n1P3/5PpP/6K1 b - - 0 31}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{143}{rb2k2r/1pqn2pp/2p1pn2/P2p2B1/3P4/2P2Q1P/P2NBPP1/R4RK1 b kq - 0 14}
+\hspace{0.02\textwidth}
+\PuzzleCell{144}{1rb1k2r/b5p1/p2pPp1p/qp1Q4/7N/1P6/P4PPP/R1B1R1K1 b k - 0 19}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{141.} 1\ldots \symrook{}d1\# \\
+[0.2em]
+\noindent \textbf{142.} 1\ldots \symknight{}e2\# \\
+[0.2em]
+\noindent \textbf{143.} 1\ldots \symqueen{}h2\# \\
+[0.2em]
+\noindent \textbf{144.} 1\ldots \symqueen{}xe1\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{145}{r7/3r1kp1/8/4B2R/2R5/p6P/5PP1/2n2K2 b - - 9 33}
+\hspace{0.02\textwidth}
+\PuzzleCell{146}{6k1/pp2B1pp/1q1b4/2pP4/2P1r3/1P5P/P5P1/3R1RK1 w - - 0 29}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{147}{rn3rk1/1bp2ppp/p3pb2/3q4/3P4/2PQ4/P1B1NPPP/R1B2RK1 b - - 4 14}
+\hspace{0.02\textwidth}
+\PuzzleCell{148}{6N1/1R5p/3pk1p1/6n1/4P1P1/7r/8/5K2 w - - 0 40}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{145.} 1\ldots \symrook{}d1\# \\
+[0.2em]
+\noindent \textbf{146.} 1.\symrook{}f8\# \\
+[0.2em]
+\noindent \textbf{147.} 1\ldots \symqueen{}xg2\# \\
+[0.2em]
+\noindent \textbf{148.} 1.\symrook{}e7\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{149}{2r3k1/1Q3ppp/8/8/4B3/2q1P3/R4PPP/4R1K1 b - - 0 24}
+\hspace{0.02\textwidth}
+\PuzzleCell{150}{R7/8/2p2r1k/P4p1p/3PpP1q/6p1/3B3Q/6RK b - - 0 43}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{151}{r1bq1rk1/4bpp1/2p1p2p/1pPp4/1P4Q1/P3P2P/1B1N1PP1/R3R1K1 w - - 1 19}
+\hspace{0.02\textwidth}
+\PuzzleCell{152}{rnbqkb1r/ppppp2p/8/7p/2PPp3/8/PP3PP1/RNBQKBN1 w Qkq - 0 7}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{149.} 1\ldots \symqueen{}xe1\# \\
+[0.2em]
+\noindent \textbf{150.} 1\ldots \symqueen{}xh2\# \\
+[0.2em]
+\noindent \textbf{151.} 1.\symqueen{}xg7\# \\
+[0.2em]
+\noindent \textbf{152.} 1.\symqueen{}xh5\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{153}{4r1k1/pp1n1N1p/2pB1rp1/q2n1p2/2pP3Q/8/PPB2PPP/R2KR3 b - - 0 20}
+\hspace{0.02\textwidth}
+\PuzzleCell{154}{rnbq3r/ppp1n2k/3p3p/4P1p1/4Pp2/1QP5/PP4PP/RNB2RK1 w - - 2 12}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{155}{r3k2r/pb1p1ppp/1p3nq1/2n1N3/5Q2/NPP1P2P/PB2BPP1/R4RK1 b kq - 4 17}
+\hspace{0.02\textwidth}
+\PuzzleCell{156}{2r5/6pk/5p1p/5P2/3P1P1N/bP4P1/P2R3P/1K6 b - - 0 41}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{153.} 1\ldots \symrook{}xe1\# \\
+[0.2em]
+\noindent \textbf{154.} 1.\symqueen{}f7\# \\
+[0.2em]
+\noindent \textbf{155.} 1\ldots \symqueen{}xg2\# \\
+[0.2em]
+\noindent \textbf{156.} 1\ldots \symrook{}c1\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{157}{r1b1k2r/pp1p1ppp/1qn1pB2/8/4P3/5N2/PPPNKbPP/R2Q1B1R b kq - 1 9}
+\hspace{0.02\textwidth}
+\PuzzleCell{158}{rq3rk1/2pn1ppp/4p3/p2pP3/b7/1PP1P1P1/P1QN1PP1/2KR3R w - - 1 18}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{159}{1rbk1b1r/p1p3pp/2Qp4/6p1/3p1q2/P2B4/1P3PPP/R2KR3 w - - 1 18}
+\hspace{0.02\textwidth}
+\PuzzleCell{160}{3r4/p1p2pk1/1p3p1p/5P2/2N2RP1/1B5P/PPP5/1K6 b - - 0 26}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{157.} 1\ldots \symqueen{}e3\# \\
+[0.2em]
+\noindent \textbf{158.} 1.\symqueen{}xh7\# \\
+[0.2em]
+\noindent \textbf{159.} 1.\symqueen{}e8\# \\
+[0.2em]
+\noindent \textbf{160.} 1\ldots \symrook{}d1\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{161}{r1bqkbnr/ppppp3/2n3p1/7Q/4p3/8/PPPP1PPP/RNB1KB1R w KQkq - 0 6}
+\hspace{0.02\textwidth}
+\PuzzleCell{162}{8/1pN2pk1/p5p1/8/1b6/3n4/PP3QPP/6RK b - - 0 30}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{163}{r1q1rbk1/1ppb1pp1/p1n4p/7n/2PP1B2/P2Q1N1P/2B2PP1/RN3RK1 w - - 5 17}
+\hspace{0.02\textwidth}
+\PuzzleCell{164}{r2qkb1r/1pp2pp1/p2p3p/3Pp3/1P2Pn2/P2B4/1BPN1P1K/R2Q2R1 b kq - 0 15}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{161.} 1.\symqueen{}xg6\# \\
+[0.2em]
+\noindent \textbf{162.} 1\ldots \symknight{}xf2\# \\
+[0.2em]
+\noindent \textbf{163.} 1.\symqueen{}h7\# \\
+[0.2em]
+\noindent \textbf{164.} 1\ldots \symqueen{}h4\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{165}{r4rk1/pp3ppp/2p1bq2/4p3/3nQ3/P2B4/1PP2PPP/2KR2NR w - - 4 17}
+\hspace{0.02\textwidth}
+\PuzzleCell{166}{4r1k1/pq3ppp/2p5/2pb2N1/8/6P1/PP1P1P1P/R1B1R1K1 w - - 0 18}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{167}{r1b1k2r/pp3p2/1qp2p1p/3Pn3/N7/5P2/PPP1KbPP/1R1Q1BNR b kq - 4 12}
+\hspace{0.02\textwidth}
+\PuzzleCell{168}{2kr4/1bq2pQ1/p3p3/2pp4/6R1/2P4r/P1P2P1P/1R3BK1 b - - 1 21}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{165.} 1.\symqueen{}xh7\# \\
+[0.2em]
+\noindent \textbf{166.} 1.\symrook{}xe8\# \\
+[0.2em]
+\noindent \textbf{167.} 1\ldots \symqueen{}e3\# \\
+[0.2em]
+\noindent \textbf{168.} 1\ldots \symqueen{}xh2\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{169}{7k/p6p/1p4pP/2p1r3/2Pp1R2/6PK/P1P5/8 w - - 0 42}
+\hspace{0.02\textwidth}
+\PuzzleCell{170}{3nr2k/pb1Q2pp/1p6/8/8/5P2/P5PP/6K1 w - - 1 26}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{171}{r1bq1k1r/pppp2p1/2n2n2/2b3pB/4P3/1Qp2N2/P4PPP/RN3RK1 w - - 0 12}
+\hspace{0.02\textwidth}
+\PuzzleCell{172}{3r3k/1p4p1/p4pQ1/8/P4q2/2P3RP/6PK/8 w - - 3 42}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{169.} 1.\symrook{}f8\# \\
+[0.2em]
+\noindent \textbf{170.} 1.\symqueen{}xe8\# \\
+[0.2em]
+\noindent \textbf{171.} 1.\symqueen{}f7\# \\
+[0.2em]
+\noindent \textbf{172.} 1.\symqueen{}xg7\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{173}{1r6/r4Rp1/k3p2q/2Bp4/P6p/7P/2P3P1/6K1 w - - 0 28}
+\hspace{0.02\textwidth}
+\PuzzleCell{174}{2kr3r/ppp2p2/3bb2p/PP4p1/2PpNq2/3P1B2/5PPP/R2Q1RK1 b - - 0 18}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{175}{1r1q1rk1/1bp1npp1/1p1p3p/p2P4/2PQn3/1P4P1/PB3PBP/R4RK1 w - - 0 16}
+\hspace{0.02\textwidth}
+\PuzzleCell{176}{2krr3/1pp3p1/p4p2/5P2/5P2/7P/PPQp2R1/1R1KBB2 b - - 0 30}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{173.} 1.\symrook{}xa7\# \\
+[0.2em]
+\noindent \textbf{174.} 1\ldots \symqueen{}xh2\# \\
+[0.2em]
+\noindent \textbf{175.} 1.\symqueen{}xg7\# \\
+[0.2em]
+\noindent \textbf{176.} 1\ldots dxe1=\symqueen{}\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{177}{r3r1k1/pb1n1pp1/4p2p/1ppq4/3P2NP/2P3P1/PPBB2P1/R1Q2RK1 b - - 0 18}
+\hspace{0.02\textwidth}
+\PuzzleCell{178}{6Q1/1P6/1P3k1K/1B6/8/8/8/4r3 b - - 0 69}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{179}{2n2r1k/p1q4p/2P3p1/2Q1b3/3P4/7P/P4PP1/5RK1 w - - 0 25}
+\hspace{0.02\textwidth}
+\PuzzleCell{180}{6k1/pp3ppp/2p1b3/8/2PR4/3P2PP/P3r1BK/8 w - - 1 30}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{177.} 1\ldots \symqueen{}xg2\# \\
+[0.2em]
+\noindent \textbf{178.} 1\ldots \symrook{}h1\# \\
+[0.2em]
+\noindent \textbf{179.} 1.\symqueen{}xf8\# \\
+[0.2em]
+\noindent \textbf{180.} 1.\symrook{}d8\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{181}{6Q1/2R5/5k1K/8/1r6/8/8/8 b - - 0 55}
+\hspace{0.02\textwidth}
+\PuzzleCell{182}{5R2/1r4p1/1r2p1pk/2pp3p/8/3K4/8/6R1 w - - 2 42}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{183}{2N2rk1/1b2bppp/p1q1pn2/1pp5/2PP4/4P3/PB2BPPP/2RQ1RK1 b - - 0 18}
+\hspace{0.02\textwidth}
+\PuzzleCell{184}{rn3rk1/1bp2pp1/p3p2p/1p1q4/3P4/2NBP1P1/PPQ2PP1/2R1R1K1 b - - 3 18}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{181.} 1\ldots \symrook{}h4\# \\
+[0.2em]
+\noindent \textbf{182.} 1.\symrook{}h8\# \\
+[0.2em]
+\noindent \textbf{183.} 1\ldots \symqueen{}xg2\# \\
+[0.2em]
+\noindent \textbf{184.} 1\ldots \symqueen{}xg2\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{185}{8/2k5/1b1p1p2/p1PQ1P2/1p1PP3/1P5q/7R/5R1K b - - 9 39}
+\hspace{0.02\textwidth}
+\PuzzleCell{186}{8/3Q1pkp/6p1/1p4N1/5P2/4q1P1/1p4BP/2r3RK b - - 2 36}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{187}{2r2rk1/pb3pp1/1p2pn1p/3q4/P1NP4/3BP3/4QPPP/R4RK1 b - - 2 18}
+\hspace{0.02\textwidth}
+\PuzzleCell{188}{r4bk1/1bpp1p2/p4q1p/1p6/7p/2PQ1N2/PPB2PPP/4R1K1 w - - 0 20}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{185.} 1\ldots \symqueen{}xf1\# \\
+[0.2em]
+\noindent \textbf{186.} 1\ldots \symqueen{}xg1\# \\
+[0.2em]
+\noindent \textbf{187.} 1\ldots \symqueen{}xg2\# \\
+[0.2em]
+\noindent \textbf{188.} 1.\symqueen{}h7\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{189}{r2qkbr1/pp1bpp1p/3p4/3Qp3/2B5/2N5/PPP2P1P/2KR3R w q - 2 13}
+\hspace{0.02\textwidth}
+\PuzzleCell{190}{3r1rk1/pp3ppp/1qp1p3/3n2N1/3P1PP1/3QP1K1/PP5P/5R2 w - - 5 27}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{191}{5r1k/6pp/3p4/3P4/8/2P3B1/PP3R2/4qBK1 w - - 0 33}
+\hspace{0.02\textwidth}
+\PuzzleCell{192}{rn3rk1/pbp2ppp/1p2p3/3qNn2/3P1B2/2PB4/P1P1QPPP/R4RK1 b - - 2 13}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{189.} 1.\symqueen{}xf7\# \\
+[0.2em]
+\noindent \textbf{190.} 1.\symqueen{}xh7\# \\
+[0.2em]
+\noindent \textbf{191.} 1.\symrook{}xf8\# \\
+[0.2em]
+\noindent \textbf{192.} 1\ldots \symqueen{}xg2\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{193}{2R5/8/5Kpk/7p/8/8/5n2/8 w - - 16 67}
+\hspace{0.02\textwidth}
+\PuzzleCell{194}{3q1k2/5p1p/p7/4p1r1/Np2bQ2/1P4N1/1Pr5/R4RK1 w - - 0 26}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{195}{r7/pp6/4N3/3p1p2/B5n1/3P2k1/PPP2q2/R1K1Q3 b - - 0 35}
+\hspace{0.02\textwidth}
+\PuzzleCell{196}{2k2br1/1pp2Npp/p3pn2/8/8/6P1/PPP1KP1P/3R4 w - - 1 18}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{193.} 1.\symrook{}h8\# \\
+[0.2em]
+\noindent \textbf{194.} 1.\symqueen{}xf7\# \\
+[0.2em]
+\noindent \textbf{195.} 1\ldots \symqueen{}xe1\# \\
+[0.2em]
+\noindent \textbf{196.} 1.\symrook{}d8\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{197}{r3kbnr/pp3pp1/2p1p3/7q/2P3B1/2N3P1/PP3P2/R1BQ1RK1 b kq - 0 14}
+\hspace{0.02\textwidth}
+\PuzzleCell{198}{4r2k/p4ppp/2p5/3p1N2/8/8/P1q2PPP/4R1K1 w - - 0 25}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{199}{5rk1/pp3p1p/q2p2pP/6P1/2r5/2Q1P3/4KP2/3R1B2 w - - 0 30}
+\hspace{0.02\textwidth}
+\PuzzleCell{200}{1k6/1P6/PK6/2N1r3/8/8/8/8 w - - 0 81}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{197.} 1\ldots \symqueen{}h1\# \\
+[0.2em]
+\noindent \textbf{198.} 1.\symrook{}xe8\# \\
+[0.2em]
+\noindent \textbf{199.} 1.\symqueen{}g7\# \\
+[0.2em]
+\noindent \textbf{200.} 1.a7\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{201}{6r1/p5rk/1p2p3/2p2p2/2P1pP1p/PP4Pq/4QBNP/5RK1 w - - 0 35}
+\hspace{0.02\textwidth}
+\PuzzleCell{202}{r5k1/6pp/p1q1N3/3p4/4p3/4P1P1/1Q3P1P/6K1 w - - 3 29}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{203}{2rr2k1/1q1nbppp/2npp3/1p6/1P1QPP2/4N1P1/PB2N1KP/2RR4 w - - 1 24}
+\hspace{0.02\textwidth}
+\PuzzleCell{204}{4r1k1/pp4pp/2pb1p1B/3p4/3P2Q1/1P5P/P1P2PP1/4N1K1 b - - 0 30}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{201.} 1.\symqueen{}h5\# \\
+[0.2em]
+\noindent \textbf{202.} 1.\symqueen{}xg7\# \\
+[0.2em]
+\noindent \textbf{203.} 1.\symqueen{}xg7\# \\
+[0.2em]
+\noindent \textbf{204.} 1\ldots \symrook{}xe1\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{205}{7Q/1p2R3/5np1/3p1rk1/P2Nn3/8/1PP3b1/2K5 b - - 7 37}
+\hspace{0.02\textwidth}
+\PuzzleCell{206}{4r2r/1ppk4/p1b1p1p1/5pq1/P1BP1P1p/4P2P/2P3P1/R1Q2RK1 b - - 0 26}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{207}{8/pp5k/1n2p2N/2p3P1/2P5/1P2R3/Prr5/6RK b - - 0 35}
+\hspace{0.02\textwidth}
+\PuzzleCell{208}{5rk1/5pp1/p2b1q1p/8/2pNQ3/6P1/PpB2P1P/1R3bK1 w - - 0 26}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{205.} 1\ldots \symrook{}f1\# \\
+[0.2em]
+\noindent \textbf{206.} 1\ldots \symqueen{}xg2\# \\
+[0.2em]
+\noindent \textbf{207.} 1\ldots \symrook{}h2\# \\
+[0.2em]
+\noindent \textbf{208.} 1.\symqueen{}h7\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{209}{8/1R3pk1/6p1/1p1N2Kp/5P1P/8/1r4P1/8 b - - 0 51}
+\hspace{0.02\textwidth}
+\PuzzleCell{210}{rn2k2r/ppq2pp1/2p1pnp1/8/4N3/P2P1B2/1PP2PP1/R1BQ1RK1 b kq - 0 14}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{211}{r3k2r/1bp2ppp/p3pn2/1p1qN3/3P4/3QP3/PPB2PPP/2R2RK1 b kq - 1 15}
+\hspace{0.02\textwidth}
+\PuzzleCell{212}{r1bq1rk1/pp2ppb1/3p4/6Np/2Pn4/2NQ2P1/PP3PP1/R3K2R w KQ - 0 14}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{209.} 1\ldots \symrook{}xg2\# \\
+[0.2em]
+\noindent \textbf{210.} 1\ldots \symqueen{}h2\# \\
+[0.2em]
+\noindent \textbf{211.} 1\ldots \symqueen{}xg2\# \\
+[0.2em]
+\noindent \textbf{212.} 1.\symqueen{}h7\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{213}{2kr3r/pppq1pp1/5n1p/3P4/2B2P2/1Qb2P2/P6P/1R3R1K w - - 0 21}
+\hspace{0.02\textwidth}
+\PuzzleCell{214}{4k3/1bpq1pQ1/p2p1p2/3P1N2/8/5P1P/P7/4K3 w - - 3 32}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{215}{1k1r2nr/ppp2ppp/3b4/1P2qb2/Q7/2P1B3/P3PPBP/RN3RK1 b - - 2 14}
+\hspace{0.02\textwidth}
+\PuzzleCell{216}{Bn3rk1/p4pp1/1p5p/2p1q3/8/2P2Q2/PP3PPP/R1B3K1 b - - 0 17}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{213.} 1.\symqueen{}xb7\# \\
+[0.2em]
+\noindent \textbf{214.} 1.\symqueen{}g8\# \\
+[0.2em]
+\noindent \textbf{215.} 1\ldots \symqueen{}xh2\# \\
+[0.2em]
+\noindent \textbf{216.} 1\ldots \symqueen{}e1\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{217}{r7/8/6PR/7K/7P/6k1/8/8 b - - 0 54}
+\hspace{0.02\textwidth}
+\PuzzleCell{218}{r5k1/pp3ppp/2n1r3/8/8/2N1qB2/PPQ3PP/4RK1R b - - 3 20}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{219}{8/4Rpk1/Rp1p1rp1/2p3r1/P1P5/3P4/2P4P/7K b - - 2 29}
+\hspace{0.02\textwidth}
+\PuzzleCell{220}{5k2/5pp1/q1p2P2/p1P1P3/6p1/P6r/3R3B/7K w - - 0 40}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{217.} 1\ldots \symrook{}a5\# \\
+[0.2em]
+\noindent \textbf{218.} 1\ldots \symqueen{}xe1\# \\
+[0.2em]
+\noindent \textbf{219.} 1\ldots \symrook{}f1\# \\
+[0.2em]
+\noindent \textbf{220.} 1.\symrook{}d8\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{221}{8/4R3/3p1p2/3P1P2/4PKpk/1r6/7P/8 b - - 4 50}
+\hspace{0.02\textwidth}
+\PuzzleCell{222}{k6r/P2r1pp1/2q5/B1b1Q3/3p1P2/3P2Pp/2P4P/RR4K1 b - - 0 31}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{223}{1r1k1bnr/1bpp2qp/p4p2/1p4BQ/3p4/1B6/PPPN1PPP/R3R1K1 w - - 6 16}
+\hspace{0.02\textwidth}
+\PuzzleCell{224}{8/pp2p2k/2n2b2/8/4pNbP/3r4/5PP1/1RB2K1R b - - 4 24}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{221.} 1\ldots \symrook{}f3\# \\
+[0.2em]
+\noindent \textbf{222.} 1\ldots \symqueen{}g2\# \\
+[0.2em]
+\noindent \textbf{223.} 1.\symqueen{}e8\# \\
+[0.2em]
+\noindent \textbf{224.} 1\ldots \symrook{}d1\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{225}{3r4/R3bp2/4p1k1/4P1p1/1Pp1NnP1/5K2/2R2P2/8 b - - 0 36}
+\hspace{0.02\textwidth}
+\PuzzleCell{226}{2R2bk1/5p1p/3p1p1Q/3P4/7P/q5P1/4n1K1/8 w - - 0 44}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{227}{r4rk1/pb3p1p/2q2bp1/2p5/N1Bp4/1P6/P1P2PPP/1R1QR1K1 b - - 1 18}
+\hspace{0.02\textwidth}
+\PuzzleCell{228}{1k6/p1p4p/2Pp2p1/1p1r4/1P6/8/P4PPP/4R1K1 w - - 0 31}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{225.} 1\ldots \symrook{}d3\# \\
+[0.2em]
+\noindent \textbf{226.} 1.\symrook{}xf8\# \\
+[0.2em]
+\noindent \textbf{227.} 1\ldots \symqueen{}xg2\# \\
+[0.2em]
+\noindent \textbf{228.} 1.\symrook{}e8\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{229}{2r2rk1/1R4pp/p7/2Np4/8/4b3/P1R3PP/5Q1K b - - 0 30}
+\hspace{0.02\textwidth}
+\PuzzleCell{230}{r4rk1/p3pp1p/b1p3pQ/3p4/8/2P4R/P4PPP/qN4K1 w - - 0 18}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{231}{8/6k1/1R2pr2/6Kp/p6P/P7/1P2R3/8 b - - 0 43}
+\hspace{0.02\textwidth}
+\PuzzleCell{232}{3Q4/P6p/8/6pk/8/5pPK/5P1P/8 b - - 0 60}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{229.} 1\ldots \symrook{}xf1\# \\
+[0.2em]
+\noindent \textbf{230.} 1.\symqueen{}xh7\# \\
+[0.2em]
+\noindent \textbf{231.} 1\ldots \symrook{}f5\# \\
+[0.2em]
+\noindent \textbf{232.} 1\ldots g4\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{233}{rn1qkb1r/pp2pp1b/2p1Pn1p/3p2pQ/3P3N/8/PPP2PPP/RNB1KB1R w KQkq - 2 8}
+\hspace{0.02\textwidth}
+\PuzzleCell{234}{2kr1bnr/ppp2ppp/3qb3/8/1P6/2Q2N2/1PP1PPPP/RNB1KB1R b KQ - 0 9}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{235}{rnb2rk1/p1p2pb1/3qp2p/8/3PQ3/3B1N2/PpP2PP1/1K1R3R w - - 0 17}
+\hspace{0.02\textwidth}
+\PuzzleCell{236}{2B4k/p5p1/1b1B4/1b5p/5P2/6P1/P6P/7K b - - 0 27}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{233.} 1.\symqueen{}xf7\# \\
+[0.2em]
+\noindent \textbf{234.} 1\ldots \symqueen{}d1\# \\
+[0.2em]
+\noindent \textbf{235.} 1.\symqueen{}h7\# \\
+[0.2em]
+\noindent \textbf{236.} 1\ldots \symbishop{}c6\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{237}{5rk1/p2rbppp/1pb1p3/n2qN3/3P1B2/2P5/PPQ1BPPP/R4RK1 b - - 6 15}
+\hspace{0.02\textwidth}
+\PuzzleCell{238}{2r5/p3kp2/4p3/q2pP2p/6p1/NP1R4/PQ3PPP/6K1 b - - 0 27}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{239}{r1bq1rk1/ppp2ppp/3p1n2/2nPp3/1bP1P3/2N2P2/PP1BN1PP/R2QKB1R b KQ - 2 8}
+\hspace{0.02\textwidth}
+\PuzzleCell{240}{r1b1k1nr/pp2pp1p/2N1q1p1/2p5/8/1P3B2/PbP2P1P/RN1Q1K1R w kq - 0 13}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{237.} 1\ldots \symqueen{}xg2\# \\
+[0.2em]
+\noindent \textbf{238.} 1\ldots \symqueen{}e1\# \\
+[0.2em]
+\noindent \textbf{239.} 1\ldots \symknight{}d3\# \\
+[0.2em]
+\noindent \textbf{240.} 1.\symqueen{}d8\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{241}{4r1k1/pp2rppp/1q6/2b3Q1/8/P1B2BPb/1PR2P1P/R5K1 w - - 7 22}
+\hspace{0.02\textwidth}
+\PuzzleCell{242}{2r2rk1/6p1/1q2p2p/p1ppP1N1/3P1p1P/2PQ2n1/PP4P1/R1B3K1 w - - 0 24}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{243}{1R6/5k2/1p3N2/3pPp2/1P1P1r2/2P1n3/7P/7K b - - 4 49}
+\hspace{0.02\textwidth}
+\PuzzleCell{244}{2kr3r/ppp2p2/2pbN2p/6p1/5q2/2NP3P/PPP1QPP1/R4RK1 b - - 0 15}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{241.} 1.\symqueen{}xg7\# \\
+[0.2em]
+\noindent \textbf{242.} 1.\symqueen{}h7\# \\
+[0.2em]
+\noindent \textbf{243.} 1\ldots \symrook{}f1\# \\
+[0.2em]
+\noindent \textbf{244.} 1\ldots \symqueen{}h2\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{245}{r4rk1/p1p1nppp/2p1q3/3p4/N2Qp1b1/1P2P3/PBP2PPP/R4RK1 w - - 0 15}
+\hspace{0.02\textwidth}
+\PuzzleCell{246}{r1b2rk1/pppn1p2/3p4/6q1/3P4/2PQP3/PP2N1P1/R3K2R w KQ - 0 18}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{247}{7k/6p1/1p5b/p4B1Q/1P3q1p/7P/5PP1/7K w - - 0 39}
+\hspace{0.02\textwidth}
+\PuzzleCell{248}{r3k1r1/p6p/2p2p1n/3qp3/Q2p4/N2P1P2/PP3P1P/2R2R1K b q - 3 16}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{245.} 1.\symqueen{}xg7\# \\
+[0.2em]
+\noindent \textbf{246.} 1.\symqueen{}h7\# \\
+[0.2em]
+\noindent \textbf{247.} 1.\symqueen{}e8\# \\
+[0.2em]
+\noindent \textbf{248.} 1\ldots \symqueen{}xf3\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{249}{3r1bk1/1b1p1p1p/p1q1pPp1/1pB5/7Q/1BN5/PPP2PPP/R4RK1 b - - 0 19}
+\hspace{0.02\textwidth}
+\PuzzleCell{250}{4r1k1/p5pp/1pn5/P1pq1nN1/8/2B2P2/6P1/R3Q1K1 w - - 5 35}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{251}{1r6/5pBp/p7/1p1b4/4p1Pk/7P/1PP1B1K1/8 w - - 1 27}
+\hspace{0.02\textwidth}
+\PuzzleCell{252}{r4rk1/ppp2qp1/3p1pQn/3P2p1/3P2R1/3B3P/PP3PP1/R5K1 w - - 8 21}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{249.} 1\ldots \symqueen{}xg2\# \\
+[0.2em]
+\noindent \textbf{250.} 1.\symqueen{}xe8\# \\
+[0.2em]
+\noindent \textbf{251.} 1.\symbishop{}f6\# \\
+[0.2em]
+\noindent \textbf{252.} 1.\symqueen{}h7\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{253}{r4rk1/p6p/2p1qpn1/1p5Q/8/2PP1P1R/PP3P1P/R6K w - - 0 28}
+\hspace{0.02\textwidth}
+\PuzzleCell{254}{3r1rk1/1p2qpp1/p1b1p2p/8/3PQ3/3B4/PP3PPP/3RR1K1 w - - 3 19}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{255}{r5rk/pp3p1p/3p4/3Pn1qQ/4P2R/2N5/PP4PP/6K1 w - - 3 23}
+\hspace{0.02\textwidth}
+\PuzzleCell{256}{4r1k1/1pp2ppp/1b2b3/3q4/Q2Pn3/5N2/4BPPP/B4RK1 w - - 0 18}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{253.} 1.\symqueen{}xh7\# \\
+[0.2em]
+\noindent \textbf{254.} 1.\symqueen{}h7\# \\
+[0.2em]
+\noindent \textbf{255.} 1.\symqueen{}xh7\# \\
+[0.2em]
+\noindent \textbf{256.} 1.\symqueen{}xe8\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{257}{2r3k1/p2p1ppp/b3p3/3pP3/8/1P4R1/Q4PPP/6K1 b - - 0 22}
+\hspace{0.02\textwidth}
+\PuzzleCell{258}{r5k1/pb1p1r1p/1p2p3/2p1B3/7q/1P1P2p1/P1P1BQPP/5R1K w - - 0 20}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{259}{6k1/p1q2ppp/1p6/1Q1r4/2p3n1/2P1PN2/PP3PP1/6K1 w - - 0 23}
+\hspace{0.02\textwidth}
+\PuzzleCell{260}{r2q1rk1/ppp2ppp/2nb4/5Q2/2bP4/2PBP3/PP4PP/R3K2R w KQ - 0 15}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{257.} 1\ldots \symrook{}c1\# \\
+[0.2em]
+\noindent \textbf{258.} 1.\symqueen{}xf7\# \\
+[0.2em]
+\noindent \textbf{259.} 1.\symqueen{}e8\# \\
+[0.2em]
+\noindent \textbf{260.} 1.\symqueen{}xh7\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{261}{2rq1rk1/1b3pp1/1np1pb1p/pp6/3P4/2NQPN2/PP3PPP/1BR2RK1 w - - 0 16}
+\hspace{0.02\textwidth}
+\PuzzleCell{262}{1r4k1/5pp1/7p/3p4/8/r4P2/pRB2PKP/B7 w - - 6 38}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{263}{1R6/5Ppk/6p1/3b4/p3q3/7P/6QK/8 b - - 0 42}
+\hspace{0.02\textwidth}
+\PuzzleCell{264}{r4rk1/pp3ppp/2pbpq2/8/4Q3/1P1B3P/P1PP1PP1/R3K2R w KQ - 0 14}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{261.} 1.\symqueen{}h7\# \\
+[0.2em]
+\noindent \textbf{262.} 1.\symrook{}xb8\# \\
+[0.2em]
+\noindent \textbf{263.} 1\ldots \symqueen{}xg2\# \\
+[0.2em]
+\noindent \textbf{264.} 1.\symqueen{}xh7\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{265}{6k1/P1p2ppp/4p3/8/2n5/7P/r5P1/3RK3 w - - 1 37}
+\hspace{0.02\textwidth}
+\PuzzleCell{266}{rn1qb1rk/1pp5/p2p3p/2bP4/2B2p1P/P2P1P2/1PP2PQ1/R3K1R1 w Q - 2 22}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{267}{2kr3r/p1p1bp2/1pnp4/4p3/1PPPn1p1/P1NQP1Pp/1B3R1P/R5NK b - - 0 20}
+\hspace{0.02\textwidth}
+\PuzzleCell{268}{r6k/1bp1Q1q1/p2p4/1p6/3P4/2P5/P1B2PPP/R3R1K1 b - - 0 25}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{265.} 1.\symrook{}d8\# \\
+[0.2em]
+\noindent \textbf{266.} 1.\symqueen{}xg8\# \\
+[0.2em]
+\noindent \textbf{267.} 1\ldots \symknight{}xf2\# \\
+[0.2em]
+\noindent \textbf{268.} 1\ldots \symqueen{}xg2\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{269}{2kr3r/pppn1pb1/4p2p/6p1/2QP4/6Bq/PPP2P1P/2KR2R1 w - - 0 17}
+\hspace{0.02\textwidth}
+\PuzzleCell{270}{2kr2r1/B1pq4/p2p3p/4p3/5b2/2PQ3P/2P2PP1/5RK1 w - - 0 32}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{271}{r1b3k1/2p1qppp/p2b1n2/1p4B1/3P4/1BP2Q1P/PP3PP1/RN4K1 b - - 3 16}
+\hspace{0.02\textwidth}
+\PuzzleCell{272}{r3k2r/1bq1bppp/3ppn2/pN4B1/1n1QPP2/1N6/1PP1B1PP/2KR3R b kq - 1 15}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{269.} 1.\symqueen{}xc7\# \\
+[0.2em]
+\noindent \textbf{270.} 1.\symqueen{}xa6\# \\
+[0.2em]
+\noindent \textbf{271.} 1\ldots \symqueen{}e1\# \\
+[0.2em]
+\noindent \textbf{272.} 1\ldots \symqueen{}xc2\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{273}{2r2bk1/p2r1p1p/2b2np1/4B1q1/3P1P2/2PB4/PP1N2PP/R2Q1RK1 b - - 0 20}
+\hspace{0.02\textwidth}
+\PuzzleCell{274}{4r2k/q6p/7B/3P4/P7/1P3P2/KPb3P1/4R3 w - - 0 36}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{275}{r3kb1r/ppp3p1/2nq1np1/2Pp4/3Pp3/8/PP2BPPP/RNBQ1RK1 b kq - 0 11}
+\hspace{0.02\textwidth}
+\PuzzleCell{276}{8/6pk/6rp/p4B2/5P1P/4QP1K/1q6/R6R b - - 0 44}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{273.} 1\ldots \symqueen{}xg2\# \\
+[0.2em]
+\noindent \textbf{274.} 1.\symrook{}xe8\# \\
+[0.2em]
+\noindent \textbf{275.} 1\ldots \symqueen{}xh2\# \\
+[0.2em]
+\noindent \textbf{276.} 1\ldots \symqueen{}g2\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{277}{r4rk1/2pnqppb/p1n4p/1p1pP3/3P4/P1NQ3P/1PB2PP1/R1B1R1K1 w - - 0 19}
+\hspace{0.02\textwidth}
+\PuzzleCell{278}{8/bp5p/4k1p1/pN6/1pP1KP1P/r5P1/P1R5/8 b - - 3 42}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{279}{1r4k1/R4p1p/3p2p1/2p1b3/P7/7P/5PP1/1R4K1 b - - 0 28}
+\hspace{0.02\textwidth}
+\PuzzleCell{280}{2r2rk1/pb1n1ppp/1p2p3/3n2q1/3P4/P1N5/1PQ1NPPP/1BR2RK1 w - - 2 17}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{277.} 1.\symqueen{}xh7\# \\
+[0.2em]
+\noindent \textbf{278.} 1\ldots \symrook{}e3\# \\
+[0.2em]
+\noindent \textbf{279.} 1\ldots \symrook{}xb1\# \\
+[0.2em]
+\noindent \textbf{280.} 1.\symqueen{}xh7\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{281}{5rk1/3b1ppp/pqr1pb2/3p4/2pP4/P3PN1P/1PQ2PP1/1BR2RK1 w - - 0 19}
+\hspace{0.02\textwidth}
+\PuzzleCell{282}{2k1r3/ppp2pp1/2p5/1P5p/2P4P/3b4/6PR/4Q2K b - - 0 31}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{283}{r2q1rk1/1p2nppp/p7/3pPP1b/3N4/P1PBn3/2P3QP/R3K1R1 w Q - 0 19}
+\hspace{0.02\textwidth}
+\PuzzleCell{284}{1r1r1k2/pp3pp1/2p4N/5P1Q/3q4/2n5/P4P1P/1R3KR1 w - - 2 27}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{281.} 1.\symqueen{}xh7\# \\
+[0.2em]
+\noindent \textbf{282.} 1\ldots \symrook{}xe1\# \\
+[0.2em]
+\noindent \textbf{283.} 1.\symqueen{}xg7\# \\
+[0.2em]
+\noindent \textbf{284.} 1.\symqueen{}xf7\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{285}{r1bqr2k/1p1n1ppB/p1p1pn1p/3p2N1/2PP3P/2P1P3/P1QB1PP1/R3K2R w KQ - 6 13}
+\hspace{0.02\textwidth}
+\PuzzleCell{286}{r1b2r2/pp1p1pk1/2n2q2/3p2p1/5PP1/3B3Q/PPP4P/2KR3R w - - 2 21}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{287}{r1bq1k1r/p4pb1/2p3pp/2p1Pp2/5B1P/2P2N2/PP1Q1PP1/R3K2R w KQ - 0 16}
+\hspace{0.02\textwidth}
+\PuzzleCell{288}{6k1/5p2/1p4pp/p2Br3/P6n/1QP5/1P3P1P/4R1K1 b - - 0 32}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{285.} 1.\symknight{}xf7\# \\
+[0.2em]
+\noindent \textbf{286.} 1.\symqueen{}h7\# \\
+[0.2em]
+\noindent \textbf{287.} 1.\symqueen{}xd8\# \\
+[0.2em]
+\noindent \textbf{288.} 1\ldots \symrook{}xe1\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{289}{1r4k1/5pPp/3qr3/p2B4/P5P1/1p1P3P/1P3Q2/5RK1 w - - 0 29}
+\hspace{0.02\textwidth}
+\PuzzleCell{290}{2k5/2p2R2/2Pp1p2/2r1p1p1/8/1P1P4/2PK1P2/8 w - - 6 37}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{291}{5r2/p1pk4/1p2pB2/1q1n2P1/4Q3/2PP4/1P1K1P1P/3RR3 b - - 6 31}
+\hspace{0.02\textwidth}
+\PuzzleCell{292}{r2q3r/pppknBpp/2np1p2/8/1b2P3/1QN2b2/PP1B1PPP/R4RK1 w - - 2 12}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{289.} 1.\symqueen{}xf7\# \\
+[0.2em]
+\noindent \textbf{290.} 1.\symrook{}f8\# \\
+[0.2em]
+\noindent \textbf{291.} 1\ldots \symqueen{}xb2\# \\
+[0.2em]
+\noindent \textbf{292.} 1.\symqueen{}e6\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{293}{r3k2r/1p1b1pp1/p1p5/1qN1pP2/4P1Q1/8/PPP3PP/R1B2R1K b kq - 0 17}
+\hspace{0.02\textwidth}
+\PuzzleCell{294}{3r1rk1/pp1bqpp1/4p2p/4P3/8/2pQ2P1/P1B2PP1/3R1RK1 w - - 0 24}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{295}{8/3b3p/3p2pQ/8/2P2P2/3P2k1/P6p/1r1B3K b - - 2 33}
+\hspace{0.02\textwidth}
+\PuzzleCell{296}{rnbqr2Q/pp1nk1p1/4p3/2bpP1N1/8/8/PPP2PPP/RNB2RK1 w - - 7 15}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{293.} 1\ldots \symqueen{}xf1\# \\
+[0.2em]
+\noindent \textbf{294.} 1.\symqueen{}h7\# \\
+[0.2em]
+\noindent \textbf{295.} 1\ldots \symrook{}xd1\# \\
+[0.2em]
+\noindent \textbf{296.} 1.\symqueen{}xg7\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{297}{rnbq2rk/pp3p1p/2p1pN2/5n2/2BP4/P1P4Q/1P3PPP/R4RK1 w - - 1 19}
+\hspace{0.02\textwidth}
+\PuzzleCell{298}{5r1k/p1n3np/1p2p1p1/2P5/1PPq2P1/P2B4/7P/1R3R1K w - - 0 29}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{299}{r5k1/1p3p2/p2bpPpB/3p3R/P5Qp/3q3P/6P1/5R1K b - - 2 27}
+\hspace{0.02\textwidth}
+\PuzzleCell{300}{6k1/4R1p1/8/7P/4Q3/5p2/1q4PK/8 b - - 0 54}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{297.} 1.\symqueen{}xh7\# \\
+[0.2em]
+\noindent \textbf{298.} 1.\symrook{}xf8\# \\
+[0.2em]
+\noindent \textbf{299.} 1\ldots \symqueen{}xf1\# \\
+[0.2em]
+\noindent \textbf{300.} 1\ldots \symqueen{}xg2\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{301}{r1b2k1r/p4ppp/4p3/1Bb3B1/4n3/8/PP3PPP/RN1R2K1 w - - 5 14}
+\hspace{0.02\textwidth}
+\PuzzleCell{302}{r2q1rk1/1pp2ppp/1bn5/p7/P2P1p2/2PQ1b1P/1PB2PP1/RN2R1K1 w - - 0 16}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{303}{rnbq3r/ppk4p/3pPbp1/PBp2p2/8/2N1B3/1P3PPP/R3K1NR w KQ - 0 17}
+\hspace{0.02\textwidth}
+\PuzzleCell{304}{5rk1/5pp1/p7/7R/1pqPQ3/7P/6PK/8 w - - 0 47}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{301.} 1.\symrook{}d8\# \\
+[0.2em]
+\noindent \textbf{302.} 1.\symqueen{}xh7\# \\
+[0.2em]
+\noindent \textbf{303.} 1.\symknight{}d5\# \\
+[0.2em]
+\noindent \textbf{304.} 1.\symqueen{}h7\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{305}{r1b1k1r1/1p1p1ppp/p2Bp3/q3n3/4P2Q/2P5/2P2PPP/2KR3R w q - 0 17}
+\hspace{0.02\textwidth}
+\PuzzleCell{306}{rn3rk1/ppp3p1/4pq1p/8/Q2NB1b1/P1N3P1/1P3PP1/2R1K2R b K - 0 18}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{307}{5r1k/5ppp/5N2/6P1/pp3Pb1/3Q4/qPP1R2P/2K5 w - - 2 31}
+\hspace{0.02\textwidth}
+\PuzzleCell{308}{6rk/R3R1pp/4b3/5p2/B3p3/r7/2P2PPP/6K1 b - - 2 29}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{305.} 1.\symqueen{}e7\# \\
+[0.2em]
+\noindent \textbf{306.} 1\ldots \symqueen{}xf2\# \\
+[0.2em]
+\noindent \textbf{307.} 1.\symqueen{}xh7\# \\
+[0.2em]
+\noindent \textbf{308.} 1\ldots \symrook{}a1\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{309}{2r3k1/p2Q1pp1/4p2p/3nP3/3pB2P/1q3NP1/1r3P2/4BK1R w - - 0 27}
+\hspace{0.02\textwidth}
+\PuzzleCell{310}{7k/pp3B1p/n4q2/8/8/4P3/PP3P1P/4K1R1 w - - 0 28}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{311}{6kr/p1p2ppp/8/8/3r2bq/8/PPP2NPP/R1B1R1K1 w - - 0 19}
+\hspace{0.02\textwidth}
+\PuzzleCell{312}{r2q1rk1/1pp3pp/1pp3n1/5bNQ/3P4/4B2P/PP3P2/R4RK1 w - - 5 19}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{309.} 1.\symqueen{}xc8\# \\
+[0.2em]
+\noindent \textbf{310.} 1.\symrook{}g8\# \\
+[0.2em]
+\noindent \textbf{311.} 1.\symrook{}e8\# \\
+[0.2em]
+\noindent \textbf{312.} 1.\symqueen{}xh7\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{313}{r1b2rk1/pp3pp1/2n1pq2/b2p2Np/3P1n1P/P1NQ2B1/1PP1BPP1/2KR3R w - - 4 14}
+\hspace{0.02\textwidth}
+\PuzzleCell{314}{2r1k2r/pp2pp1p/1q1p1b2/3P4/8/8/PPPQ1PPP/1K1R1B1R b k - 0 14}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{315}{rn3r2/1bb2pkp/2Nqp1p1/p7/Pp1PB3/1P2P3/1BQ2PPP/2R2RK1 b - - 0 19}
+\hspace{0.02\textwidth}
+\PuzzleCell{316}{6k1/p4pp1/P1p4p/8/1n6/1PrB3P/2P2KP1/4R3 w - - 6 30}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{313.} 1.\symqueen{}h7\# \\
+[0.2em]
+\noindent \textbf{314.} 1\ldots \symqueen{}xb2\# \\
+[0.2em]
+\noindent \textbf{315.} 1\ldots \symqueen{}xh2\# \\
+[0.2em]
+\noindent \textbf{316.} 1.\symrook{}e8\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{317}{rnbr2k1/pp3p1p/6pB/q7/2p5/4P3/P2NBPPP/Q3K2R w K - 2 16}
+\hspace{0.02\textwidth}
+\PuzzleCell{318}{rnb2r1k/pp5p/6pB/2p5/2PpP2q/3P2NP/PP4B1/R3NRK1 w - - 0 19}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{319}{7R/2rp4/2p3r1/p3R2p/1p4pk/P7/1PP2PKP/8 w - - 0 35}
+\hspace{0.02\textwidth}
+\PuzzleCell{320}{2r2rk1/ppqnbpp1/3p3p/3Pp1N1/8/2PQ1N2/PP3PPP/R4RK1 w - - 0 17}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{317.} 1.\symqueen{}g7\# \\
+[0.2em]
+\noindent \textbf{318.} 1.\symrook{}xf8\# \\
+[0.2em]
+\noindent \textbf{319.} 1.\symrook{}exh5\# \\
+[0.2em]
+\noindent \textbf{320.} 1.\symqueen{}h7\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{321}{4q1k1/pp3pp1/2nN1n1p/8/3p4/1P1P1BPb/PBQ2P1P/6K1 b - - 1 22}
+\hspace{0.02\textwidth}
+\PuzzleCell{322}{3r1r1k/ppp3pp/4Rn2/4N3/Pq6/1P5Q/5PPP/4R1K1 b - - 2 24}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{323}{3r2k1/1bqr1pp1/p3p2p/1p2p2N/4PbQP/2P3R1/PP1p1PP1/3R1BK1 w - - 1 25}
+\hspace{0.02\textwidth}
+\PuzzleCell{324}{r5k1/pp3r2/4Q3/3R4/7N/2P3P1/PP3q1P/7K b - - 2 34}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{321.} 1\ldots \symqueen{}e1\# \\
+[0.2em]
+\noindent \textbf{322.} 1\ldots \symqueen{}xe1\# \\
+[0.2em]
+\noindent \textbf{323.} 1.\symqueen{}xg7\# \\
+[0.2em]
+\noindent \textbf{324.} 1\ldots \symqueen{}f1\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{325}{r1b2rk1/pp2qppp/2n1p3/3p2N1/8/1B1QP3/P1P3PP/R4RK1 w - - 2 17}
+\hspace{0.02\textwidth}
+\PuzzleCell{326}{r2k3r/p1p1qp1p/1p1p4/1B2p3/8/2P2Q2/P1P3PP/1R5K w - - 0 19}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{327}{1k2q3/1p3p2/1Q3R2/p2p4/P2Pb3/6P1/1P6/K7 b - - 0 29}
+\hspace{0.02\textwidth}
+\PuzzleCell{328}{rn2nrk1/ppqbbpp1/4p2p/2p1P1N1/2PP3P/2P3P1/P1Q2PB1/R1B2RK1 w - - 0 14}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{325.} 1.\symqueen{}xh7\# \\
+[0.2em]
+\noindent \textbf{326.} 1.\symqueen{}xa8\# \\
+[0.2em]
+\noindent \textbf{327.} 1\ldots \symqueen{}xa4\# \\
+[0.2em]
+\noindent \textbf{328.} 1.\symqueen{}h7\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{329}{2kr2r1/1ppb1p1p/2qp1p2/Qpb5/4P3/3B4/PPP2PPP/R4R1K w - - 4 16}
+\hspace{0.02\textwidth}
+\PuzzleCell{330}{r2q1rk1/ppp3b1/3p4/3Pp1Q1/2P1P3/2N5/PP3n2/R3K1R1 w Q - 0 19}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{331}{r4rk1/p1q1n1pp/1pp5/n2pN1N1/8/4P3/PPQ2PPP/3R1K1R w - - 4 19}
+\hspace{0.02\textwidth}
+\PuzzleCell{332}{5Q2/5p1k/p4P1p/1p2P2P/2p3q1/4n3/PPP3P1/2KR4 b - - 0 39}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{329.} 1.\symqueen{}a8\# \\
+[0.2em]
+\noindent \textbf{330.} 1.\symqueen{}xg7\# \\
+[0.2em]
+\noindent \textbf{331.} 1.\symqueen{}xh7\# \\
+[0.2em]
+\noindent \textbf{332.} 1\ldots \symqueen{}xd1\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{333}{5rk1/P4pp1/7p/8/4P3/6Q1/R3q1PP/5R1K b - - 0 26}
+\hspace{0.02\textwidth}
+\PuzzleCell{334}{2k4r/ppp3pp/3bp3/q7/3Q4/8/PPP2PPP/R1B3K1 b - - 0 15}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{335}{5rk1/6p1/2p5/p1Qp4/2b5/P5B1/6PP/5RK1 b - - 0 37}
+\hspace{0.02\textwidth}
+\PuzzleCell{336}{2rq1rk1/3n1ppp/p3p3/1pbn4/5B2/2PQ4/PPBN1PPP/R4RK1 w - - 9 16}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{333.} 1\ldots \symqueen{}xf1\# \\
+[0.2em]
+\noindent \textbf{334.} 1\ldots \symqueen{}e1\# \\
+[0.2em]
+\noindent \textbf{335.} 1\ldots \symrook{}xf1\# \\
+[0.2em]
+\noindent \textbf{336.} 1.\symqueen{}xh7\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{337}{r4rk1/1b1nqppp/4p3/p2p4/1ppP4/P1P1PN1P/1PQ2PP1/RB3RK1 w - - 0 19}
+\hspace{0.02\textwidth}
+\PuzzleCell{338}{3r2k1/5pp1/4p2p/8/4n3/5P2/P1R3PP/3R2K1 b - - 0 30}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{339}{8/6R1/4pNpP/8/P1r2P2/5kP1/1P6/5K2 b - - 3 43}
+\hspace{0.02\textwidth}
+\PuzzleCell{340}{5r1k/2p2ppp/p1q1b3/3p4/1Q1Pn3/4P2P/PP3PP1/R3K2R w KQ - 0 19}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{337.} 1.\symqueen{}xh7\# \\
+[0.2em]
+\noindent \textbf{338.} 1\ldots \symrook{}xd1\# \\
+[0.2em]
+\noindent \textbf{339.} 1\ldots \symrook{}c1\# \\
+[0.2em]
+\noindent \textbf{340.} 1.\symqueen{}xf8\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{341}{r4rk1/p2p4/5Bpp/pP6/2P5/4P2q/2Q2PR1/5K2 w - - 0 24}
+\hspace{0.02\textwidth}
+\PuzzleCell{342}{r1b2rk1/1pp2pp1/p2bpq1p/3P4/4Q3/P1NB2P1/1PP2PP1/R3K2R w KQ - 3 15}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{343}{8/pb2r2k/2n4p/1p3pp1/2p5/1PP2B2/P4PPP/R1B1Q1K1 b - - 0 26}
+\hspace{0.02\textwidth}
+\PuzzleCell{344}{r3r1k1/ppp2ppp/2n3q1/8/2BP1n2/2N2N1P/PP1Q1P1K/R4R2 b - - 2 15}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{341.} 1.\symqueen{}xg6\# \\
+[0.2em]
+\noindent \textbf{342.} 1.\symqueen{}h7\# \\
+[0.2em]
+\noindent \textbf{343.} 1\ldots \symrook{}xe1\# \\
+[0.2em]
+\noindent \textbf{344.} 1\ldots \symqueen{}g2\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{345}{r2b3k/1p3p1p/5p1B/p2q4/3pR1n1/1N4P1/PPP2P1P/5RK1 w - - 0 27}
+\hspace{0.02\textwidth}
+\PuzzleCell{346}{2rqkb1r/p2np3/3p2p1/3Q2N1/1PP1Pn2/5P2/P6P/RN2K2R w KQk - 3 17}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{347}{2r2rk1/1bqn1pp1/p3p2p/1p1pR3/3P4/1PP3P1/P1QN1PP1/1BR3K1 w - - 3 19}
+\hspace{0.02\textwidth}
+\PuzzleCell{348}{b4r2/pq3pk1/4p2R/1pp1P3/2p5/P3Q1P1/1P2P2P/6K1 w - - 0 32}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{345.} 1.\symrook{}e8\# \\
+[0.2em]
+\noindent \textbf{346.} 1.\symqueen{}f7\# \\
+[0.2em]
+\noindent \textbf{347.} 1.\symqueen{}h7\# \\
+[0.2em]
+\noindent \textbf{348.} 1.\symqueen{}g5\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{349}{r1b1r2k/ppqn2pP/2nbp3/3pp1N1/3P1B2/2P5/PP2QPP1/R3K2R w KQ - 1 18}
+\hspace{0.02\textwidth}
+\PuzzleCell{350}{6k1/1q4p1/p3p2p/Q3PpN1/1p1P1P2/2r3N1/P4K1P/8 w - - 0 36}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{351}{r1b1kb1r/ppp3pp/2Np1p2/4q3/2B1P1nP/8/PPP2PP1/RNBQ1RK1 b kq - 0 10}
+\hspace{0.02\textwidth}
+\PuzzleCell{352}{r1bq1rk1/4bpp1/3p3p/p2n1P2/1p1QP3/1P6/PBP3PP/1K1R1B1R w - - 0 16}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{349.} 1.\symknight{}f7\# \\
+[0.2em]
+\noindent \textbf{350.} 1.\symqueen{}d8\# \\
+[0.2em]
+\noindent \textbf{351.} 1\ldots \symqueen{}h2\# \\
+[0.2em]
+\noindent \textbf{352.} 1.\symqueen{}xg7\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{353}{3q1r1k/3r2pp/2p1p2n/1p1pP1N1/pP1P2P1/P1PQN2P/8/6RK w - - 0 41}
+\hspace{0.02\textwidth}
+\PuzzleCell{354}{8/5k2/7K/R5P1/p2B4/1b6/8/5r2 b - - 0 59}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{355}{6rk/2q2p2/ppp1bN1p/2p1P3/4Q3/8/PPn2PPP/5RK1 w - - 4 30}
+\hspace{0.02\textwidth}
+\PuzzleCell{356}{r1b1nrk1/pp2p2p/1q1b2p1/3P2N1/8/2N1B3/PP2B1P1/R2Q2KR b - - 5 18}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{353.} 1.\symqueen{}xh7\# \\
+[0.2em]
+\noindent \textbf{354.} 1\ldots \symrook{}h1\# \\
+[0.2em]
+\noindent \textbf{355.} 1.\symqueen{}h7\# \\
+[0.2em]
+\noindent \textbf{356.} 1\ldots \symqueen{}xe3\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{357}{1R6/8/8/8/8/6p1/r6k/5K2 w - - 0 74}
+\hspace{0.02\textwidth}
+\PuzzleCell{358}{r1b2qk1/ppp4p/6pB/3Pp2n/8/P1N4P/1PP3P1/5RK1 w - - 0 23}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{359}{k1r5/pp6/8/7p/2R5/1P5B/2P3KP/q7 w - - 0 43}
+\hspace{0.02\textwidth}
+\PuzzleCell{360}{5r1k/p5pp/1p5q/n7/3P2nN/2P1r1P1/PP2B2P/R4RK1 w - - 0 23}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{357.} 1.\symrook{}h8\# \\
+[0.2em]
+\noindent \textbf{358.} 1.\symrook{}xf8\# \\
+[0.2em]
+\noindent \textbf{359.} 1.\symrook{}xc8\# \\
+[0.2em]
+\noindent \textbf{360.} 1.\symrook{}xf8\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{361}{3r3k/5prp/p3p3/1p6/8/1BQ2q2/PPP2PbP/2KR4 w - - 0 25}
+\hspace{0.02\textwidth}
+\PuzzleCell{362}{6rk/1bq1rp2/p3pN1p/1p2P3/3N2R1/2P5/PP4nP/R5K1 w - - 0 27}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{363}{3rr1k1/ppp1qppp/3b4/3P4/8/P4Q1P/1PP2PP1/R1B1R1K1 b - - 0 16}
+\hspace{0.02\textwidth}
+\PuzzleCell{364}{r2qkb1r/pppnpppp/8/1B6/3n4/2N2Q1P/PPP3P1/R1B2RK1 w kq - 0 10}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{361.} 1.\symrook{}xd8\# \\
+[0.2em]
+\noindent \textbf{362.} 1.\symrook{}xg8\# \\
+[0.2em]
+\noindent \textbf{363.} 1\ldots \symqueen{}xe1\# \\
+[0.2em]
+\noindent \textbf{364.} 1.\symqueen{}xf7\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{365}{r1b1kbnr/ppp2ppp/4q3/4PnB1/8/5N2/PPP2PPP/RN1Q1RK1 w kq - 5 10}
+\hspace{0.02\textwidth}
+\PuzzleCell{366}{R7/2p1kp2/1pBp2p1/2bPP2p/3n1P2/3n2P1/6KP/8 w - - 0 40}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{367}{r3qrk1/1pp2ppp/p3bb2/8/7Q/2NB1P1P/PP3P2/2KR3R w - - 0 19}
+\hspace{0.02\textwidth}
+\PuzzleCell{368}{r4rk1/1bBn2pp/p3p3/5pN1/2BPq3/P3P2P/5PP1/2RQ1RK1 b - - 0 18}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{365.} 1.\symqueen{}d8\# \\
+[0.2em]
+\noindent \textbf{366.} 1.\symrook{}e8\# \\
+[0.2em]
+\noindent \textbf{367.} 1.\symqueen{}xh7\# \\
+[0.2em]
+\noindent \textbf{368.} 1\ldots \symqueen{}xg2\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{369}{r7/p1qp1rb1/npp1p2k/4P1Np/2PPB1PP/8/PP3P2/R4RK1 w - - 0 26}
+\hspace{0.02\textwidth}
+\PuzzleCell{370}{r3r1k1/2p2ppp/pp1b3q/n7/3P2Q1/1P1BP3/PB3PPP/2R2RK1 b - - 6 19}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{371}{r2kr3/pp1n4/3Q1p1p/3P4/2nq2pP/1B2RpP1/PP6/4RK2 w - - 0 31}
+\hspace{0.02\textwidth}
+\PuzzleCell{372}{4r2k/pb4p1/1pp4p/5B2/3q1b2/7P/PP2RPP1/4R1K1 w - - 0 26}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{369.} 1.\symknight{}xf7\# \\
+[0.2em]
+\noindent \textbf{370.} 1\ldots \symqueen{}xh2\# \\
+[0.2em]
+\noindent \textbf{371.} 1.\symrook{}xe8\# \\
+[0.2em]
+\noindent \textbf{372.} 1.\symrook{}xe8\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{373}{1k4rr/ppp5/8/3pRQ2/3P3p/2P2PqP/PP4P1/R5K1 b - - 0 24}
+\hspace{0.02\textwidth}
+\PuzzleCell{374}{5r2/ppp3pk/1b5p/4N3/3P4/2P5/PP4PP/5R1K b - - 0 27}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{375}{4r1k1/6b1/p1Q3N1/1p3p1p/2p3nP/P7/5PP1/4R1K1 b - - 0 36}
+\hspace{0.02\textwidth}
+\PuzzleCell{376}{rn2k1r1/pp3p2/2pbp3/7p/3P3q/4BB1P/PPP2P2/2RQ1R1K b q - 3 21}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{373.} 1\ldots \symqueen{}xg2\# \\
+[0.2em]
+\noindent \textbf{374.} 1\ldots \symrook{}xf1\# \\
+[0.2em]
+\noindent \textbf{375.} 1\ldots \symrook{}xe1\# \\
+[0.2em]
+\noindent \textbf{376.} 1\ldots \symqueen{}xh3\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{377}{1k1r4/p7/1ppq3p/4pP2/PR2Q3/2P2P2/1P6/2KB4 b - - 0 35}
+\hspace{0.02\textwidth}
+\PuzzleCell{378}{q3kb1r/p2npppp/5n2/1Np5/2Pp2bN/6P1/PP1PPP1P/R1BQK2R b KQk - 1 9}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{379}{2k2r2/ppp1n3/2b1p2p/6pB/PP1P2Q1/2P1P3/3B2PP/5R1K b - - 0 23}
+\hspace{0.02\textwidth}
+\PuzzleCell{380}{5rk1/7p/4p1pK/3bQ3/6P1/1P5P/5r2/8 w - - 10 46}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{377.} 1\ldots \symqueen{}xd1\# \\
+[0.2em]
+\noindent \textbf{378.} 1\ldots \symqueen{}xh1\# \\
+[0.2em]
+\noindent \textbf{379.} 1\ldots \symrook{}xf1\# \\
+[0.2em]
+\noindent \textbf{380.} 1.\symqueen{}g7\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{381}{2k3rr/pppb1Np1/3b4/4qp1p/6nP/2PB4/PP3PP1/R1BQ1RK1 b - - 1 17}
+\hspace{0.02\textwidth}
+\PuzzleCell{382}{r1b2rk1/p6p/2p1p1p1/3p4/7Q/2qB4/P1P2PP1/R2K3R w - - 0 19}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{383}{1r4k1/pp1b2pp/8/2PNq3/1P3p2/P4Q2/5PPP/4R1K1 b - - 1 27}
+\hspace{0.02\textwidth}
+\PuzzleCell{384}{2b1r2k/2p4p/p2b1ppB/1p1P4/3R4/PB5P/1PP2PP1/6K1 b - - 0 26}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{381.} 1\ldots \symqueen{}h2\# \\
+[0.2em]
+\noindent \textbf{382.} 1.\symqueen{}xh7\# \\
+[0.2em]
+\noindent \textbf{383.} 1\ldots \symqueen{}xe1\# \\
+[0.2em]
+\noindent \textbf{384.} 1\ldots \symrook{}e1\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{385}{2bq1k1r/p4p2/2p1p1p1/2p1P1QN/2P5/1P4P1/P4P2/6K1 w - - 0 36}
+\hspace{0.02\textwidth}
+\PuzzleCell{386}{1r1r4/2p2pkp/4pnp1/p3N3/3n3P/P1PP4/B4PP1/K3R2R b - - 0 25}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{387}{r1q2rk1/pp3pp1/1n5p/2bpP1N1/2p2P2/2P3P1/PPQ3KP/R1B2R2 w - - 0 19}
+\hspace{0.02\textwidth}
+\PuzzleCell{388}{8/2p5/kp6/1q6/4Q3/8/5K2/8 w - - 4 58}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{385.} 1.\symqueen{}xd8\# \\
+[0.2em]
+\noindent \textbf{386.} 1\ldots \symknight{}c2\# \\
+[0.2em]
+\noindent \textbf{387.} 1.\symqueen{}h7\# \\
+[0.2em]
+\noindent \textbf{388.} 1.\symqueen{}a8\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{389}{2kr3r/ppp2ppp/5n2/3P4/2P1q3/5Q2/P4PPP/R1B1R1K1 b - - 0 15}
+\hspace{0.02\textwidth}
+\PuzzleCell{390}{2kr4/ppp2p2/7p/n1Pp1b2/3P3P/P1N1RNp1/1P4P1/2KR4 b - - 0 26}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{391}{4r1k1/3Q2pp/8/4p2q/5b2/3P4/PPP4P/4RR1K b - - 4 29}
+\hspace{0.02\textwidth}
+\PuzzleCell{392}{2r5/5k1p/4p1p1/1B1b2P1/1P3P2/p5RQ/P2R4/K7 b - - 0 41}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{389.} 1\ldots \symqueen{}xe1\# \\
+[0.2em]
+\noindent \textbf{390.} 1\ldots \symknight{}b3\# \\
+[0.2em]
+\noindent \textbf{391.} 1\ldots \symqueen{}xh2\# \\
+[0.2em]
+\noindent \textbf{392.} 1\ldots \symrook{}c1\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{393}{3q3k/1p4p1/3R1N1p/6r1/8/7P/PP3PP1/6K1 w - - 0 45}
+\hspace{0.02\textwidth}
+\PuzzleCell{394}{5rk1/pp1n2p1/2p4p/4p2b/2NpPb2/3P3B/PPP2r2/RQ2N1RK b - - 0 28}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{395}{6k1/p2n1p1p/7b/2pB1p1Q/2Pp1P2/BP4P1/P2q1r1P/4R2K b - - 0 28}
+\hspace{0.02\textwidth}
+\PuzzleCell{396}{7r/bB6/P7/5pk1/3r4/N1P2RK1/6P1/R7 b - - 1 41}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{393.} 1.\symrook{}xd8\# \\
+[0.2em]
+\noindent \textbf{394.} 1\ldots \symrook{}h2\# \\
+[0.2em]
+\noindent \textbf{395.} 1\ldots \symqueen{}xe1\# \\
+[0.2em]
+\noindent \textbf{396.} 1\ldots \symrook{}g4\#
+\end{adjustwidth}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in 1
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{397}{r2q1rk1/pp3pp1/n1p1bb1p/3p4/3P4/2NQP3/PP3PPP/1BR1K1NR w K - 4 12}
+\hspace{0.02\textwidth}
+\PuzzleCell{398}{6k1/1pp1r2p/3pN3/p2PbR2/2P5/1P6/P6P/7K w - - 1 29}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{399}{5r1k/pp4pp/2p3q1/8/1Q6/2P1n1P1/PP4BP/R5K1 w - - 0 23}
+\hspace{0.02\textwidth}
+\PuzzleCell{400}{rn3k1r/pp1qb3/2ppQp1p/4p2B/3P4/8/PPP1PP2/RN2K2R w KQ - 6 16}
+
+\vspace{0.8em}
+
+\hspace*{0.12in}\rule{\dimexpr\textwidth-0.12in\relax}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\begin{adjustwidth}{0.12in}{0in}
+\noindent \textbf{397.} 1.\symqueen{}h7\# \\
+[0.2em]
+\noindent \textbf{398.} 1.\symrook{}f8\# \\
+[0.2em]
+\noindent \textbf{399.} 1.\symqueen{}xf8\# \\
+[0.2em]
+\noindent \textbf{400.} 1.\symqueen{}f7\#
+\end{adjustwidth}
+}
+
+\end{document}

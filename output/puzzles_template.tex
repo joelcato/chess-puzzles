@@ -1,0 +1,91 @@
+\documentclass[12pt,twoside]{article}
+\usepackage[
+  paperwidth=6in,
+  paperheight=9in,
+  inner=0.45in,
+  outer=0.40in,
+  top=0.45in,
+  bottom=0.50in
+]{geometry}
+\usepackage[LSB,T1]{fontenc}
+\usepackage{xcolor}
+\usepackage{chessboard}
+\usepackage{chessfss}
+\usepackage{fancyhdr}
+
+\setcounter{page}{43}
+
+\pagestyle{fancy}
+\fancyhf{}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\newcommand{\coordfont}{\rmfamily\bfseries}
+\setfigfontfamily{merida}
+
+\setchessboard{
+  boardfontsize=18pt,
+  boardfontfamily=merida,
+  boardfontencoding=LSB,
+  blackfieldmaskcolor=white,
+  blackfieldcolor=black!75,
+  borderwidth=0.35pt,
+  bordercolor=black,
+  labelleft=true,
+  labelbottom=true,
+  labelfont=\coordfont,
+  labelfontsize=6pt
+}
+
+\newcommand{\PuzzleCell}[2]{%
+  \begin{minipage}[t]{0.46\textwidth}
+    \centering
+    \chessboard[setfen={#2}]
+    
+    \vspace{0.15em}
+    {\small\bfseries Puzzle #1}
+    
+    \vspace{0.45em}
+  \end{minipage}
+}
+
+\begin{document}
+
+\begin{center}
+\Large\bfseries Back Rank Mate
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{163}{3r1knr/p1Q2ppp/1pB2q2/2b1p3/4P3/8/PPP2PPP/RNB2RK1 b - - 0 13}
+\hspace{0.02\textwidth}
+\PuzzleCell{164}{rr4k1/pbQ2ppp/1p5q/3pR3/3P2n1/2N3P1/PP3P1P/4RBK1 w - - 11 26}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{165}{5r1k/pQ4pp/7b/8/4P3/2P5/1B4PP/3r2NK b - - 4 26}
+\hspace{0.02\textwidth}
+\PuzzleCell{166}{5rk1/3nQRpr/4n3/p2pP3/1p4P1/8/5RKP/4q3 w - - 5 39}
+
+\vfill
+
+\noindent\rule{\textwidth}{0.4pt}
+
+\vspace{0.1em}
+
+\begin{center}
+\small\bfseries Solutions
+\end{center}
+
+\vspace{-0.35em}
+
+{\footnotesize\sloppy
+\noindent \textbf{163.} 1\ldots \symqueen xf2+ 2.\symrook xf2 \symrook d1\# \\[0.2em]
+\noindent \textbf{164.} 1.\symqueen xb7+ \symrook xb7 2.\symrook e8+ \symrook xe8 3.\symrook xe8+ \\[0.2em]
+\noindent \textbf{165.} 1\ldots \symrook xg1+ 2.\symking xg1 \symbishop e3+ 3.\symking h1 \symrook f1\# \\[0.2em]
+\noindent \textbf{166.} 1.\symrook xf8+ \symknight dxf8 2.\symqueen f7+ \symking h8 3.\symqueen xf8+ \symknight xf8 4.\symrook xf8\#
+}
+
+\end{document}

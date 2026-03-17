@@ -1,0 +1,28 @@
+# LaTeX output files
+*.aux
+*.fdb_latexmk
+*.fls
+*.pdf
+*.log
+*.synctex.gz
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.env
+.venv
+venv/
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Large data files
+data/lichess_db_puzzle.csv
