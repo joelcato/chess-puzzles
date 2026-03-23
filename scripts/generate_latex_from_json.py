@@ -1,7 +1,7 @@
 import json
 import re
 from pathlib import Path
-from typing import Any
+from typing import Any, Optional
 
 import chess
 
@@ -10,11 +10,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / "data"
 OUTPUT_DIR = BASE_DIR / "output"
 
-INPUT_JSON = DATA_DIR / "mate_in_one_800.json"
-OUTPUT_TEX = OUTPUT_DIR / "mate_in_one_800.tex"
+INPUT_JSON = DATA_DIR / "mating_patterns_100_by_theme.json"
+OUTPUT_TEX = OUTPUT_DIR / "mating_patterns_100_by_theme.tex"
 
-BOOK_TITLE = "Chess Puzzle Book"
-BOOK_SUBTITLE = "Mate in 1"
+BOOK_TITLE = "Checkmate Pattern Training"
+BOOK_SUBTITLE = "1,900 graduated puzzles to build speed, recognition, and finishing power"
 BOOK_AUTHOR = "by Joel Cato"
 
 VERSO_TEXT = r"""
@@ -27,10 +27,7 @@ or transmitted in any form or by any means, electronic, mechanical,
 photocopying, recording, or otherwise, without prior written permission.
 """.strip()
 
-SECTION_TITLE = "Mate in 1"
 START_PAGE = 1
-MAX_BOOK_PUZZLES = 400
-
 BOARD_ROW_SHIFT = "-0.08in"
 SOLUTIONS_INDENT = "0.12in"
 
@@ -57,61 +54,41 @@ def san_to_latex_figurines(san: str) -> str:
 def format_solution_from_fen_and_moves(fen: str, moves: list[str]) -> str:
     board = chess.Board(fen)
     starting_turn = board.turn
-
     san_moves: list[str] = []
 
     for uci in moves:
         move = chess.Move.from_uci(uci)
         if move not in board.legal_moves:
             return f"[ILLEGAL MOVE {uci}]"
-
         san = board.san(move)
         san_moves.append(san_to_latex_figurines(san))
         board.push(move)
 
     parts: list[str] = []
-
     if starting_turn == chess.WHITE:
         move_no = 1
         i = 0
         while i < len(san_moves):
             white_move = san_moves[i]
             black_move = san_moves[i + 1] if i + 1 < len(san_moves) else None
-
-            if black_move:
-                parts.append(f"{move_no}.{white_move} {black_move}")
-            else:
-                parts.append(f"{move_no}.{white_move}")
-
+            parts.append(f"{move_no}.{white_move}" + (f" {black_move}" if black_move else ""))
             move_no += 1
             i += 2
     else:
         if san_moves:
             parts.append(rf"1\ldots {san_moves[0]}")
-
         move_no = 2
         i = 1
         while i < len(san_moves):
             white_move = san_moves[i]
             black_move = san_moves[i + 1] if i + 1 < len(san_moves) else None
-
-            if black_move:
-                parts.append(f"{move_no}.{white_move} {black_move}")
-            else:
-                parts.append(f"{move_no}.{white_move}")
-
+            parts.append(f"{move_no}.{white_move}" + (f" {black_move}" if black_move else ""))
             move_no += 1
             i += 2
-
     return " ".join(parts)
 
 
-def front_matter_block(
-    book_title: str,
-    book_subtitle: str,
-    book_author: str,
-    verso_text: str,
-) -> str:
+def front_matter_block(book_title: str, book_subtitle: str, book_author: str, verso_text: str) -> str:
     verso_body = (
         f"""
 \\begin{{center}}
@@ -126,14 +103,19 @@ def front_matter_block(
     return f"""
 \\thispagestyle{{empty}}
 
-\\vspace*{{0.22\\textheight}}
+\\vspace*{{0.14\\textheight}}
 
 \\begin{{center}}
-{{\\Huge\\bfseries {book_title}\\par}}
-\\vspace{{1.5em}}
-{{\\Large {book_subtitle}\\par}}
-\\vspace{{2em}}
-{{\\Large {book_author}\\par}}
+{{\\Large Tactical Chess Workbook\\par}}
+\\vspace{{1.2em}}
+{{\\fontsize{{26}}{{30}}\\selectfont\\bfseries {book_title}\\par}}
+\\vspace{{1.6em}}
+\\begin{{minipage}}{{0.82\\textwidth}}
+\\centering
+{{\\large {book_subtitle}\\par}}
+\\end{{minipage}}
+\\vspace{{3em}}
+{{\\large {book_author}\\par}}
 \\end{{center}}
 
 \\vfill
@@ -150,6 +132,27 @@ def front_matter_block(
 """.strip()
 
 
+def table_of_contents_block() -> str:
+    return """
+\\thispagestyle{empty}
+
+\\vspace*{0.08\\textheight}
+
+\\begin{center}
+{\\Huge\\bfseries Table of Contents\\par}
+\\end{center}
+
+\\vspace{1.5em}
+
+\\begingroup
+\\setlength{\\parskip}{0.35em}
+\\tableofcontents
+\\endgroup
+
+\\newpage
+""".strip()
+
+
 def puzzle_cell(puzzle_id: str, fen: str) -> str:
     return rf"\PuzzleCell{{{puzzle_id}}}{{{fen}}}"
 
@@ -159,35 +162,52 @@ def blank_cell() -> str:
 
 
 def solutions_block(puzzles: list[dict[str, Any]]) -> str:
-    lines = []
+    padded = puzzles + [None] * (4 - len(puzzles))
 
-    for p in puzzles:
-        puzzle_id = p["display_id"]
-        fen = p["fen"]
-        moves = p["moves"]
+    def solution_entry(puzzle: Optional[dict[str, Any]]) -> str:
+        if not puzzle:
+            return ""
+        solution = format_solution_from_fen_and_moves(puzzle["fen"], puzzle["moves"])
+        return rf"{{\bfseries {puzzle['display_id']}.}} {solution}"
 
-        solution = format_solution_from_fen_and_moves(fen, moves)
-        lines.append(rf"\noindent \textbf{{{puzzle_id}.}} {solution}")
+    left_top = solution_entry(padded[0])
+    right_top = solution_entry(padded[1])
+    left_bottom = solution_entry(padded[2])
+    right_bottom = solution_entry(padded[3])
 
-    if not lines:
-        return (
-            "{\\footnotesize\\sloppy\n"
-            + f"\\begin{{adjustwidth}}{{{SOLUTIONS_INDENT}}}{{0in}}\n"
-            + "\\noindent \\textbf{Solutions will go here later.}\n"
-            + "\\end{adjustwidth}\n"
-            + "}"
-        )
+    return rf"""
+{{\footnotesize\sloppy
+\noindent
+% Parent solutions container
+\begin{{minipage}}[t]{{\textwidth}}
+  % Left solutions
+    \begin{{minipage}}[c]{{0.47\textwidth}}
+        {left_top}
 
-    body = " \\\\\n[0.2em]\n".join(lines)
-    return (
-        "{\\footnotesize\\sloppy\n"
-        + f"\\begin{{adjustwidth}}{{{SOLUTIONS_INDENT}}}{{0in}}\n"
-        + body
-        + "\n\\end{adjustwidth}\n}"
-    )
+        \vspace{{0.45em}}
+
+        {left_bottom}
+    \end{{minipage}}
+    \hfill
+  % Vertical divider
+    \begin{{minipage}}[c][4.9\baselineskip][c]{{0.02\textwidth}}
+        \centering\rule{{0.4pt}}{{4.7\baselineskip}}
+    \end{{minipage}}
+    \hfill
+  % Right solutions
+    \begin{{minipage}}[c]{{0.47\textwidth}}
+        {right_top}
+
+        \vspace{{0.45em}}
+
+        {right_bottom}
+    \end{{minipage}}
+\end{{minipage}}
+}}
+""".strip()
 
 
-def page_block(puzzles: list[dict[str, Any]], title: str) -> str:
+def page_block(puzzles: list[dict[str, Any]], title: str, subtitle: str) -> str:
     padded = puzzles + [None] * (4 - len(puzzles))
 
     c1 = puzzle_cell(padded[0]["display_id"], padded[0]["fen"]) if padded[0] else blank_cell()
@@ -195,157 +215,221 @@ def page_block(puzzles: list[dict[str, Any]], title: str) -> str:
     c3 = puzzle_cell(padded[2]["display_id"], padded[2]["fen"]) if padded[2] else blank_cell()
     c4 = puzzle_cell(padded[3]["display_id"], padded[3]["fen"]) if padded[3] else blank_cell()
 
-    solutions_tex = solutions_block(puzzles)
+    return rf"""
+\begin{{center}}
+\Large\bfseries {title}
 
-    return f"""
-\\begin{{center}}
-\\Large\\bfseries {title}
-\\end{{center}}
+\vspace{{0.15em}}
+\normalsize {subtitle}
+\end{{center}}
 
-\\vspace{{0.35em}}
+\vspace{{0.35em}}
 
-\\noindent\\hspace*{{{BOARD_ROW_SHIFT}}}
+\noindent\hspace*{{{BOARD_ROW_SHIFT}}}
 {c1}
-\\hspace{{0.02\\textwidth}}
+\hspace{{0.02\textwidth}}
 {c2}
 
-\\vspace{{0.1em}}
+\vspace{{0.1em}}
 
-\\noindent\\hspace*{{{BOARD_ROW_SHIFT}}}
+\noindent\hspace*{{{BOARD_ROW_SHIFT}}}
 {c3}
-\\hspace{{0.02\\textwidth}}
+\hspace{{0.02\textwidth}}
 {c4}
 
-\\vspace{{0.8em}}
+\vfill
 
-\\hspace*{{{SOLUTIONS_INDENT}}}\\rule{{\\dimexpr\\textwidth-{SOLUTIONS_INDENT}\\relax}}{{0.4pt}}
+\noindent\rule{{\textwidth}}{{0.4pt}}
 
-\\vspace{{0.1em}}
+\vspace{{0.15em}}
+
+\noindent\makebox[\textwidth][c]{{\small\bfseries Solutions}}
+
+\vspace{{0.75em}}
+
+{solutions_block(puzzles)}
+""".strip()
+
+
+def chapter_title_page(chapter_label: str) -> str:
+    return f"""
+\\thispagestyle{{empty}}
+
+\\vspace*{{0.34\\textheight}}
 
 \\begin{{center}}
-\\small\\bfseries Solutions
+{{\\Huge\\bfseries {chapter_label}\\par}}
 \\end{{center}}
 
-\\vspace{{-0.35em}}
-
-{solutions_tex}
+\\vfill
 """.strip()
 
 
-def build_document(puzzles: list[dict[str, Any]], title: str, start_page: int) -> str:
-    preamble = f"""
-\\documentclass[12pt,twoside]{{article}}
-\\usepackage[
-  paperwidth=6in,
-  paperheight=9in,
-  inner=0.45in,
-  outer=0.40in,
-  top=0.45in,
-  bottom=0.50in
+def ensure_recto_transition(blocks: list[str]) -> None:
+    blocks.append(r"\newpage")
+    blocks.append(r"\checkoddpage\ifoddpage\else\null\thispagestyle{empty}\newpage\fi")
+
+
+def build_document(document: dict, start_page: int) -> str:
+    preamble = rf"""
+\documentclass[12pt,twoside]{{article}}
+\usepackage[
+    paperwidth=6in,
+    paperheight=9in,
+    inner=0.45in,
+    outer=0.40in,
+    top=0.45in,
+    bottom=0.50in
 ]{{geometry}}
-\\usepackage[LSB,T1]{{fontenc}}
-\\usepackage{{xcolor}}
-\\usepackage{{chessboard}}
-\\usepackage{{chessfss}}
-\\usepackage{{fancyhdr}}
-\\usepackage{{changepage}}
+\usepackage[LSB1,T1]{{fontenc}}
+\usepackage{{xcolor}}
+\usepackage{{chessboard}}
+\usepackage{{chessfss}}
+\usepackage{{fancyhdr}}
+\usepackage{{ifoddpage}}
 
-\\setcounter{{page}}{{{start_page}}}
-\\setlength{{\\footskip}}{{18pt}}
+\setcounter{{tocdepth}}{{1}}
 
-\\pagestyle{{fancy}}
-\\fancyhf{{}}
-\\cfoot{{\\thepage}}
-\\renewcommand{{\\headrulewidth}}{{0pt}}
+\setcounter{{page}}{{{start_page}}}
+\setlength{{\footskip}}{{18pt}}
 
-\\newcommand{{\\coordfont}}{{\\rmfamily\\bfseries}}
-\\setfigfontfamily{{merida}}
+\pagestyle{{fancy}}
+\fancyhf{{}}
+\cfoot{{\thepage}}
+\renewcommand{{\headrulewidth}}{{0pt}}
 
-\\setchessboard{{
-  boardfontsize=18pt,
-  boardfontfamily=merida,
-  boardfontencoding=LSB,
-  blackfieldmaskcolor=white,
-  blackfieldcolor=black!75,
-  borderwidth=0.35pt,
-  bordercolor=black,
-  labelleft=true,
-  labelbottom=true,
-  labelfont=\\coordfont,
-  labelfontsize=6pt
+\newcommand{{\coordfont}}{{\rmfamily\bfseries}}
+\setfigfontfamily{{merida}}
+
+\setboardfontcolors{{
+    blackfield=black!60
 }}
 
-\\newcommand{{\\PuzzleCell}}[2]{{%
-  \\begin{{minipage}}[t]{{0.46\\textwidth}}
-    \\centering
-    \\chessboard[setfen={{#2}}]
-
-    \\vspace{{0.15em}}
-    {{\\small\\bfseries Puzzle #1}}
-
-    \\vspace{{0.45em}}
-  \\end{{minipage}}
+\setchessboard{{
+    boardfontsize=18pt,
+    boardfontfamily=merida,
+    boardfontencoding=LSB1,
+    borderwidth=0.5pt,
+    bordercolor=black,
+    showmover=false,
+    labelleft=true,
+    labelbottom=true,
+    labelleftwidth=1.2ex,
+    labelbottomlift=1.2\baselineskip,
+    labelfont=\coordfont,
+    labelfontsize=7pt
 }}
 
-\\begin{{document}}
+\def\SideToMoveFromFEN#1 #2 #3\relax{{#2}}
+
+\newcommand{{\RenderPuzzleBoard}}[1]{{%
+    \edef\PuzzleSideToMove{{\expandafter\SideToMoveFromFEN#1 \relax}}%
+    \if b\PuzzleSideToMove
+        \chessboard[setfen={{#1}},inverse=true]%
+    \else
+        \chessboard[setfen={{#1}}]%
+    \fi
+}}
+
+\newcommand{{\PuzzleCell}}[2]{{%
+    \begin{{minipage}}[t]{{0.46\textwidth}}
+        \centering
+        \RenderPuzzleBoard{{#2}}
+
+        \vspace{{0.15em}}
+        {{\small\bfseries Puzzle #1}}
+
+        \vspace{{0.45em}}
+    \end{{minipage}}
+}}
+
+\begin{{document}}
 """.strip()
 
-    front_matter = front_matter_block(
-        book_title=BOOK_TITLE,
-        book_subtitle=BOOK_SUBTITLE,
-        book_author=BOOK_AUTHOR,
-        verso_text=VERSO_TEXT,
-    )
+    blocks = [
+        front_matter_block(
+            book_title=BOOK_TITLE,
+            book_subtitle=BOOK_SUBTITLE,
+            book_author=document.get("author", BOOK_AUTHOR),
+            verso_text=VERSO_TEXT,
+        ),
+        table_of_contents_block(),
+    ]
 
-    pages = []
-    groups = list(chunked(puzzles, 4))
+    global_display_id = 1
+    chapters = document.get("chapters", [])
+    for chapter_index, chapter in enumerate(chapters):
+        ensure_recto_transition(blocks)
+        blocks.append(rf"\addcontentsline{{toc}}{{section}}{{{chapter['label']}}}")
+        blocks.append(chapter_title_page(chapter["label"]))
+        blocks.append(r"\newpage")
 
-    for i, group in enumerate(groups):
-        pages.append(page_block(group, title))
-        if i < len(groups) - 1:
-            pages.append(r"\newpage")
+        puzzles = chapter.get("puzzles", [])
+        puzzle_by_id: dict[str, dict[str, Any]] = {}
+        for puzzle in puzzles:
+            puzzle["source_id"] = puzzle.get("id")
+            puzzle["display_id"] = str(global_display_id)
+            puzzle_by_id[puzzle["id"]] = puzzle
+            global_display_id += 1
+
+        chapter_groups = chapter.get("groups") or {
+            "white_to_move": [p for p in puzzles if chess.Board(p["fen"]).turn == chess.WHITE],
+            "black_to_move": [p for p in puzzles if chess.Board(p["fen"]).turn == chess.BLACK],
+        }
+
+        for grouped_puzzles in chapter_groups.values():
+            for grouped_puzzle in grouped_puzzles:
+                source = puzzle_by_id.get(grouped_puzzle.get("id"))
+                if source is not None:
+                    grouped_puzzle["source_id"] = source["source_id"]
+                    grouped_puzzle["display_id"] = source["display_id"]
+
+        ordered_sections = [
+            ("White to Move", chapter_groups.get("white_to_move", [])),
+            ("Black to Move", chapter_groups.get("black_to_move", [])),
+        ]
+        nonempty_section_titles = [title for title, section_puzzles in ordered_sections if section_puzzles]
+
+        rendered_any = False
+        for subtitle, section_puzzles in ordered_sections:
+            if not section_puzzles:
+                continue
+
+            groups = list(chunked(section_puzzles, 4))
+            for group_index, group in enumerate(groups):
+                blocks.append(page_block(group, chapter["label"], subtitle))
+                rendered_any = True
+
+                is_last_group_in_section = group_index == len(groups) - 1
+                is_last_nonempty_section = subtitle == nonempty_section_titles[-1]
+                is_last_group = is_last_group_in_section and is_last_nonempty_section
+                is_last_chapter = chapter_index == len(chapters) - 1
+                if not (is_last_group and is_last_chapter):
+                    blocks.append(r"\newpage")
+
+        if not rendered_any:
+            blocks.append(page_block([], chapter["label"], "White to Move"))
+            is_last_chapter = chapter_index == len(chapters) - 1
+            if not is_last_chapter:
+                blocks.append(r"\newpage")
 
     ending = r"""
 \end{document}
 """.strip()
-
-    return (
-        preamble
-        + "\n\n"
-        + front_matter
-        + "\n\n"
-        + "\n\n".join(pages)
-        + "\n\n"
-        + ending
-    )
+    return preamble + "\n\n" + "\n\n".join(blocks) + "\n\n" + ending
 
 
-def main():
-    input_path = INPUT_JSON
-    output_path = OUTPUT_TEX
+def main() -> None:
+    if not INPUT_JSON.exists():
+        raise FileNotFoundError(f"Could not find input JSON: {INPUT_JSON}")
 
-    if not input_path.exists():
-        raise FileNotFoundError(f"Could not find input JSON: {input_path}")
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    with INPUT_JSON.open("r", encoding="utf-8") as f:
+        document = json.load(f)
 
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-
-    with input_path.open("r", encoding="utf-8") as f:
-        puzzles = json.load(f)
-
-    puzzles = puzzles[:MAX_BOOK_PUZZLES]
-
-    for i, p in enumerate(puzzles, start=1):
-        p["source_id"] = p.get("id")
-        p["display_id"] = str(i)
-
-    tex = build_document(
-        puzzles=puzzles,
-        title=SECTION_TITLE,
-        start_page=START_PAGE,
-    )
-
-    output_path.write_text(tex, encoding="utf-8")
-    print(f"Wrote {output_path}")
+    tex = build_document(document=document, start_page=START_PAGE)
+    OUTPUT_TEX.write_text(tex, encoding="utf-8")
+    print(f"Wrote {OUTPUT_TEX}")
 
 
 if __name__ == "__main__":
