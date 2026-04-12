@@ -5,6 +5,8 @@
 *.pdf
 *.log
 *.synctex.gz
+*.out
+*.toc
 
 # Python
 __pycache__/
