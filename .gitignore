@@ -21,7 +21,6 @@ venv/
 .DS_Store
 
 # IDE
-.vscode/
 .idea/
 *.swp
 *.swo

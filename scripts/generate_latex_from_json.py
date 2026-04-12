@@ -1,3 +1,4 @@
+import argparse
 import json
 import os
 import re
@@ -11,24 +12,22 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / "data"
 OUTPUT_DIR = BASE_DIR / "output"
 
-INPUT_JSON = DATA_DIR / "mating_patterns_100_by_theme.json"
-OUTPUT_TEX = OUTPUT_DIR / "mating_patterns_100_by_theme.tex"
-OUTPUT_TEX_DRAFT = OUTPUT_DIR / "mating_patterns_preview.tex"
+# Legacy defaults — used only when a JSON does not supply the field
+_DEFAULT_BOOK_TITLE = "Chess Puzzle Book"
+_DEFAULT_BOOK_SUBTITLE = ""
+_DEFAULT_BOOK_AUTHOR = "by Joel Cato"
+_DEFAULT_BOOK_PUBLISHER = "Covington Press"
 
-BOOK_TITLE = "Checkmate Pattern Training"
-BOOK_SUBTITLE = "2,000 graduated puzzles organized by common checkmate patterns"
-BOOK_AUTHOR = "by Joel Cato"
-BOOK_PUBLISHER = "Covington Press"
-
-VERSO_TEXT = r"""
-Copyright © 2026 Joel Cato
-
-All rights reserved.
-
-No part of this publication may be reproduced, stored in a retrieval system,
-or transmitted in any form or by any means, electronic, mechanical,
-photocopying, recording, or otherwise, without prior written permission.
-""".strip()
+def _default_verso(author: str, publisher: str) -> str:
+    year = 2026
+    author_clean = author.lstrip("by ").strip() or "Joel Cato"
+    return (
+        f"Copyright © {year} {author_clean}\n\n"
+        "All rights reserved.\n\n"
+        "No part of this publication may be reproduced, stored in a retrieval system,\n"
+        "or transmitted in any form or by any means, electronic, mechanical,\n"
+        "photocopying, recording, or otherwise, without prior written permission."
+    )
 
 START_PAGE = 1
 BOARD_ROW_SHIFT = "-0.08in"
@@ -139,7 +138,7 @@ def format_solution_from_fen_and_moves(fen: str, moves: list[str]) -> str:
     return " ".join(parts)
 
 
-def front_matter_block(book_title: str, book_subtitle: str, book_author: str, verso_text: str) -> str:
+def front_matter_block(book_title: str, book_subtitle: str, book_author: str, book_publisher: str, verso_text: str) -> str:
     verso_body = (
         f"""
 \\begin{{center}}
@@ -177,7 +176,7 @@ def front_matter_block(book_title: str, book_subtitle: str, book_author: str, ve
 \\vfill
 
 \\begin{{center}}
-{{\\normalsize {BOOK_PUBLISHER}\\par}}
+{{\\normalsize {book_publisher}\\par}}
 \\end{{center}}
 
 \\newpage
@@ -231,7 +230,9 @@ def solutions_block(puzzles: list[dict[str, Any]]) -> str:
     def solution_entry(puzzle: Optional[dict[str, Any]]) -> str:
         if not puzzle:
             return ""
-        solution = format_solution_from_fen_and_moves(puzzle["fen"], puzzle["moves"])
+        display_fen = puzzle.get("display_fen") or puzzle["fen"]
+        solver_moves = puzzle["moves"][1:]  # strip opponent's first half-move
+        solution = format_solution_from_fen_and_moves(display_fen, solver_moves)
         return rf"{{\bfseries {puzzle['display_id']}.}} {solution}"
 
     left_top = solution_entry(padded[0])
@@ -274,10 +275,10 @@ def solutions_block(puzzles: list[dict[str, Any]]) -> str:
 def page_block(puzzles: list[dict[str, Any]], title: str, subtitle: str) -> str:
     padded = puzzles + [None] * (4 - len(puzzles))
 
-    c1 = puzzle_cell(padded[0]["display_id"], padded[0]["fen"]) if padded[0] else blank_cell()
-    c2 = puzzle_cell(padded[1]["display_id"], padded[1]["fen"]) if padded[1] else blank_cell()
-    c3 = puzzle_cell(padded[2]["display_id"], padded[2]["fen"]) if padded[2] else blank_cell()
-    c4 = puzzle_cell(padded[3]["display_id"], padded[3]["fen"]) if padded[3] else blank_cell()
+    c1 = puzzle_cell(padded[0]["display_id"], padded[0].get("display_fen") or padded[0]["fen"]) if padded[0] else blank_cell()
+    c2 = puzzle_cell(padded[1]["display_id"], padded[1].get("display_fen") or padded[1]["fen"]) if padded[1] else blank_cell()
+    c3 = puzzle_cell(padded[2]["display_id"], padded[2].get("display_fen") or padded[2]["fen"]) if padded[2] else blank_cell()
+    c4 = puzzle_cell(padded[3]["display_id"], padded[3].get("display_fen") or padded[3]["fen"]) if padded[3] else blank_cell()
 
     return rf"""
 \begin{{center}}
@@ -340,7 +341,7 @@ def force_next_content_to_recto(blocks: list[str]) -> None:
 
 
 def build_document(document: dict, start_page: int) -> str:
-    document_name = document.get("_output_name", OUTPUT_TEX.stem)
+    document_name = document.get("_output_name", "puzzle_book")
     preamble = rf"""
 % !TEX program = pdflatex
 % !TEX jobname = {document_name}
@@ -425,32 +426,47 @@ def build_document(document: dict, start_page: int) -> str:
 \begin{{document}}
 """.strip()
 
+    book_title = document.get("title", _DEFAULT_BOOK_TITLE)
+    book_subtitle = document.get("subtitle", _DEFAULT_BOOK_SUBTITLE)
+    book_author = document.get("author", _DEFAULT_BOOK_AUTHOR)
+    book_publisher = document.get("publisher", _DEFAULT_BOOK_PUBLISHER)
+    verso_text = document.get("verso_text") or _default_verso(book_author, book_publisher)
+
+    show_toc = document.get("toc", True)
+
     blocks = [
         front_matter_block(
-            book_title=BOOK_TITLE,
-            book_subtitle=BOOK_SUBTITLE,
-            book_author=document.get("author", BOOK_AUTHOR),
-            verso_text=VERSO_TEXT,
+            book_title=book_title,
+            book_subtitle=book_subtitle,
+            book_author=book_author,
+            book_publisher=book_publisher,
+            verso_text=verso_text,
         ),
-        table_of_contents_block(),
     ]
+    if show_toc:
+        blocks.append(table_of_contents_block())
 
     global_display_id = 1
     chapters = document.get("chapters", [])
     for chapter_index, chapter in enumerate(chapters):
+        # Support both old ("label") and new ("title") JSON key
+        chapter_label = chapter.get("title") or chapter.get("label", "")
+
         # Ensure chapter title is always on recto using LaTeX's standard double-page clear
         blocks.append(r"\cleardoublepage")
-        blocks.append(chapter_title_page(chapter["label"]))
-        blocks.append(rf"\addcontentsline{{toc}}{{section}}{{{chapter['label']}}}")
+        blocks.append(chapter_title_page(chapter_label))
+        blocks.append(rf"\addcontentsline{{toc}}{{section}}{{{chapter_label}}}")
         # Insert a single blank verso page after the title so puzzles start on the following recto
         blocks.append(r"\newpage\null\thispagestyle{empty}\newpage")
 
         puzzles = chapter.get("puzzles", [])
         puzzle_by_id: dict[str, dict[str, Any]] = {}
         for puzzle in puzzles:
-            puzzle["source_id"] = puzzle.get("id")
+            # Support both old ("id") and new ("puzzle_id") JSON key
+            pid = puzzle.get("puzzle_id") or puzzle.get("id", "")
+            puzzle["source_id"] = pid
             puzzle["display_id"] = str(global_display_id)
-            puzzle_by_id[puzzle["id"]] = puzzle
+            puzzle_by_id[pid] = puzzle
             global_display_id += 1
 
         chapter_groups = chapter.get("groups") or {
@@ -460,7 +476,8 @@ def build_document(document: dict, start_page: int) -> str:
 
         for grouped_puzzles in chapter_groups.values():
             for grouped_puzzle in grouped_puzzles:
-                source = puzzle_by_id.get(grouped_puzzle.get("id"))
+                pid = grouped_puzzle.get("puzzle_id") or grouped_puzzle.get("id", "")
+                source = puzzle_by_id.get(pid)
                 if source is not None:
                     grouped_puzzle["source_id"] = source["source_id"]
                     grouped_puzzle["display_id"] = source["display_id"]
@@ -478,7 +495,7 @@ def build_document(document: dict, start_page: int) -> str:
 
             groups = list(chunked(section_puzzles, 4))
             for group_index, group in enumerate(groups):
-                blocks.append(page_block(group, chapter["label"], subtitle))
+                blocks.append(page_block(group, chapter_label, subtitle))
                 rendered_any = True
 
                 is_last_group_in_section = group_index == len(groups) - 1
@@ -501,18 +518,54 @@ def build_document(document: dict, start_page: int) -> str:
 
 
 def main() -> None:
-    if not INPUT_JSON.exists():
-        raise FileNotFoundError(f"Could not find input JSON: {INPUT_JSON}")
+    parser = argparse.ArgumentParser(
+        description="Generate a LaTeX puzzle book from a JSON file."
+    )
+    parser.add_argument(
+        "input_json",
+        nargs="?",
+        default=None,
+        help="Path to the input JSON file (default: data/mating_patterns_100_by_theme.json)",
+    )
+    parser.add_argument(
+        "--output",
+        default=None,
+        help="Override the output .tex path (default: output/<stem>.tex)",
+    )
+    args = parser.parse_args()
+
+    # Resolve input JSON
+    if args.input_json:
+        input_json = Path(args.input_json)
+        if not input_json.is_absolute():
+            input_json = BASE_DIR / input_json
+    else:
+        input_json = DATA_DIR / "mating_patterns_100_by_theme.json"
+
+    if not input_json.exists():
+        raise FileNotFoundError(f"Could not find input JSON: {input_json}")
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    with INPUT_JSON.open("r", encoding="utf-8") as f:
+    with input_json.open("r", encoding="utf-8") as f:
         document = json.load(f)
 
     document, is_draft = apply_draft_limits(document)
-    document["_output_name"] = OUTPUT_TEX_DRAFT.stem if is_draft else OUTPUT_TEX.stem
+
+    # Derive output filenames from the JSON stem
+    stem = input_json.stem
+    output_tex = OUTPUT_DIR / f"{stem}.tex"
+    output_tex_draft = OUTPUT_DIR / f"{stem}_preview.tex"
+
+    if args.output:
+        output_tex = Path(args.output)
+        if not output_tex.is_absolute():
+            output_tex = BASE_DIR / output_tex
+        output_tex_draft = output_tex.with_name(output_tex.stem + "_preview" + output_tex.suffix)
+
+    document["_output_name"] = output_tex_draft.stem if is_draft else output_tex.stem
 
     tex = build_document(document=document, start_page=START_PAGE)
-    output_path = OUTPUT_TEX_DRAFT if is_draft else OUTPUT_TEX
+    output_path = output_tex_draft if is_draft else output_tex
     output_path.write_text(tex, encoding="utf-8")
     if is_draft:
         print(

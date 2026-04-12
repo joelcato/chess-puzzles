@@ -1,0 +1,37 @@
+# Mate in One — 800 puzzles, split white/black, rating <= 800, sorted by rating ascending.
+# Intended as an introductory puzzle book for beginners.
+
+book:
+  title: "Chess Puzzle Book"
+  subtitle: "Mate in One"
+  author: "by Joel Cato"
+  publisher: "Covington Press"
+  toc: false
+  chapter_title_pages: false
+  output_json: "data/mate_in_one_800.json"
+
+filters:
+  min_plays: 50
+  min_popularity: 0
+
+chapters:
+  - title: "Mate in One"
+    sets:
+      - themes: [mateIn1]
+        side_to_move: white
+        rating: [0, 800]
+        count: 400
+        sort:
+          - field: rating
+            order: asc
+          - field: popularity
+            order: desc
+      - themes: [mateIn1]
+        side_to_move: black
+        rating: [0, 800]
+        count: 400
+        sort:
+          - field: rating
+            order: asc
+          - field: popularity
+            order: desc

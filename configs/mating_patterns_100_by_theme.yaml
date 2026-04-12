@@ -1,0 +1,2101 @@
+# Mating Patterns — 19 chapters, ~104 puzzles each (52 white, 52 black)
+# Each chapter covers one mating pattern theme.
+# Within each chapter, puzzles are grouped by side-to-move, then sorted
+# rating ascending within each rating band.
+#
+# Set-level filter logic:
+#   themes: ALL listed themes must appear on the puzzle (AND logic)
+#   side_to_move: 'white' or 'black'
+#   rating: [min, max] inclusive
+#   count: exact number of puzzles to select from this filter+sort combination
+#   sort: ordered list of sort fields applied when selecting from candidates
+#
+# Chapter-level sort is applied after all sets are assembled, overriding
+# the within-set order. Omit chapter-level sort to preserve set order.
+
+book:
+  title: "Chess Puzzle Book"
+  subtitle: "Mating Patterns"
+  author: "by Joel Cato"
+  publisher: "Covington Press"
+  toc: true
+  chapter_title_pages: true
+  output_json: "data/mating_patterns_100_by_theme.json"
+
+# Global filters applied to every set unless overridden at set level
+filters:
+  min_plays: 50
+  min_popularity: 0
+
+# Chapter-level sort: applied after all sets in a chapter are assembled.
+# This produces the final puzzle order within each chapter.
+default_chapter_sort:
+  - field: side_to_move   # 'w' before 'b' (white first)
+    order: asc
+  - field: mate_in
+    order: asc
+  - field: rating
+    order: asc
+
+chapters:
+  - title: "Back Rank Mate"
+    sets:
+      - themes: [backRankMate]
+        side_to_move: white
+        rating: [600, 799]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [backRankMate]
+        side_to_move: white
+        rating: [800, 999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [backRankMate]
+        side_to_move: white
+        rating: [1000, 1199]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [backRankMate]
+        side_to_move: white
+        rating: [1200, 1399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [backRankMate]
+        side_to_move: white
+        rating: [1400, 1599]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [backRankMate]
+        side_to_move: white
+        rating: [1600, 1799]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [backRankMate]
+        side_to_move: white
+        rating: [1800, 1999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [backRankMate]
+        side_to_move: white
+        rating: [2000, 2199]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [backRankMate]
+        side_to_move: white
+        rating: [2200, 2399]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [backRankMate]
+        side_to_move: white
+        rating: [2400, 2599]
+        count: 10
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [backRankMate]
+        side_to_move: white
+        rating: [2600, 2799]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [backRankMate]
+        side_to_move: black
+        rating: [600, 799]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [backRankMate]
+        side_to_move: black
+        rating: [800, 999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [backRankMate]
+        side_to_move: black
+        rating: [1000, 1199]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [backRankMate]
+        side_to_move: black
+        rating: [1200, 1399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [backRankMate]
+        side_to_move: black
+        rating: [1400, 1599]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [backRankMate]
+        side_to_move: black
+        rating: [1600, 1799]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [backRankMate]
+        side_to_move: black
+        rating: [1800, 1999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [backRankMate]
+        side_to_move: black
+        rating: [2000, 2199]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [backRankMate]
+        side_to_move: black
+        rating: [2200, 2399]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [backRankMate]
+        side_to_move: black
+        rating: [2400, 2599]
+        count: 17
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [backRankMate]
+        side_to_move: black
+        rating: [2600, 2799]
+        count: 1
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+
+  - title: "Double Bishop Mate"
+    sets:
+      - themes: [doubleBishopMate]
+        side_to_move: white
+        rating: [600, 799]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [doubleBishopMate]
+        side_to_move: white
+        rating: [800, 999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [doubleBishopMate]
+        side_to_move: white
+        rating: [1000, 1199]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [doubleBishopMate]
+        side_to_move: white
+        rating: [1200, 1399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [doubleBishopMate]
+        side_to_move: white
+        rating: [1400, 1599]
+        count: 9
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [doubleBishopMate]
+        side_to_move: white
+        rating: [1600, 1799]
+        count: 9
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [doubleBishopMate]
+        side_to_move: white
+        rating: [1800, 1999]
+        count: 11
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [doubleBishopMate]
+        side_to_move: white
+        rating: [2000, 2199]
+        count: 7
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [doubleBishopMate]
+        side_to_move: white
+        rating: [2200, 2399]
+        count: 3
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [doubleBishopMate]
+        side_to_move: white
+        rating: [2400, 2599]
+        count: 1
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [doubleBishopMate]
+        side_to_move: black
+        rating: [800, 999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [doubleBishopMate]
+        side_to_move: black
+        rating: [1000, 1199]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [doubleBishopMate]
+        side_to_move: black
+        rating: [1200, 1399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [doubleBishopMate]
+        side_to_move: black
+        rating: [1400, 1599]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [doubleBishopMate]
+        side_to_move: black
+        rating: [1600, 1799]
+        count: 9
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [doubleBishopMate]
+        side_to_move: black
+        rating: [1800, 1999]
+        count: 12
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [doubleBishopMate]
+        side_to_move: black
+        rating: [2000, 2199]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [doubleBishopMate]
+        side_to_move: black
+        rating: [2200, 2399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [doubleBishopMate]
+        side_to_move: black
+        rating: [2400, 2599]
+        count: 2
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+
+  - title: "Boden's Mate"
+    sets:
+      - themes: [bodenMate]
+        side_to_move: white
+        rating: [600, 799]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [bodenMate]
+        side_to_move: white
+        rating: [800, 999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [bodenMate]
+        side_to_move: white
+        rating: [1000, 1199]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [bodenMate]
+        side_to_move: white
+        rating: [1200, 1399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [bodenMate]
+        side_to_move: white
+        rating: [1400, 1599]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [bodenMate]
+        side_to_move: white
+        rating: [1600, 1799]
+        count: 9
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [bodenMate]
+        side_to_move: white
+        rating: [1800, 1999]
+        count: 10
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [bodenMate]
+        side_to_move: white
+        rating: [2000, 2199]
+        count: 9
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [bodenMate]
+        side_to_move: white
+        rating: [2200, 2399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [bodenMate]
+        side_to_move: black
+        rating: [800, 999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [bodenMate]
+        side_to_move: black
+        rating: [1000, 1199]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [bodenMate]
+        side_to_move: black
+        rating: [1200, 1399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [bodenMate]
+        side_to_move: black
+        rating: [1400, 1599]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [bodenMate]
+        side_to_move: black
+        rating: [1600, 1799]
+        count: 8
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [bodenMate]
+        side_to_move: black
+        rating: [1800, 1999]
+        count: 9
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [bodenMate]
+        side_to_move: black
+        rating: [2000, 2199]
+        count: 15
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [bodenMate]
+        side_to_move: black
+        rating: [2200, 2399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+
+  - title: "Opera Mate"
+    sets:
+      - themes: [operaMate]
+        side_to_move: white
+        rating: [600, 799]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [operaMate]
+        side_to_move: white
+        rating: [800, 999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [operaMate]
+        side_to_move: white
+        rating: [1000, 1199]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [operaMate]
+        side_to_move: white
+        rating: [1200, 1399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [operaMate]
+        side_to_move: white
+        rating: [1400, 1599]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [operaMate]
+        side_to_move: white
+        rating: [1600, 1799]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [operaMate]
+        side_to_move: white
+        rating: [1800, 1999]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [operaMate]
+        side_to_move: white
+        rating: [2000, 2199]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [operaMate]
+        side_to_move: white
+        rating: [2200, 2399]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [operaMate]
+        side_to_move: white
+        rating: [2400, 2599]
+        count: 6
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [operaMate]
+        side_to_move: white
+        rating: [2600, 2799]
+        count: 10
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [operaMate]
+        side_to_move: black
+        rating: [800, 999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [operaMate]
+        side_to_move: black
+        rating: [1000, 1199]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [operaMate]
+        side_to_move: black
+        rating: [1200, 1399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [operaMate]
+        side_to_move: black
+        rating: [1400, 1599]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [operaMate]
+        side_to_move: black
+        rating: [1600, 1799]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [operaMate]
+        side_to_move: black
+        rating: [1800, 1999]
+        count: 6
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [operaMate]
+        side_to_move: black
+        rating: [2000, 2199]
+        count: 6
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [operaMate]
+        side_to_move: black
+        rating: [2200, 2399]
+        count: 6
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [operaMate]
+        side_to_move: black
+        rating: [2400, 2599]
+        count: 6
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [operaMate]
+        side_to_move: black
+        rating: [2600, 2799]
+        count: 3
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+
+  - title: "Pillsbury's Mate"
+    sets:
+      - themes: [pillsburysMate]
+        side_to_move: white
+        rating: [600, 799]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [pillsburysMate]
+        side_to_move: white
+        rating: [800, 999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [pillsburysMate]
+        side_to_move: white
+        rating: [1000, 1199]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [pillsburysMate]
+        side_to_move: white
+        rating: [1200, 1399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [pillsburysMate]
+        side_to_move: white
+        rating: [1400, 1599]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [pillsburysMate]
+        side_to_move: white
+        rating: [1600, 1799]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [pillsburysMate]
+        side_to_move: white
+        rating: [1800, 1999]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [pillsburysMate]
+        side_to_move: white
+        rating: [2000, 2199]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [pillsburysMate]
+        side_to_move: white
+        rating: [2200, 2399]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [pillsburysMate]
+        side_to_move: white
+        rating: [2400, 2599]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [pillsburysMate]
+        side_to_move: white
+        rating: [2600, 2799]
+        count: 9
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [pillsburysMate]
+        side_to_move: white
+        rating: [2800, 2999]
+        count: 2
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [pillsburysMate]
+        side_to_move: black
+        rating: [600, 799]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [pillsburysMate]
+        side_to_move: black
+        rating: [800, 999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [pillsburysMate]
+        side_to_move: black
+        rating: [1000, 1199]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [pillsburysMate]
+        side_to_move: black
+        rating: [1200, 1399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [pillsburysMate]
+        side_to_move: black
+        rating: [1400, 1599]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [pillsburysMate]
+        side_to_move: black
+        rating: [1600, 1799]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [pillsburysMate]
+        side_to_move: black
+        rating: [1800, 1999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [pillsburysMate]
+        side_to_move: black
+        rating: [2000, 2199]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [pillsburysMate]
+        side_to_move: black
+        rating: [2200, 2399]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [pillsburysMate]
+        side_to_move: black
+        rating: [2400, 2599]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [pillsburysMate]
+        side_to_move: black
+        rating: [2600, 2799]
+        count: 10
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+
+  - title: "Smothered Mate"
+    sets:
+      - themes: [smotheredMate]
+        side_to_move: white
+        rating: [600, 799]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [smotheredMate]
+        side_to_move: white
+        rating: [800, 999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [smotheredMate]
+        side_to_move: white
+        rating: [1000, 1199]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [smotheredMate]
+        side_to_move: white
+        rating: [1200, 1399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [smotheredMate]
+        side_to_move: white
+        rating: [1400, 1599]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [smotheredMate]
+        side_to_move: white
+        rating: [1600, 1799]
+        count: 10
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [smotheredMate]
+        side_to_move: white
+        rating: [1800, 1999]
+        count: 10
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [smotheredMate]
+        side_to_move: white
+        rating: [2000, 2199]
+        count: 13
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [smotheredMate]
+        side_to_move: white
+        rating: [2200, 2399]
+        count: 2
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [smotheredMate]
+        side_to_move: white
+        rating: [2600, 2799]
+        count: 1
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [smotheredMate]
+        side_to_move: black
+        rating: [800, 999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [smotheredMate]
+        side_to_move: black
+        rating: [1000, 1199]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [smotheredMate]
+        side_to_move: black
+        rating: [1200, 1399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [smotheredMate]
+        side_to_move: black
+        rating: [1400, 1599]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [smotheredMate]
+        side_to_move: black
+        rating: [1600, 1799]
+        count: 8
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [smotheredMate]
+        side_to_move: black
+        rating: [1800, 1999]
+        count: 8
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [smotheredMate]
+        side_to_move: black
+        rating: [2000, 2199]
+        count: 11
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [smotheredMate]
+        side_to_move: black
+        rating: [2200, 2399]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+
+  - title: "Arabian Mate"
+    sets:
+      - themes: [arabianMate]
+        side_to_move: white
+        rating: [600, 799]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [arabianMate]
+        side_to_move: white
+        rating: [800, 999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [arabianMate]
+        side_to_move: white
+        rating: [1000, 1199]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [arabianMate]
+        side_to_move: white
+        rating: [1200, 1399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [arabianMate]
+        side_to_move: white
+        rating: [1400, 1599]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [arabianMate]
+        side_to_move: white
+        rating: [1600, 1799]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [arabianMate]
+        side_to_move: white
+        rating: [1800, 1999]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [arabianMate]
+        side_to_move: white
+        rating: [2000, 2199]
+        count: 6
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [arabianMate]
+        side_to_move: white
+        rating: [2200, 2399]
+        count: 6
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [arabianMate]
+        side_to_move: white
+        rating: [2400, 2599]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [arabianMate]
+        side_to_move: white
+        rating: [2600, 2799]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [arabianMate]
+        side_to_move: white
+        rating: [2800, 2999]
+        count: 1
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [arabianMate]
+        side_to_move: black
+        rating: [800, 999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [arabianMate]
+        side_to_move: black
+        rating: [1000, 1199]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [arabianMate]
+        side_to_move: black
+        rating: [1200, 1399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [arabianMate]
+        side_to_move: black
+        rating: [1400, 1599]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [arabianMate]
+        side_to_move: black
+        rating: [1600, 1799]
+        count: 6
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [arabianMate]
+        side_to_move: black
+        rating: [1800, 1999]
+        count: 6
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [arabianMate]
+        side_to_move: black
+        rating: [2000, 2199]
+        count: 6
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [arabianMate]
+        side_to_move: black
+        rating: [2200, 2399]
+        count: 6
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [arabianMate]
+        side_to_move: black
+        rating: [2400, 2599]
+        count: 12
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+
+  - title: "Epaulette Mate"
+    sets:
+      - themes: [epauletteMate]
+        side_to_move: white
+        rating: [600, 799]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [epauletteMate]
+        side_to_move: white
+        rating: [800, 999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [epauletteMate]
+        side_to_move: white
+        rating: [1000, 1199]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [epauletteMate]
+        side_to_move: white
+        rating: [1200, 1399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [epauletteMate]
+        side_to_move: white
+        rating: [1400, 1599]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [epauletteMate]
+        side_to_move: white
+        rating: [1600, 1799]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [epauletteMate]
+        side_to_move: white
+        rating: [1800, 1999]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [epauletteMate]
+        side_to_move: white
+        rating: [2000, 2199]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [epauletteMate]
+        side_to_move: white
+        rating: [2200, 2399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [epauletteMate]
+        side_to_move: white
+        rating: [2400, 2599]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [epauletteMate]
+        side_to_move: white
+        rating: [2600, 2799]
+        count: 9
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [epauletteMate]
+        side_to_move: black
+        rating: [600, 799]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [epauletteMate]
+        side_to_move: black
+        rating: [800, 999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [epauletteMate]
+        side_to_move: black
+        rating: [1000, 1199]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [epauletteMate]
+        side_to_move: black
+        rating: [1200, 1399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [epauletteMate]
+        side_to_move: black
+        rating: [1400, 1599]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [epauletteMate]
+        side_to_move: black
+        rating: [1600, 1799]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [epauletteMate]
+        side_to_move: black
+        rating: [1800, 1999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [epauletteMate]
+        side_to_move: black
+        rating: [2000, 2199]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [epauletteMate]
+        side_to_move: black
+        rating: [2200, 2399]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [epauletteMate]
+        side_to_move: black
+        rating: [2400, 2599]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [epauletteMate]
+        side_to_move: black
+        rating: [2600, 2799]
+        count: 13
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [epauletteMate]
+        side_to_move: black
+        rating: [2800, 2999]
+        count: 1
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+
+  - title: "Anastasia's Mate"
+    sets:
+      - themes: [anastasiaMate]
+        side_to_move: white
+        rating: [600, 799]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [anastasiaMate]
+        side_to_move: white
+        rating: [800, 999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [anastasiaMate]
+        side_to_move: white
+        rating: [1000, 1199]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [anastasiaMate]
+        side_to_move: white
+        rating: [1200, 1399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [anastasiaMate]
+        side_to_move: white
+        rating: [1400, 1599]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [anastasiaMate]
+        side_to_move: white
+        rating: [1600, 1799]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [anastasiaMate]
+        side_to_move: white
+        rating: [1800, 1999]
+        count: 6
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [anastasiaMate]
+        side_to_move: white
+        rating: [2000, 2199]
+        count: 6
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [anastasiaMate]
+        side_to_move: white
+        rating: [2200, 2399]
+        count: 19
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [anastasiaMate]
+        side_to_move: white
+        rating: [2400, 2599]
+        count: 3
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [anastasiaMate]
+        side_to_move: white
+        rating: [2600, 2799]
+        count: 1
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [anastasiaMate]
+        side_to_move: black
+        rating: [800, 999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [anastasiaMate]
+        side_to_move: black
+        rating: [1000, 1199]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [anastasiaMate]
+        side_to_move: black
+        rating: [1200, 1399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [anastasiaMate]
+        side_to_move: black
+        rating: [1400, 1599]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [anastasiaMate]
+        side_to_move: black
+        rating: [1600, 1799]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [anastasiaMate]
+        side_to_move: black
+        rating: [1800, 1999]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [anastasiaMate]
+        side_to_move: black
+        rating: [2000, 2199]
+        count: 6
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [anastasiaMate]
+        side_to_move: black
+        rating: [2200, 2399]
+        count: 7
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [anastasiaMate]
+        side_to_move: black
+        rating: [2400, 2599]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+
+  - title: "Hook Mate"
+    sets:
+      - themes: [hookMate]
+        side_to_move: white
+        rating: [600, 799]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [hookMate]
+        side_to_move: white
+        rating: [800, 999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [hookMate]
+        side_to_move: white
+        rating: [1000, 1199]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [hookMate]
+        side_to_move: white
+        rating: [1200, 1399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [hookMate]
+        side_to_move: white
+        rating: [1400, 1599]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [hookMate]
+        side_to_move: white
+        rating: [1600, 1799]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [hookMate]
+        side_to_move: white
+        rating: [1800, 1999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [hookMate]
+        side_to_move: white
+        rating: [2000, 2199]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [hookMate]
+        side_to_move: white
+        rating: [2200, 2399]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [hookMate]
+        side_to_move: white
+        rating: [2400, 2599]
+        count: 17
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [hookMate]
+        side_to_move: white
+        rating: [2600, 2799]
+        count: 1
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [hookMate]
+        side_to_move: black
+        rating: [800, 999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [hookMate]
+        side_to_move: black
+        rating: [1000, 1199]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [hookMate]
+        side_to_move: black
+        rating: [1200, 1399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [hookMate]
+        side_to_move: black
+        rating: [1400, 1599]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [hookMate]
+        side_to_move: black
+        rating: [1600, 1799]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [hookMate]
+        side_to_move: black
+        rating: [1800, 1999]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [hookMate]
+        side_to_move: black
+        rating: [2000, 2199]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [hookMate]
+        side_to_move: black
+        rating: [2200, 2399]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [hookMate]
+        side_to_move: black
+        rating: [2400, 2599]
+        count: 10
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [hookMate]
+        side_to_move: black
+        rating: [2600, 2799]
+        count: 3
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+
+  - title: "Swallow's Tail Mate"
+    sets:
+      - themes: [swallowstailMate]
+        side_to_move: white
+        rating: [600, 799]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [swallowstailMate]
+        side_to_move: white
+        rating: [800, 999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [swallowstailMate]
+        side_to_move: white
+        rating: [1000, 1199]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [swallowstailMate]
+        side_to_move: white
+        rating: [1200, 1399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [swallowstailMate]
+        side_to_move: white
+        rating: [1400, 1599]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [swallowstailMate]
+        side_to_move: white
+        rating: [1600, 1799]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [swallowstailMate]
+        side_to_move: white
+        rating: [1800, 1999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [swallowstailMate]
+        side_to_move: white
+        rating: [2000, 2199]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [swallowstailMate]
+        side_to_move: white
+        rating: [2200, 2399]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [swallowstailMate]
+        side_to_move: white
+        rating: [2400, 2599]
+        count: 15
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [swallowstailMate]
+        side_to_move: white
+        rating: [2600, 2799]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [swallowstailMate]
+        side_to_move: black
+        rating: [600, 799]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [swallowstailMate]
+        side_to_move: black
+        rating: [800, 999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [swallowstailMate]
+        side_to_move: black
+        rating: [1000, 1199]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [swallowstailMate]
+        side_to_move: black
+        rating: [1200, 1399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [swallowstailMate]
+        side_to_move: black
+        rating: [1400, 1599]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [swallowstailMate]
+        side_to_move: black
+        rating: [1600, 1799]
+        count: 3
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [swallowstailMate]
+        side_to_move: black
+        rating: [1800, 1999]
+        count: 3
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [swallowstailMate]
+        side_to_move: black
+        rating: [2000, 2199]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [swallowstailMate]
+        side_to_move: black
+        rating: [2200, 2399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [swallowstailMate]
+        side_to_move: black
+        rating: [2400, 2599]
+        count: 15
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [swallowstailMate]
+        side_to_move: black
+        rating: [2600, 2799]
+        count: 3
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+
+  - title: "Blind Swine Mate"
+    sets:
+      - themes: [blindSwineMate]
+        side_to_move: white
+        rating: [600, 799]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [blindSwineMate]
+        side_to_move: white
+        rating: [800, 999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [blindSwineMate]
+        side_to_move: white
+        rating: [1000, 1199]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [blindSwineMate]
+        side_to_move: white
+        rating: [1200, 1399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [blindSwineMate]
+        side_to_move: white
+        rating: [1400, 1599]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [blindSwineMate]
+        side_to_move: white
+        rating: [1600, 1799]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [blindSwineMate]
+        side_to_move: white
+        rating: [1800, 1999]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [blindSwineMate]
+        side_to_move: white
+        rating: [2000, 2199]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [blindSwineMate]
+        side_to_move: white
+        rating: [2200, 2399]
+        count: 6
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [blindSwineMate]
+        side_to_move: white
+        rating: [2400, 2599]
+        count: 14
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [blindSwineMate]
+        side_to_move: white
+        rating: [2600, 2799]
+        count: 1
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [blindSwineMate]
+        side_to_move: black
+        rating: [800, 999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [blindSwineMate]
+        side_to_move: black
+        rating: [1000, 1199]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [blindSwineMate]
+        side_to_move: black
+        rating: [1200, 1399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [blindSwineMate]
+        side_to_move: black
+        rating: [1400, 1599]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [blindSwineMate]
+        side_to_move: black
+        rating: [1600, 1799]
+        count: 6
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [blindSwineMate]
+        side_to_move: black
+        rating: [1800, 1999]
+        count: 6
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [blindSwineMate]
+        side_to_move: black
+        rating: [2000, 2199]
+        count: 6
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [blindSwineMate]
+        side_to_move: black
+        rating: [2200, 2399]
+        count: 6
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [blindSwineMate]
+        side_to_move: black
+        rating: [2400, 2599]
+        count: 6
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [blindSwineMate]
+        side_to_move: black
+        rating: [2600, 2799]
+        count: 2
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+
+  - title: "Corner Mate"
+    sets:
+      - themes: [cornerMate]
+        side_to_move: white
+        rating: [600, 799]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [cornerMate]
+        side_to_move: white
+        rating: [800, 999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [cornerMate]
+        side_to_move: white
+        rating: [1000, 1199]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [cornerMate]
+        side_to_move: white
+        rating: [1200, 1399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [cornerMate]
+        side_to_move: white
+        rating: [1400, 1599]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [cornerMate]
+        side_to_move: white
+        rating: [1600, 1799]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [cornerMate]
+        side_to_move: white
+        rating: [1800, 1999]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [cornerMate]
+        side_to_move: white
+        rating: [2000, 2199]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [cornerMate]
+        side_to_move: white
+        rating: [2200, 2399]
+        count: 6
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [cornerMate]
+        side_to_move: white
+        rating: [2400, 2599]
+        count: 6
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [cornerMate]
+        side_to_move: white
+        rating: [2600, 2799]
+        count: 12
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [cornerMate]
+        side_to_move: white
+        rating: [3000, 3199]
+        count: 1
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [cornerMate]
+        side_to_move: black
+        rating: [800, 999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [cornerMate]
+        side_to_move: black
+        rating: [1000, 1199]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [cornerMate]
+        side_to_move: black
+        rating: [1200, 1399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [cornerMate]
+        side_to_move: black
+        rating: [1400, 1599]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [cornerMate]
+        side_to_move: black
+        rating: [1600, 1799]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [cornerMate]
+        side_to_move: black
+        rating: [1800, 1999]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [cornerMate]
+        side_to_move: black
+        rating: [2000, 2199]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [cornerMate]
+        side_to_move: black
+        rating: [2200, 2399]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [cornerMate]
+        side_to_move: black
+        rating: [2400, 2599]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [cornerMate]
+        side_to_move: black
+        rating: [2600, 2799]
+        count: 3
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [cornerMate]
+        side_to_move: black
+        rating: [2800, 2999]
+        count: 1
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+
+  - title: "Dovetail Mate"
+    sets:
+      - themes: [dovetailMate]
+        side_to_move: white
+        rating: [600, 799]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [dovetailMate]
+        side_to_move: white
+        rating: [800, 999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [dovetailMate]
+        side_to_move: white
+        rating: [1000, 1199]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [dovetailMate]
+        side_to_move: white
+        rating: [1200, 1399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [dovetailMate]
+        side_to_move: white
+        rating: [1400, 1599]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [dovetailMate]
+        side_to_move: white
+        rating: [1600, 1799]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [dovetailMate]
+        side_to_move: white
+        rating: [1800, 1999]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [dovetailMate]
+        side_to_move: white
+        rating: [2000, 2199]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [dovetailMate]
+        side_to_move: white
+        rating: [2200, 2399]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [dovetailMate]
+        side_to_move: white
+        rating: [2400, 2599]
+        count: 12
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [dovetailMate]
+        side_to_move: white
+        rating: [2600, 2799]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [dovetailMate]
+        side_to_move: black
+        rating: [800, 999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [dovetailMate]
+        side_to_move: black
+        rating: [1000, 1199]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [dovetailMate]
+        side_to_move: black
+        rating: [1200, 1399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [dovetailMate]
+        side_to_move: black
+        rating: [1400, 1599]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [dovetailMate]
+        side_to_move: black
+        rating: [1600, 1799]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [dovetailMate]
+        side_to_move: black
+        rating: [1800, 1999]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [dovetailMate]
+        side_to_move: black
+        rating: [2000, 2199]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [dovetailMate]
+        side_to_move: black
+        rating: [2200, 2399]
+        count: 6
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [dovetailMate]
+        side_to_move: black
+        rating: [2400, 2599]
+        count: 6
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [dovetailMate]
+        side_to_move: black
+        rating: [2600, 2799]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [dovetailMate]
+        side_to_move: black
+        rating: [2800, 2999]
+        count: 1
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+
+  - title: "Morphy's Mate"
+    sets:
+      - themes: [morphysMate]
+        side_to_move: white
+        rating: [600, 799]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [morphysMate]
+        side_to_move: white
+        rating: [800, 999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [morphysMate]
+        side_to_move: white
+        rating: [1000, 1199]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [morphysMate]
+        side_to_move: white
+        rating: [1200, 1399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [morphysMate]
+        side_to_move: white
+        rating: [1400, 1599]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [morphysMate]
+        side_to_move: white
+        rating: [1600, 1799]
+        count: 2
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [morphysMate]
+        side_to_move: white
+        rating: [1800, 1999]
+        count: 3
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [morphysMate]
+        side_to_move: white
+        rating: [2000, 2199]
+        count: 3
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [morphysMate]
+        side_to_move: white
+        rating: [2200, 2399]
+        count: 3
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [morphysMate]
+        side_to_move: white
+        rating: [2400, 2599]
+        count: 17
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [morphysMate]
+        side_to_move: white
+        rating: [2600, 2799]
+        count: 3
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [morphysMate]
+        side_to_move: white
+        rating: [2800, 2999]
+        count: 1
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [morphysMate]
+        side_to_move: black
+        rating: [600, 799]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [morphysMate]
+        side_to_move: black
+        rating: [800, 999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [morphysMate]
+        side_to_move: black
+        rating: [1000, 1199]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [morphysMate]
+        side_to_move: black
+        rating: [1200, 1399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [morphysMate]
+        side_to_move: black
+        rating: [1400, 1599]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [morphysMate]
+        side_to_move: black
+        rating: [1600, 1799]
+        count: 3
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [morphysMate]
+        side_to_move: black
+        rating: [1800, 1999]
+        count: 3
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [morphysMate]
+        side_to_move: black
+        rating: [2000, 2199]
+        count: 3
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [morphysMate]
+        side_to_move: black
+        rating: [2200, 2399]
+        count: 3
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [morphysMate]
+        side_to_move: black
+        rating: [2400, 2599]
+        count: 22
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [morphysMate]
+        side_to_move: black
+        rating: [2600, 2799]
+        count: 2
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+
+  - title: "Triangle Mate"
+    sets:
+      - themes: [triangleMate]
+        side_to_move: white
+        rating: [600, 799]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [triangleMate]
+        side_to_move: white
+        rating: [800, 999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [triangleMate]
+        side_to_move: white
+        rating: [1000, 1199]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [triangleMate]
+        side_to_move: white
+        rating: [1200, 1399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [triangleMate]
+        side_to_move: white
+        rating: [1400, 1599]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [triangleMate]
+        side_to_move: white
+        rating: [1600, 1799]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [triangleMate]
+        side_to_move: white
+        rating: [1800, 1999]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [triangleMate]
+        side_to_move: white
+        rating: [2000, 2199]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [triangleMate]
+        side_to_move: white
+        rating: [2200, 2399]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [triangleMate]
+        side_to_move: white
+        rating: [2400, 2599]
+        count: 11
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [triangleMate]
+        side_to_move: white
+        rating: [2600, 2799]
+        count: 6
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [triangleMate]
+        side_to_move: black
+        rating: [800, 999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [triangleMate]
+        side_to_move: black
+        rating: [1000, 1199]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [triangleMate]
+        side_to_move: black
+        rating: [1200, 1399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [triangleMate]
+        side_to_move: black
+        rating: [1400, 1599]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [triangleMate]
+        side_to_move: black
+        rating: [1600, 1799]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [triangleMate]
+        side_to_move: black
+        rating: [1800, 1999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [triangleMate]
+        side_to_move: black
+        rating: [2000, 2199]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [triangleMate]
+        side_to_move: black
+        rating: [2200, 2399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [triangleMate]
+        side_to_move: black
+        rating: [2400, 2599]
+        count: 14
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [triangleMate]
+        side_to_move: black
+        rating: [2600, 2799]
+        count: 2
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+
+  - title: "Kill Box Mate"
+    sets:
+      - themes: [killBoxMate]
+        side_to_move: white
+        rating: [600, 799]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [killBoxMate]
+        side_to_move: white
+        rating: [800, 999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [killBoxMate]
+        side_to_move: white
+        rating: [1000, 1199]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [killBoxMate]
+        side_to_move: white
+        rating: [1200, 1399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [killBoxMate]
+        side_to_move: white
+        rating: [1400, 1599]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [killBoxMate]
+        side_to_move: white
+        rating: [1600, 1799]
+        count: 3
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [killBoxMate]
+        side_to_move: white
+        rating: [1800, 1999]
+        count: 3
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [killBoxMate]
+        side_to_move: white
+        rating: [2000, 2199]
+        count: 3
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [killBoxMate]
+        side_to_move: white
+        rating: [2200, 2399]
+        count: 3
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [killBoxMate]
+        side_to_move: white
+        rating: [2400, 2599]
+        count: 17
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [killBoxMate]
+        side_to_move: white
+        rating: [2600, 2799]
+        count: 6
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [killBoxMate]
+        side_to_move: white
+        rating: [2800, 2999]
+        count: 1
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [killBoxMate]
+        side_to_move: black
+        rating: [600, 799]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [killBoxMate]
+        side_to_move: black
+        rating: [800, 999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [killBoxMate]
+        side_to_move: black
+        rating: [1000, 1199]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [killBoxMate]
+        side_to_move: black
+        rating: [1200, 1399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [killBoxMate]
+        side_to_move: black
+        rating: [1400, 1599]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [killBoxMate]
+        side_to_move: black
+        rating: [1600, 1799]
+        count: 3
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [killBoxMate]
+        side_to_move: black
+        rating: [1800, 1999]
+        count: 3
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [killBoxMate]
+        side_to_move: black
+        rating: [2000, 2199]
+        count: 3
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [killBoxMate]
+        side_to_move: black
+        rating: [2200, 2399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [killBoxMate]
+        side_to_move: black
+        rating: [2400, 2599]
+        count: 14
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [killBoxMate]
+        side_to_move: black
+        rating: [2600, 2799]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+
+  - title: "Vukovic Mate"
+    sets:
+      - themes: [vukovicMate]
+        side_to_move: white
+        rating: [600, 799]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [vukovicMate]
+        side_to_move: white
+        rating: [800, 999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [vukovicMate]
+        side_to_move: white
+        rating: [1000, 1199]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [vukovicMate]
+        side_to_move: white
+        rating: [1200, 1399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [vukovicMate]
+        side_to_move: white
+        rating: [1400, 1599]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [vukovicMate]
+        side_to_move: white
+        rating: [1600, 1799]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [vukovicMate]
+        side_to_move: white
+        rating: [1800, 1999]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [vukovicMate]
+        side_to_move: white
+        rating: [2000, 2199]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [vukovicMate]
+        side_to_move: white
+        rating: [2200, 2399]
+        count: 15
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [vukovicMate]
+        side_to_move: white
+        rating: [2400, 2599]
+        count: 6
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [vukovicMate]
+        side_to_move: black
+        rating: [800, 999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [vukovicMate]
+        side_to_move: black
+        rating: [1000, 1199]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [vukovicMate]
+        side_to_move: black
+        rating: [1200, 1399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [vukovicMate]
+        side_to_move: black
+        rating: [1400, 1599]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [vukovicMate]
+        side_to_move: black
+        rating: [1600, 1799]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [vukovicMate]
+        side_to_move: black
+        rating: [1800, 1999]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [vukovicMate]
+        side_to_move: black
+        rating: [2000, 2199]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [vukovicMate]
+        side_to_move: black
+        rating: [2200, 2399]
+        count: 11
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [vukovicMate]
+        side_to_move: black
+        rating: [2400, 2599]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [vukovicMate]
+        side_to_move: black
+        rating: [2600, 2799]
+        count: 1
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+
+  - title: "Balestra Mate"
+    sets:
+      - themes: [balestraMate]
+        side_to_move: white
+        rating: [600, 799]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [balestraMate]
+        side_to_move: white
+        rating: [800, 999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [balestraMate]
+        side_to_move: white
+        rating: [1000, 1199]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [balestraMate]
+        side_to_move: white
+        rating: [1200, 1399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [balestraMate]
+        side_to_move: white
+        rating: [1400, 1599]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [balestraMate]
+        side_to_move: white
+        rating: [1600, 1799]
+        count: 6
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [balestraMate]
+        side_to_move: white
+        rating: [1800, 1999]
+        count: 6
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [balestraMate]
+        side_to_move: white
+        rating: [2000, 2199]
+        count: 6
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [balestraMate]
+        side_to_move: white
+        rating: [2200, 2399]
+        count: 15
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [balestraMate]
+        side_to_move: white
+        rating: [2400, 2599]
+        count: 2
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [balestraMate]
+        side_to_move: white
+        rating: [2800, 2999]
+        count: 1
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [balestraMate]
+        side_to_move: black
+        rating: [800, 999]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [balestraMate]
+        side_to_move: black
+        rating: [1000, 1199]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [balestraMate]
+        side_to_move: black
+        rating: [1200, 1399]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [balestraMate]
+        side_to_move: black
+        rating: [1400, 1599]
+        count: 4
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [balestraMate]
+        side_to_move: black
+        rating: [1600, 1799]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [balestraMate]
+        side_to_move: black
+        rating: [1800, 1999]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [balestraMate]
+        side_to_move: black
+        rating: [2000, 2199]
+        count: 5
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [balestraMate]
+        side_to_move: black
+        rating: [2200, 2399]
+        count: 12
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [balestraMate]
+        side_to_move: black
+        rating: [2400, 2599]
+        count: 3
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
+      - themes: [balestraMate]
+        side_to_move: black
+        rating: [2600, 2799]
+        count: 2
+        sort: [{field: popularity, order: desc}, {field: rating, order: asc}]
