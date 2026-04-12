@@ -1,19 +1,22 @@
 # GoodCompanions2 — Type 1 chess font for the `chessboard` LaTeX package
 
-This directory contains the generated Type 1 font files that allow the
-**GoodCompanions** TTF chess font (by Armando H. Marroquin, 2004) to work
-with Ulrike Fischer's `chessboard` / `chessfss` LaTeX packages using the
-`LSB1` encoding.
+This directory contains everything needed to use the **GoodCompanions** chess
+font (by Armando H. Marroquin, 2004) with Ulrike Fischer's `chessboard` /
+`chessfss` LaTeX packages using the `LSB1` encoding.
+
+**The generated font files (`PFB`, `AFM`, `TFM`, `FD`) are ready to install
+directly — no need to run the conversion script yourself.**
 
 ## Files
 
 | File | Purpose |
 |------|---------|
-| `chess-goodcompanions2-board-fig-raw.pfb` | Type 1 font (binary) |
-| `chess-goodcompanions2-board-fig-raw.afm` | Adobe Font Metrics |
-| `chess-goodcompanions2-lsb.tfm` | TeX Font Metrics (for pdflatex) |
-| `lsb1goodcompanions2.fd` | LaTeX font definition file |
-| `chess-goodcompanions2.map` | dvips/pdftex map entries |
+| `chess-goodcompanions2-board-fig-raw.pfb` | Type 1 font (binary) — **install this** |
+| `chess-goodcompanions2-board-fig-raw.afm` | Adobe Font Metrics — **install this** |
+| `chess-goodcompanions2-lsb.tfm` | TeX Font Metrics for pdflatex — **install this** |
+| `lsb1goodcompanions2.fd` | LaTeX font definition file — **install this** |
+| `chess-goodcompanions2.map` | dvips/pdftex map entries — **append to your map** |
+| `goodcompanions.ttf` | Original TTF source (used by `make_gc_pfb.py` to regenerate) |
 
 ## Installation (macOS / TeX Live)
 

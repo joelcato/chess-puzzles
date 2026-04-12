@@ -78,7 +78,8 @@ slot, strip everything else, then export as Type 1.
 import fontforge
 import os
 
-TTF = "/Users/joeldic/Library/Fonts/goodcompanions.ttf"
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+TTF = os.path.join(SCRIPT_DIR, "../fonts/goodcompanions2/goodcompanions.ttf")
 OUT_DIR = "/Users/joeldic/Library/texmf/fonts/type1/chess/enpassant"
 OUT_NAME = "chess-goodcompanions2-board-fig-raw"
 

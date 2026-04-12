@@ -31,4 +31,4 @@ data/lichess_db_puzzle.csv
 output/mating_patterns_preview.tex
 
 # TTF font files (commercial/redistributable fonts go in fonts/ as PFB only)
-*.ttf
+# Exception: goodcompanions.ttf is included as source for make_gc_pfb.py
