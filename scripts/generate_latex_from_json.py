@@ -378,7 +378,7 @@ def build_document(document: dict, start_page: int) -> str:
 \renewcommand{{\headrulewidth}}{{0pt}}
 
 \newcommand{{\coordfont}}{{\rmfamily\bfseries}}
-\setfigfontfamily{{merida}}
+\setfigfontfamily{{goodcompanions2}}
 
 \setboardfontcolors{{
     blackfield=black!60
@@ -386,7 +386,7 @@ def build_document(document: dict, start_page: int) -> str:
 
 \setchessboard{{
     boardfontsize=18pt,
-    boardfontfamily=merida,
+    boardfontfamily=goodcompanions2,
     boardfontencoding=LSB1,
     borderwidth=0.5pt,
     bordercolor=black,
