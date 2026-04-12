@@ -26,3 +26,9 @@ venv/
 
 # Large data files
 data/lichess_db_puzzle.csv
+
+# Generated LaTeX output (large)
+output/mating_patterns_preview.tex
+
+# TTF font files (commercial/redistributable fonts go in fonts/ as PFB only)
+*.ttf

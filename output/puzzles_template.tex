@@ -1,3 +1,4 @@
+% !TEX root = puzzles_template.tex
 \documentclass[12pt,twoside]{article}
 \usepackage[
   paperwidth=6in,
@@ -7,7 +8,7 @@
   top=0.45in,
   bottom=0.50in
 ]{geometry}
-\usepackage[LSB,T1]{fontenc}
+\usepackage[LSB1, T1]{fontenc}
 \usepackage{xcolor}
 \usepackage{chessboard}
 \usepackage{chessfss}
@@ -21,26 +22,42 @@
 \renewcommand{\headrulewidth}{0pt}
 
 \newcommand{\coordfont}{\rmfamily\bfseries}
-\setfigfontfamily{merida}
+\setfigfontfamily{goodcompanions2}
+
+\setboardfontcolors{
+  blackfield=black!60
+}
 
 \setchessboard{
   boardfontsize=18pt,
-  boardfontfamily=merida,
-  boardfontencoding=LSB,
-  blackfieldmaskcolor=white,
-  blackfieldcolor=black!75,
-  borderwidth=0.35pt,
+  boardfontfamily=goodcompanions2,
+  boardfontencoding=LSB1,
+  borderwidth=0.5pt,
   bordercolor=black,
+  showmover=false,
   labelleft=true,
   labelbottom=true,
+  labelleftwidth=1.2ex,
+  labelbottomlift=1.2\baselineskip,
   labelfont=\coordfont,
-  labelfontsize=6pt
+  labelfontsize=7pt
+}
+
+\def\SideToMoveFromFEN#1 #2 #3\relax{#2}
+
+\newcommand{\RenderPuzzleBoard}[1]{%
+  \edef\PuzzleSideToMove{\expandafter\SideToMoveFromFEN#1 \relax}%
+  \if b\PuzzleSideToMove
+    \chessboard[setfen={#1},inverse=true]%
+  \else
+    \chessboard[setfen={#1}]%
+  \fi
 }
 
 \newcommand{\PuzzleCell}[2]{%
   \begin{minipage}[t]{0.46\textwidth}
     \centering
-    \chessboard[setfen={#2}]
+    \RenderPuzzleBoard{#2}
     
     \vspace{0.15em}
     {\small\bfseries Puzzle #1}
@@ -52,40 +69,125 @@
 \begin{document}
 
 \begin{center}
-\Large\bfseries Back Rank Mate
+\Large\bfseries Mate in One
+
+\vspace{0.15em}
+\normalsize White to Move
 \end{center}
 
 \vspace{0.35em}
 
 \noindent\hspace*{-0.08in}
-\PuzzleCell{163}{3r1knr/p1Q2ppp/1pB2q2/2b1p3/4P3/8/PPP2PPP/RNB2RK1 b - - 0 13}
+\PuzzleCell{163}{6k1/p1p3pp/4N3/1p6/2q1r1n1/2B5/PP4PP/3R1R1K w - - 0 29}
 \hspace{0.02\textwidth}
-\PuzzleCell{164}{rr4k1/pbQ2ppp/1p5q/3pR3/3P2n1/2N3P1/PP3P1P/4RBK1 w - - 11 26}
+\PuzzleCell{164}{5r1k/pp4pp/2p5/6q1/5R2/2P5/P1P2PPP/3rR1K1 w - - 0 28}
 
 \vspace{0.1em}
 
 \noindent\hspace*{-0.08in}
-\PuzzleCell{165}{5r1k/pQ4pp/7b/8/4P3/2P5/1B4PP/3r2NK b - - 4 26}
+\PuzzleCell{165}{r2r2k1/2q1bpp1/3p3p/1ppn4/1P1BP3/P5Q1/4RPPP/R5K1 w - - 0 21}
 \hspace{0.02\textwidth}
-\PuzzleCell{166}{5rk1/3nQRpr/4n3/p2pP3/1p4P1/8/5RKP/4q3 w - - 5 39}
+\PuzzleCell{166}{2kr3r/p2n2pp/2pB1bp1/5q2/2B5/8/PPP2PPP/3R1RK1 w - - 0 18}
 
 \vfill
 
 \noindent\rule{\textwidth}{0.4pt}
 
-\vspace{0.1em}
+\vspace{0.15em}
 
-\begin{center}
-\small\bfseries Solutions
-\end{center}
+\noindent\makebox[\textwidth][c]{\small\bfseries Solutions}
 
-\vspace{-0.35em}
+\vspace{0.75em}
 
 {\footnotesize\sloppy
-\noindent \textbf{163.} 1\ldots \symqueen xf2+ 2.\symrook xf2 \symrook d1\# \\[0.2em]
-\noindent \textbf{164.} 1.\symqueen xb7+ \symrook xb7 2.\symrook e8+ \symrook xe8 3.\symrook xe8+ \\[0.2em]
-\noindent \textbf{165.} 1\ldots \symrook xg1+ 2.\symking xg1 \symbishop e3+ 3.\symking h1 \symrook f1\# \\[0.2em]
-\noindent \textbf{166.} 1.\symrook xf8+ \symknight dxf8 2.\symqueen f7+ \symking h8 3.\symqueen xf8+ \symknight xf8 4.\symrook xf8\#
+\noindent
+% Parent solutions container
+\begin{minipage}[t]{\textwidth}
+  % Left solutions
+    \begin{minipage}[c]{0.47\textwidth}
+        {\bfseries 163.} 1.\symrook f8\#
+
+        \vspace{0.45em}
+
+        {\bfseries 165.} 1.\symqueen g7\#
+    \end{minipage}
+    \hfill
+  % Vertical divider
+    \begin{minipage}[c][4.9\baselineskip][c]{0.02\textwidth}
+        \centering\rule{0.4pt}{4.7\baselineskip}
+    \end{minipage}
+    \hfill
+  % Right solutions
+    \begin{minipage}[c]{0.47\textwidth}
+    {\bfseries 164.} 1.\symrook f8\#
+
+        \vspace{0.45em}
+
+    {\bfseries 166.} 1.\symbishop a6\#
+    \end{minipage}
+\end{minipage}
+}
+
+\newpage
+
+\begin{center}
+\Large\bfseries Mate in One
+
+\vspace{0.15em}
+\normalsize Black to Move
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{167}{2kr1b1r/p1p2pp1/2pqN3/7p/6n1/2NPB3/PPP2PPP/R2Q1RK1 b - - 0 13}
+\hspace{0.02\textwidth}
+\PuzzleCell{168}{8/6k1/1R5p/5p1P/5P1K/6P1/8/r7 b - - 3 58}
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+\PuzzleCell{169}{7r/ppp2kp1/2nb1pp1/3p3r/3P2P1/2PQB3/PP3PP1/R3R1K1 b - - 0 18}
+\hspace{0.02\textwidth}
+\PuzzleCell{170}{3r1n2/1bp1bkpp/p1q2n2/1p6/3P4/P1N3B1/1PP1QPPP/R3R1K1 b - - 6 18}
+
+\vfill
+
+\noindent\rule{\textwidth}{0.4pt}
+
+\vspace{0.15em}
+
+\noindent\makebox[\textwidth][c]{\small\bfseries Solutions}
+
+\vspace{0.75em}
+
+{\footnotesize\sloppy
+\noindent
+% Parent solutions container
+\begin{minipage}[t]{\textwidth}
+  % Left solutions
+    \begin{minipage}[c]{0.47\textwidth}
+        {\bfseries 167.} 1\ldots \symqueen h2\#
+
+        \vspace{0.45em}
+
+        {\bfseries 169.} 1\ldots \symrook h1\#
+    \end{minipage}
+    \hfill
+  % Vertical divider
+    \begin{minipage}[c][4.9\baselineskip][c]{0.02\textwidth}
+        \centering\rule{0.4pt}{4.7\baselineskip}
+    \end{minipage}
+    \hfill
+  % Right solutions
+    \begin{minipage}[c]{0.47\textwidth}
+    {\bfseries 168.} 1\ldots \symrook h1\#
+
+        \vspace{0.45em}
+
+    {\bfseries 170.} 1\ldots \symqueen g2\#
+    \end{minipage}
+\end{minipage}
 }
 
 \end{document}
