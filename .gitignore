@@ -26,9 +26,18 @@ venv/
 
 # Large data files
 data/lichess_db_puzzle.csv
+data/lichess_puzzles.sqlite
 
-# Generated LaTeX output (large)
+# Generated LaTeX output and working files
 output/mating_patterns_preview.tex
+output/*.tsv
+output/*.kpf
+output/hello.tex
+output/mate_in_one_800_KC/
+
+# Font directories (installed system-wide via texmf, not needed in repo)
+enpassant/
+merid_tt/
 
 # TTF font files (commercial/redistributable fonts go in fonts/ as PFB only)
 # Exception: goodcompanions.ttf is included as source for make_gc_pfb.py

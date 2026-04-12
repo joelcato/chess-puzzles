@@ -1,4 +1,5 @@
 import json
+import os
 import re
 from pathlib import Path
 from typing import Any, Optional
@@ -12,10 +13,12 @@ OUTPUT_DIR = BASE_DIR / "output"
 
 INPUT_JSON = DATA_DIR / "mating_patterns_100_by_theme.json"
 OUTPUT_TEX = OUTPUT_DIR / "mating_patterns_100_by_theme.tex"
+OUTPUT_TEX_DRAFT = OUTPUT_DIR / "mating_patterns_preview.tex"
 
 BOOK_TITLE = "Checkmate Pattern Training"
-BOOK_SUBTITLE = "1,900 graduated puzzles to build speed, recognition, and finishing power"
+BOOK_SUBTITLE = "2,000 graduated puzzles organized by common checkmate patterns"
 BOOK_AUTHOR = "by Joel Cato"
+BOOK_PUBLISHER = "Covington Press"
 
 VERSO_TEXT = r"""
 Copyright © 2026 Joel Cato
@@ -30,6 +33,8 @@ photocopying, recording, or otherwise, without prior written permission.
 START_PAGE = 1
 BOARD_ROW_SHIFT = "-0.08in"
 SOLUTIONS_INDENT = "0.12in"
+DRAFT_CHAPTERS_ENV = "PUZZLE_BOOK_DRAFT_CHAPTERS"
+DRAFT_PAGES_PER_SIDE_ENV = "PUZZLE_BOOK_DRAFT_PAGES_PER_SIDE"
 
 FIGURINE_MAP = {
     "K": r"\symking{}",
@@ -43,6 +48,52 @@ FIGURINE_MAP = {
 def chunked(seq: list[dict[str, Any]], size: int):
     for i in range(0, len(seq), size):
         yield seq[i:i + size]
+
+
+def env_int(name: str) -> Optional[int]:
+    value = os.getenv(name)
+    if value is None or value.strip() == "":
+        return None
+    return max(0, int(value))
+
+
+def limit_section_pages(section_puzzles: list[dict[str, Any]], pages_per_side: Optional[int]) -> list[dict[str, Any]]:
+    if pages_per_side is None:
+        return section_puzzles
+    return section_puzzles[: pages_per_side * 4]
+
+
+def apply_draft_limits(document: dict[str, Any]) -> tuple[dict[str, Any], bool]:
+    chapter_limit = env_int(DRAFT_CHAPTERS_ENV)
+    pages_per_side = env_int(DRAFT_PAGES_PER_SIDE_ENV)
+
+    if chapter_limit is None and pages_per_side is None:
+        return document, False
+
+    limited_document = dict(document)
+    original_chapters = document.get("chapters", [])
+    chapters = original_chapters[:chapter_limit] if chapter_limit is not None else original_chapters
+
+    limited_chapters: list[dict[str, Any]] = []
+    for chapter in chapters:
+        limited_chapter = dict(chapter)
+        chapter_groups = chapter.get("groups") or {}
+        white = limit_section_pages(chapter_groups.get("white_to_move", []), pages_per_side)
+        black = limit_section_pages(chapter_groups.get("black_to_move", []), pages_per_side)
+        puzzles = white + black
+
+        limited_chapter["puzzles"] = puzzles
+        limited_chapter["groups"] = {
+            "white_to_move": white,
+            "black_to_move": black,
+        }
+        limited_chapter["puzzle_count"] = len(puzzles)
+        limited_chapter["white_to_move_count"] = len(white)
+        limited_chapter["black_to_move_count"] = len(black)
+        limited_chapters.append(limited_chapter)
+
+    limited_document["chapters"] = limited_chapters
+    return limited_document, True
 
 
 def san_to_latex_figurines(san: str) -> str:
@@ -103,22 +154,31 @@ def front_matter_block(book_title: str, book_subtitle: str, book_author: str, ve
     return f"""
 \\thispagestyle{{empty}}
 
+\\vspace*{{0.16\\textheight}}
+
+\\begin{{center}}
+{{\\Huge\\bfseries {book_title}\\par}}
+\\vspace{{1.8em}}
+\\begin{{minipage}}{{0.82\\textwidth}}
+\\centering
+\\large {book_subtitle}\\par
+\\end{{minipage}}
+\\end{{center}}
+
 \\vspace*{{0.14\\textheight}}
 
 \\begin{{center}}
-{{\\Large Tactical Chess Workbook\\par}}
-\\vspace{{1.2em}}
-{{\\fontsize{{26}}{{30}}\\selectfont\\bfseries {book_title}\\par}}
-\\vspace{{1.6em}}
-\\begin{{minipage}}{{0.82\\textwidth}}
+\\begin{{minipage}}{{0.52\\textwidth}}
 \\centering
-{{\\large {book_subtitle}\\par}}
+{{\\LARGE\\bfseries {book_author}\\par}}
 \\end{{minipage}}
-\\vspace{{3em}}
-{{\\large {book_author}\\par}}
 \\end{{center}}
 
 \\vfill
+
+\\begin{{center}}
+{{\\normalsize {BOOK_PUBLISHER}\\par}}
+\\end{{center}}
 
 \\newpage
 
@@ -136,17 +196,21 @@ def table_of_contents_block() -> str:
     return """
 \\thispagestyle{empty}
 
-\\vspace*{0.08\\textheight}
-
-\\begin{center}
-{\\Huge\\bfseries Table of Contents\\par}
-\\end{center}
-
-\\vspace{1.5em}
+\\vspace*{0.05\\textheight}
 
 \\begingroup
-\\setlength{\\parskip}{0.35em}
+\\renewcommand{\\contentsname}{Contents}
+\\setlength{\\cftbeforesecskip}{0pt}
+\\setlength{\\cftaftertoctitleskip}{1.2em}
+\\begin{center}
+\\begin{minipage}[t][0.82\\textheight][s]{0.92\\textwidth}
+\\centering
+\\normalsize
+\\renewcommand{\\baselinestretch}{1.18}\\selectfont
 \\tableofcontents
+\\vspace*{0pt plus 1fill}
+\\end{minipage}
+\\end{center}
 \\endgroup
 
 \\newpage
@@ -188,7 +252,7 @@ def solutions_block(puzzles: list[dict[str, Any]]) -> str:
 
         {left_bottom}
     \end{{minipage}}
-    \hfill
+        \hfill
   % Vertical divider
     \begin{{minipage}}[c][4.9\baselineskip][c]{{0.02\textwidth}}
         \centering\rule{{0.4pt}}{{4.7\baselineskip}}
@@ -225,14 +289,14 @@ def page_block(puzzles: list[dict[str, Any]], title: str, subtitle: str) -> str:
 
 \vspace{{0.35em}}
 
-\noindent\hspace*{{{BOARD_ROW_SHIFT}}}
+\noindent\hspace*{{-0.08in}}
 {c1}
 \hspace{{0.02\textwidth}}
 {c2}
 
 \vspace{{0.1em}}
 
-\noindent\hspace*{{{BOARD_ROW_SHIFT}}}
+\noindent\hspace*{{-0.08in}}
 {c3}
 \hspace{{0.02\textwidth}}
 {c4}
@@ -254,6 +318,7 @@ def page_block(puzzles: list[dict[str, Any]], title: str, subtitle: str) -> str:
 def chapter_title_page(chapter_label: str) -> str:
     return f"""
 \\thispagestyle{{empty}}
+\\phantomsection
 
 \\vspace*{{0.34\\textheight}}
 
@@ -265,20 +330,29 @@ def chapter_title_page(chapter_label: str) -> str:
 """.strip()
 
 
-def ensure_recto_transition(blocks: list[str]) -> None:
+def end_on_verso_then_next_on_recto(blocks: list[str]) -> None:
     blocks.append(r"\newpage")
+    blocks.append(r"\checkoddpage\ifoddpage\null\thispagestyle{empty}\newpage\fi")
+
+
+def force_next_content_to_recto(blocks: list[str]) -> None:
     blocks.append(r"\checkoddpage\ifoddpage\else\null\thispagestyle{empty}\newpage\fi")
 
 
 def build_document(document: dict, start_page: int) -> str:
+    document_name = document.get("_output_name", OUTPUT_TEX.stem)
     preamble = rf"""
+% !TEX program = pdflatex
+% !TEX jobname = {document_name}
 \documentclass[12pt,twoside]{{article}}
 \usepackage[
     paperwidth=6in,
     paperheight=9in,
-    inner=0.45in,
-    outer=0.40in,
-    top=0.45in,
+    includefoot,
+    twoside,
+    inner=0.75in,     % gutter (binding) for ~550 pages per KDP guidance
+    outer=0.25in,     % outside margin
+    top=0.25in,
     bottom=0.50in
 ]{{geometry}}
 \usepackage[LSB1,T1]{{fontenc}}
@@ -287,11 +361,16 @@ def build_document(document: dict, start_page: int) -> str:
 \usepackage{{chessfss}}
 \usepackage{{fancyhdr}}
 \usepackage{{ifoddpage}}
+\usepackage{{hyperref}}
+\usepackage{{ragged2e}}
+\usepackage{{tocloft}}
 
 \setcounter{{tocdepth}}{{1}}
+\hfuzz=20pt
+\hbadness=10000
 
 \setcounter{{page}}{{{start_page}}}
-\setlength{{\footskip}}{{18pt}}
+\setlength{{\footskip}}{{30pt}}
 
 \pagestyle{{fancy}}
 \fancyhf{{}}
@@ -359,10 +438,12 @@ def build_document(document: dict, start_page: int) -> str:
     global_display_id = 1
     chapters = document.get("chapters", [])
     for chapter_index, chapter in enumerate(chapters):
-        ensure_recto_transition(blocks)
-        blocks.append(rf"\addcontentsline{{toc}}{{section}}{{{chapter['label']}}}")
+        # Ensure chapter title is always on recto using LaTeX's standard double-page clear
+        blocks.append(r"\cleardoublepage")
         blocks.append(chapter_title_page(chapter["label"]))
-        blocks.append(r"\newpage")
+        blocks.append(rf"\addcontentsline{{toc}}{{section}}{{{chapter['label']}}}")
+        # Insert a single blank verso page after the title so puzzles start on the following recto
+        blocks.append(r"\newpage\null\thispagestyle{empty}\newpage")
 
         puzzles = chapter.get("puzzles", [])
         puzzle_by_id: dict[str, dict[str, Any]] = {}
@@ -427,9 +508,19 @@ def main() -> None:
     with INPUT_JSON.open("r", encoding="utf-8") as f:
         document = json.load(f)
 
+    document, is_draft = apply_draft_limits(document)
+    document["_output_name"] = OUTPUT_TEX_DRAFT.stem if is_draft else OUTPUT_TEX.stem
+
     tex = build_document(document=document, start_page=START_PAGE)
-    OUTPUT_TEX.write_text(tex, encoding="utf-8")
-    print(f"Wrote {OUTPUT_TEX}")
+    output_path = OUTPUT_TEX_DRAFT if is_draft else OUTPUT_TEX
+    output_path.write_text(tex, encoding="utf-8")
+    if is_draft:
+        print(
+            f"Wrote draft preview to {output_path} "
+            f"(chapters env: {os.getenv(DRAFT_CHAPTERS_ENV)!r}, pages/side env: {os.getenv(DRAFT_PAGES_PER_SIDE_ENV)!r})"
+        )
+    else:
+        print(f"Wrote {output_path}")
 
 
 if __name__ == "__main__":
