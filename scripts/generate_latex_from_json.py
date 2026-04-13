@@ -460,14 +460,15 @@ def build_document(document: dict, start_page: int) -> str:
         # Support both old ("label") and new ("title") JSON key
         chapter_label = chapter.get("title") or chapter.get("label", "")
 
-        # Ensure chapter title is always on recto using LaTeX's standard double-page clear
-        blocks.append(r"\cleardoublepage")
         if show_chapter_title_pages:
+            # Title page goes on recto; blank verso follows so puzzles start on the next recto
+            blocks.append(r"\cleardoublepage")
             blocks.append(chapter_title_page(chapter_label))
             blocks.append(rf"\addcontentsline{{toc}}{{section}}{{{chapter_label}}}")
-            # Insert a single blank verso page after the title so puzzles start on the following recto
             blocks.append(r"\newpage\null\thispagestyle{empty}\newpage")
         else:
+            # No title page — just move to next page, no forced blank verso
+            blocks.append(r"\newpage")
             blocks.append(rf"\addcontentsline{{toc}}{{section}}{{{chapter_label}}}")
 
         puzzles = chapter.get("puzzles", [])
