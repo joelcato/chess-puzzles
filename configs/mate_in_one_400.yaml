@@ -21,8 +21,8 @@
 # 1600, so they appear in the easy sections.
 
 book:
-  title: "Chess Puzzle Book"
-  subtitle: "Mate in One"
+  title: "400 Mates-in-One"
+  subtitle: ""
   author: "by Joel Cato"
   publisher: "Covington Press"
   toc: false
@@ -35,7 +35,7 @@ filters:
 
 chapters:
   # ── Chapter 1: White to move, easy (rating < 1600) ──────────────────────
-  - title: "White to Move — Easy"
+  - title: "White to Move"
     sort:
       - field: nb_plays
         order: desc
@@ -98,7 +98,7 @@ chapters:
             order: desc
 
   # ── Chapter 2: White to move, hard (rating >= 1600) ─────────────────────
-  - title: "White to Move — Hard"
+  - title: "White to Move"
     sort:
       - field: nb_plays
         order: desc
@@ -162,7 +162,7 @@ chapters:
             order: desc
 
   # ── Chapter 3: Black to move, easy (rating < 1600) ──────────────────────
-  - title: "Black to Move — Easy"
+  - title: "Black to Move"
     sort:
       - field: nb_plays
         order: desc
@@ -224,7 +224,7 @@ chapters:
             order: desc
 
   # ── Chapter 4: Black to move, hard (rating >= 1600) ─────────────────────
-  - title: "Black to Move — Hard"
+  - title: "Black to Move"
     sort:
       - field: nb_plays
         order: desc

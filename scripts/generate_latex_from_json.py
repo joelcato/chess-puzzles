@@ -150,6 +150,17 @@ def front_matter_block(book_title: str, book_subtitle: str, book_author: str, bo
         else r"\null"
     )
 
+    subtitle_block = (
+        f"""
+\\vspace{{1.8em}}
+\\begin{{minipage}}{{0.82\\textwidth}}
+\\centering
+\\large {book_subtitle}\\par
+\\end{{minipage}}"""
+        if book_subtitle and book_subtitle.strip()
+        else ""
+    )
+
     return f"""
 \\thispagestyle{{empty}}
 
@@ -157,11 +168,7 @@ def front_matter_block(book_title: str, book_subtitle: str, book_author: str, bo
 
 \\begin{{center}}
 {{\\Huge\\bfseries {book_title}\\par}}
-\\vspace{{1.8em}}
-\\begin{{minipage}}{{0.82\\textwidth}}
-\\centering
-\\large {book_subtitle}\\par
-\\end{{minipage}}
+{subtitle_block}
 \\end{{center}}
 
 \\vspace*{{0.14\\textheight}}

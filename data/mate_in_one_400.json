@@ -1,6 +1,6 @@
 {
-  "title": "Chess Puzzle Book",
-  "subtitle": "Mate in One",
+  "title": "400 Mates-in-One",
+  "subtitle": "",
   "author": "by Joel Cato",
   "publisher": "Covington Press",
   "toc": false,
@@ -8,7 +8,7 @@
   "total_puzzle_count": 400,
   "chapters": [
     {
-      "title": "White to Move — Easy",
+      "title": "White to Move",
       "puzzle_count": 100,
       "white_to_move_count": 100,
       "black_to_move_count": 0,
@@ -3621,7 +3621,7 @@
       }
     },
     {
-      "title": "White to Move — Hard",
+      "title": "White to Move",
       "puzzle_count": 100,
       "white_to_move_count": 100,
       "black_to_move_count": 0,
@@ -7234,7 +7234,7 @@
       }
     },
     {
-      "title": "Black to Move — Easy",
+      "title": "Black to Move",
       "puzzle_count": 100,
       "white_to_move_count": 0,
       "black_to_move_count": 100,
@@ -10847,7 +10847,7 @@
       }
     },
     {
-      "title": "Black to Move — Hard",
+      "title": "Black to Move",
       "puzzle_count": 100,
       "white_to_move_count": 0,
       "black_to_move_count": 100,
