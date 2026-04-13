@@ -23,10 +23,11 @@ venv/
 # macOS
 .DS_Store
 
-# IDE
+# IDE / editor settings
 .idea/
 *.swp
 *.swo
+.vscode/
 
 # Large data files
 data/lichess_db_puzzle.csv
@@ -45,5 +46,7 @@ output/mate_in_one_800_KC/
 enpassant/
 merid_tt/
 
-# TTF font files (commercial/redistributable fonts go in fonts/ as PFB only)
-# Exception: goodcompanions.ttf is included as source for make_gc_pfb.py
+# TTF/OTF font files (intermediate build artifacts — only PFB + AFM + TFM + FD go in repo)
+# Exception: goodcompanions.ttf is the original source for make_gc_pfb.py
+fonts/goodcompanions2/goodcompanions2*.ttf
+fonts/goodcompanions2/*.otf

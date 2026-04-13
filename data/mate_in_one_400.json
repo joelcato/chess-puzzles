@@ -8986,6 +8986,24 @@
           "display_fen": "7r/p6k/6r1/1p6/4B2K/2PP4/P1P2P2/R7 b - - 2 34"
         },
         {
+          "puzzle_id": "5qWeq",
+          "fen": "8/2RR2pr/2p2p1k/1p1b4/3P4/P5Pp/1P3P1K/8 w - - 8 43",
+          "moves": [
+            "h2h3",
+            "h6g5"
+          ],
+          "move_count": 2,
+          "rating": 1765,
+          "rating_deviation": 82,
+          "popularity": 85,
+          "nb_plays": 1328,
+          "game_url": "https://lichess.org/zz6BAXgi#85",
+          "opening_tags": "",
+          "side_to_move": "b",
+          "first_move_piece": "K",
+          "display_fen": "8/2RR2pr/2p2p1k/1p1b4/3P4/P5PK/1P3P2/8 b - - 0 43"
+        },
+        {
           "puzzle_id": "4BJaJ",
           "fen": "8/Q6r/5ppk/p2B2q1/1p2P3/8/P6K/7R w - - 7 37",
           "moves": [
@@ -9020,24 +9038,6 @@
           "side_to_move": "b",
           "first_move_piece": "K",
           "display_fen": "3N4/B5Rp/1p3p2/4p3/P3b1PP/5k2/5b2/7K b - - 0 36"
-        },
-        {
-          "puzzle_id": "lNuq0",
-          "fen": "r6r/pp3Rp1/2p1P2k/2b3p1/6P1/2P3PK/PPB3P1/5R2 w - - 4 31",
-          "moves": [
-            "f1f5",
-            "h6g6"
-          ],
-          "move_count": 2,
-          "rating": 942,
-          "rating_deviation": 77,
-          "popularity": 87,
-          "nb_plays": 290,
-          "game_url": "https://lichess.org/Vc5nJ1U5#61",
-          "opening_tags": "",
-          "side_to_move": "b",
-          "first_move_piece": "K",
-          "display_fen": "r6r/pp3Rp1/2p1P2k/2b2Rp1/6P1/2P3PK/PPB3P1/8 b - - 5 31"
         }
       ],
       "groups": {
@@ -10790,6 +10790,24 @@
             "display_fen": "7r/p6k/6r1/1p6/4B2K/2PP4/P1P2P2/R7 b - - 2 34"
           },
           {
+            "puzzle_id": "5qWeq",
+            "fen": "8/2RR2pr/2p2p1k/1p1b4/3P4/P5Pp/1P3P1K/8 w - - 8 43",
+            "moves": [
+              "h2h3",
+              "h6g5"
+            ],
+            "move_count": 2,
+            "rating": 1765,
+            "rating_deviation": 82,
+            "popularity": 85,
+            "nb_plays": 1328,
+            "game_url": "https://lichess.org/zz6BAXgi#85",
+            "opening_tags": "",
+            "side_to_move": "b",
+            "first_move_piece": "K",
+            "display_fen": "8/2RR2pr/2p2p1k/1p1b4/3P4/P5PK/1P3P2/8 b - - 0 43"
+          },
+          {
             "puzzle_id": "4BJaJ",
             "fen": "8/Q6r/5ppk/p2B2q1/1p2P3/8/P6K/7R w - - 7 37",
             "moves": [
@@ -10824,24 +10842,6 @@
             "side_to_move": "b",
             "first_move_piece": "K",
             "display_fen": "3N4/B5Rp/1p3p2/4p3/P3b1PP/5k2/5b2/7K b - - 0 36"
-          },
-          {
-            "puzzle_id": "lNuq0",
-            "fen": "r6r/pp3Rp1/2p1P2k/2b3p1/6P1/2P3PK/PPB3P1/5R2 w - - 4 31",
-            "moves": [
-              "f1f5",
-              "h6g6"
-            ],
-            "move_count": 2,
-            "rating": 942,
-            "rating_deviation": 77,
-            "popularity": 87,
-            "nb_plays": 290,
-            "game_url": "https://lichess.org/Vc5nJ1U5#61",
-            "opening_tags": "",
-            "side_to_move": "b",
-            "first_move_piece": "K",
-            "display_fen": "r6r/pp3Rp1/2p1P2k/2b2Rp1/6P1/2P3PK/PPB3P1/8 b - - 5 31"
           }
         ]
       }
@@ -12095,24 +12095,6 @@
           "display_fen": "8/2pk1pb1/Q1n4p/p2pp1p1/3P2P1/2P1PqRP/Pr3P1B/3RK3 b - - 1 20"
         },
         {
-          "puzzle_id": "A8vWU",
-          "fen": "2k3r1/p4p2/2p1pp2/5b1p/NRP4P/1Q1P3q/4P3/5RK1 w - - 4 25",
-          "moves": [
-            "g1f2",
-            "h3g3"
-          ],
-          "move_count": 2,
-          "rating": 1685,
-          "rating_deviation": 81,
-          "popularity": 93,
-          "nb_plays": 14170,
-          "game_url": "https://lichess.org/t2eixkAf#49",
-          "opening_tags": "",
-          "side_to_move": "b",
-          "first_move_piece": "Q",
-          "display_fen": "2k3r1/p4p2/2p1pp2/5b1p/NRP4P/1Q1P3q/4PK2/5R2 b - - 5 25"
-        },
-        {
           "puzzle_id": "bsz3z",
           "fen": "2kr2r1/bpp2p2/3p1q2/p4N2/1PB1Ppp1/P1PP2K1/5P2/R2Q1R2 w - - 0 23",
           "moves": [
@@ -12129,6 +12111,24 @@
           "side_to_move": "b",
           "first_move_piece": "Q",
           "display_fen": "2kr2r1/bpp2p2/3p1q2/p4N2/1PB1PKp1/P1PP4/5P2/R2Q1R2 b - - 0 23"
+        },
+        {
+          "puzzle_id": "A8vWU",
+          "fen": "2k3r1/p4p2/2p1pp2/5b1p/NRP4P/1Q1P3q/4P3/5RK1 w - - 4 25",
+          "moves": [
+            "g1f2",
+            "h3g3"
+          ],
+          "move_count": 2,
+          "rating": 1685,
+          "rating_deviation": 81,
+          "popularity": 93,
+          "nb_plays": 14170,
+          "game_url": "https://lichess.org/t2eixkAf#49",
+          "opening_tags": "",
+          "side_to_move": "b",
+          "first_move_piece": "Q",
+          "display_fen": "2k3r1/p4p2/2p1pp2/5b1p/NRP4P/1Q1P3q/4PK2/5R2 b - - 5 25"
         },
         {
           "puzzle_id": "rG9QB",
@@ -13899,24 +13899,6 @@
             "display_fen": "8/2pk1pb1/Q1n4p/p2pp1p1/3P2P1/2P1PqRP/Pr3P1B/3RK3 b - - 1 20"
           },
           {
-            "puzzle_id": "A8vWU",
-            "fen": "2k3r1/p4p2/2p1pp2/5b1p/NRP4P/1Q1P3q/4P3/5RK1 w - - 4 25",
-            "moves": [
-              "g1f2",
-              "h3g3"
-            ],
-            "move_count": 2,
-            "rating": 1685,
-            "rating_deviation": 81,
-            "popularity": 93,
-            "nb_plays": 14170,
-            "game_url": "https://lichess.org/t2eixkAf#49",
-            "opening_tags": "",
-            "side_to_move": "b",
-            "first_move_piece": "Q",
-            "display_fen": "2k3r1/p4p2/2p1pp2/5b1p/NRP4P/1Q1P3q/4PK2/5R2 b - - 5 25"
-          },
-          {
             "puzzle_id": "bsz3z",
             "fen": "2kr2r1/bpp2p2/3p1q2/p4N2/1PB1Ppp1/P1PP2K1/5P2/R2Q1R2 w - - 0 23",
             "moves": [
@@ -13933,6 +13915,24 @@
             "side_to_move": "b",
             "first_move_piece": "Q",
             "display_fen": "2kr2r1/bpp2p2/3p1q2/p4N2/1PB1PKp1/P1PP4/5P2/R2Q1R2 b - - 0 23"
+          },
+          {
+            "puzzle_id": "A8vWU",
+            "fen": "2k3r1/p4p2/2p1pp2/5b1p/NRP4P/1Q1P3q/4P3/5RK1 w - - 4 25",
+            "moves": [
+              "g1f2",
+              "h3g3"
+            ],
+            "move_count": 2,
+            "rating": 1685,
+            "rating_deviation": 81,
+            "popularity": 93,
+            "nb_plays": 14170,
+            "game_url": "https://lichess.org/t2eixkAf#49",
+            "opening_tags": "",
+            "side_to_move": "b",
+            "first_move_piece": "Q",
+            "display_fen": "2k3r1/p4p2/2p1pp2/5b1p/NRP4P/1Q1P3q/4PK2/5R2 b - - 5 25"
           },
           {
             "puzzle_id": "rG9QB",
