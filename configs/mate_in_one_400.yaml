@@ -1,18 +1,24 @@
-# Mate in One — 400 puzzles, balanced by piece type.
+# Mate in One — 400 puzzles, balanced by piece type, ordered easy → hard.
 #
-# Each side gets 200 puzzles, split by the piece that delivers mate:
-#   Queen : 60   Rook  : 55   Bishop : 40   Knight : 40   King : 5
+# Structure: 4 invisible chapters of 100 puzzles each:
+#   1. White to move, easy  (rating < 1600)
+#   2. White to move, hard  (rating >= 1600)
+#   3. Black to move, easy  (rating < 1600)
+#   4. Black to move, hard  (rating >= 1600)
 #
-# No rating cap — rating is just a sorting handle for mate-in-one puzzles.
-# Sets are selected by nb_plays desc (most-played first) to get the most
-# well-vetted positions. The chapter sort also uses nb_plays desc, which
-# naturally interleaves piece types since play count doesn't correlate
-# with piece type.
+# Within each 100-puzzle section, pieces are distributed as:
+#   Easy:  Queen : 20   Rook : 20   Bishop : 20   Knight : 20   Pawn : 12   King : 8
+#   Hard:  Queen : 26   Rook : 20   Bishop : 20   Knight : 20   Pawn : 12   King : 2
 #
-# King-move mates are rare (only 59 in the entire DB) but delightful —
-# they include castling mates (0-0# and 0-0-0#). No plays/popularity
-# filter on King sets so we don't miss any. The 5-per-side quota keeps
-# them special.
+# Chapter title pages and TOC are disabled so the reader sees one
+# seamless flow of 400 puzzles, gently ramping from accessible to tricky.
+# Within each section, puzzles are sorted by nb_plays desc, which naturally
+# interleaves piece types.
+#
+# King sets have no rating range and no plays/popularity filter — there are
+# only 32 white and 27 black king-move mates in the entire DB, so we take
+# whatever we can get. The castling mates (O-O# and O-O-O#) are both below
+# 1600, so they appear in the easy sections.
 
 book:
   title: "Chess Puzzle Book"
@@ -24,27 +30,21 @@ book:
   output_json: "data/mate_in_one_400.json"
 
 filters:
-  min_plays: 500        # only well-played puzzles; gives thousands of candidates
-  min_popularity: 50    # filter out poorly-rated positions
+  min_plays: 500
+  min_popularity: 50
 
 chapters:
-  - title: "Mate in One"
-    # After all sets are assembled, sort the full 400 by:
-    #   1. side_to_move desc  →  'w' sorts before 'b'
-    #   2. nb_plays desc      →  most-played puzzles first; naturally interleaves
-    #                            piece types since nb_plays doesn't correlate
-    #                            with piece type (unlike rating)
+  # ── Chapter 1: White to move, easy (rating < 1600) ──────────────────────
+  - title: "White to Move — Easy"
     sort:
-      - field: side_to_move
-        order: desc
       - field: nb_plays
         order: desc
     sets:
-      # ── White to move ────────────────────────────────────────────────────
       - themes: [mateIn1]
         side_to_move: white
         first_move_piece: Q
-        count: 60
+        rating: [0, 1599]
+        count: 20
         sort:
           - field: nb_plays
             order: desc
@@ -52,7 +52,8 @@ chapters:
       - themes: [mateIn1]
         side_to_move: white
         first_move_piece: R
-        count: 55
+        rating: [0, 1599]
+        count: 20
         sort:
           - field: nb_plays
             order: desc
@@ -60,7 +61,8 @@ chapters:
       - themes: [mateIn1]
         side_to_move: white
         first_move_piece: B
-        count: 40
+        rating: [0, 1599]
+        count: 20
         sort:
           - field: nb_plays
             order: desc
@@ -68,27 +70,108 @@ chapters:
       - themes: [mateIn1]
         side_to_move: white
         first_move_piece: N
-        count: 40
+        rating: [0, 1599]
+        count: 20
         sort:
           - field: nb_plays
             order: desc
 
-      # No plays/popularity filter — only 32 white king-move mates exist in the DB
+      - themes: [mateIn1]
+        side_to_move: white
+        first_move_piece: P
+        rating: [0, 1599]
+        count: 12
+        sort:
+          - field: nb_plays
+            order: desc
+
+      # No rating range — take top 8 white King mates by nb_plays overall.
+      # Includes O-O# (EQ8d0, rating 1574) and other sub-1600 king mates.
       - themes: [mateIn1]
         side_to_move: white
         first_move_piece: K
-        count: 5
+        count: 8
         min_plays: 0
         min_popularity: 0
         sort:
           - field: nb_plays
             order: desc
 
-      # ── Black to move ────────────────────────────────────────────────────
+  # ── Chapter 2: White to move, hard (rating >= 1600) ─────────────────────
+  - title: "White to Move — Hard"
+    sort:
+      - field: nb_plays
+        order: desc
+    sets:
+      - themes: [mateIn1]
+        side_to_move: white
+        first_move_piece: Q
+        rating: [1600, 9999]
+        count: 26
+        sort:
+          - field: nb_plays
+            order: desc
+
+      - themes: [mateIn1]
+        side_to_move: white
+        first_move_piece: R
+        rating: [1600, 9999]
+        count: 20
+        sort:
+          - field: nb_plays
+            order: desc
+
+      - themes: [mateIn1]
+        side_to_move: white
+        first_move_piece: B
+        rating: [1600, 9999]
+        count: 20
+        sort:
+          - field: nb_plays
+            order: desc
+
+      - themes: [mateIn1]
+        side_to_move: white
+        first_move_piece: N
+        rating: [1600, 9999]
+        count: 20
+        sort:
+          - field: nb_plays
+            order: desc
+
+      - themes: [mateIn1]
+        side_to_move: white
+        first_move_piece: P
+        rating: [1600, 9999]
+        count: 12
+        sort:
+          - field: nb_plays
+            order: desc
+
+      # rating: [1600, 9999] — only ~2 white King mates exist above 1600,
+      # so this set will yield exactly 2.
+      - themes: [mateIn1]
+        side_to_move: white
+        first_move_piece: K
+        rating: [1600, 9999]
+        count: 2
+        min_plays: 0
+        min_popularity: 0
+        sort:
+          - field: nb_plays
+            order: desc
+
+  # ── Chapter 3: Black to move, easy (rating < 1600) ──────────────────────
+  - title: "Black to Move — Easy"
+    sort:
+      - field: nb_plays
+        order: desc
+    sets:
       - themes: [mateIn1]
         side_to_move: black
         first_move_piece: Q
-        count: 60
+        rating: [0, 1599]
+        count: 20
         sort:
           - field: nb_plays
             order: desc
@@ -96,7 +179,8 @@ chapters:
       - themes: [mateIn1]
         side_to_move: black
         first_move_piece: R
-        count: 55
+        rating: [0, 1599]
+        count: 20
         sort:
           - field: nb_plays
             order: desc
@@ -104,7 +188,8 @@ chapters:
       - themes: [mateIn1]
         side_to_move: black
         first_move_piece: B
-        count: 40
+        rating: [0, 1599]
+        count: 20
         sort:
           - field: nb_plays
             order: desc
@@ -112,19 +197,91 @@ chapters:
       - themes: [mateIn1]
         side_to_move: black
         first_move_piece: N
-        count: 40
+        rating: [0, 1599]
+        count: 20
         sort:
           - field: nb_plays
             order: desc
 
-      # No plays/popularity filter — only 27 black king-move mates exist in the DB
+      - themes: [mateIn1]
+        side_to_move: black
+        first_move_piece: P
+        rating: [0, 1599]
+        count: 12
+        sort:
+          - field: nb_plays
+            order: desc
+
+      # Includes O-O-O# (4byem, rating 1437).
       - themes: [mateIn1]
         side_to_move: black
         first_move_piece: K
-        count: 5
+        count: 8
         min_plays: 0
         min_popularity: 0
         sort:
           - field: nb_plays
             order: desc
 
+  # ── Chapter 4: Black to move, hard (rating >= 1600) ─────────────────────
+  - title: "Black to Move — Hard"
+    sort:
+      - field: nb_plays
+        order: desc
+    sets:
+      - themes: [mateIn1]
+        side_to_move: black
+        first_move_piece: Q
+        rating: [1600, 9999]
+        count: 26
+        sort:
+          - field: nb_plays
+            order: desc
+
+      - themes: [mateIn1]
+        side_to_move: black
+        first_move_piece: R
+        rating: [1600, 9999]
+        count: 20
+        sort:
+          - field: nb_plays
+            order: desc
+
+      - themes: [mateIn1]
+        side_to_move: black
+        first_move_piece: B
+        rating: [1600, 9999]
+        count: 20
+        sort:
+          - field: nb_plays
+            order: desc
+
+      - themes: [mateIn1]
+        side_to_move: black
+        first_move_piece: N
+        rating: [1600, 9999]
+        count: 20
+        sort:
+          - field: nb_plays
+            order: desc
+
+      - themes: [mateIn1]
+        side_to_move: black
+        first_move_piece: P
+        rating: [1600, 9999]
+        count: 12
+        sort:
+          - field: nb_plays
+            order: desc
+
+      # rating: [1600, 9999] — only ~2 black King mates exist above 1600.
+      - themes: [mateIn1]
+        side_to_move: black
+        first_move_piece: K
+        rating: [1600, 9999]
+        count: 2
+        min_plays: 0
+        min_popularity: 0
+        sort:
+          - field: nb_plays
+            order: desc
