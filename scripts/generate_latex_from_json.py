@@ -440,6 +440,7 @@ def build_document(document: dict, start_page: int) -> str:
     verso_text = document.get("verso_text") or _default_verso(book_author, book_publisher)
 
     show_toc = document.get("toc", True)
+    show_chapter_title_pages = document.get("chapter_title_pages", True)
 
     blocks = [
         front_matter_block(
@@ -461,10 +462,13 @@ def build_document(document: dict, start_page: int) -> str:
 
         # Ensure chapter title is always on recto using LaTeX's standard double-page clear
         blocks.append(r"\cleardoublepage")
-        blocks.append(chapter_title_page(chapter_label))
-        blocks.append(rf"\addcontentsline{{toc}}{{section}}{{{chapter_label}}}")
-        # Insert a single blank verso page after the title so puzzles start on the following recto
-        blocks.append(r"\newpage\null\thispagestyle{empty}\newpage")
+        if show_chapter_title_pages:
+            blocks.append(chapter_title_page(chapter_label))
+            blocks.append(rf"\addcontentsline{{toc}}{{section}}{{{chapter_label}}}")
+            # Insert a single blank verso page after the title so puzzles start on the following recto
+            blocks.append(r"\newpage\null\thispagestyle{empty}\newpage")
+        else:
+            blocks.append(rf"\addcontentsline{{toc}}{{section}}{{{chapter_label}}}")
 
         puzzles = chapter.get("puzzles", [])
         puzzle_by_id: dict[str, dict[str, Any]] = {}
