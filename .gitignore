@@ -2,11 +2,14 @@
 *.aux
 *.fdb_latexmk
 *.fls
-*.pdf
 *.log
 *.synctex.gz
 *.out
 *.toc
+
+# PDFs everywhere EXCEPT the output folder (tracked for sharing)
+*.pdf
+!output/*.pdf
 
 # Python
 __pycache__/
@@ -31,9 +34,11 @@ data/lichess_puzzles.sqlite
 
 # Generated LaTeX output and working files
 output/mating_patterns_preview.tex
+output/mating_patterns_preview.pdf
 output/*.tsv
 output/*.kpf
 output/hello.tex
+output/hello.pdf
 output/mate_in_one_800_KC/
 
 # Font directories (installed system-wide via texmf, not needed in repo)
