@@ -45,8 +45,3 @@ output/mate_in_one_800_KC/
 # Font directories (installed system-wide via texmf, not needed in repo)
 enpassant/
 merid_tt/
-
-# TTF/OTF font files (intermediate build artifacts — only PFB + AFM + TFM + FD go in repo)
-# Exception: goodcompanions.ttf is the original source for make_gc_pfb.py
-fonts/goodcompanions2/goodcompanions2*.ttf
-fonts/goodcompanions2/*.otf

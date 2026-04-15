@@ -1,5 +1,0 @@
-\ProvidesFile{lsb1goodcompanions2.fd}
-        [2026/04/12 v1.0 Chess font definitions - GoodCompanions]
-\DeclareFontFamily{LSB1}{goodcompanions2}{}
-  \DeclareFontShape{LSB1}{goodcompanions2}{m}{n}{<-> chess-goodcompanions2-lsb}{}
-\endinput
