@@ -15,10 +15,8 @@
 # Within each section, puzzles are sorted by nb_plays desc, which naturally
 # interleaves piece types.
 #
-# King sets have no rating range and no plays/popularity filter — there are
-# only 32 white and 27 black king-move mates in the entire DB, so we take
-# whatever we can get. The castling mates (O-O# and O-O-O#) are both below
-# 1600, so they appear in the easy sections.
+# King sets have no plays/popularity filter — there are only ~32 white and
+# ~27 black king-move mates in the entire DB, so we take whatever we can get.
 
 book:
   title: "400 Mates-in-One"
@@ -85,11 +83,12 @@ chapters:
           - field: nb_plays
             order: desc
 
-      # No rating range — take top 8 white King mates by nb_plays overall.
-      # Includes O-O# (EQ8d0, rating 1574) and other sub-1600 king mates.
+      # Easy K mates: cap at 1599 so the 2 above-1600 mates (uWQ7V, oDsjp) stay
+      # in the hard chapter.
       - themes: [mateIn1]
         side_to_move: white
         first_move_piece: K
+        rating: [0, 1599]
         count: 8
         min_plays: 0
         min_popularity: 0
@@ -212,10 +211,11 @@ chapters:
           - field: nb_plays
             order: desc
 
-      # Includes O-O-O# (4byem, rating 1437).
+      # Easy K mates: cap at 1599 so the 2 above-1600 mates stay in the hard chapter.
       - themes: [mateIn1]
         side_to_move: black
         first_move_piece: K
+        rating: [0, 1599]
         count: 8
         min_plays: 0
         min_popularity: 0

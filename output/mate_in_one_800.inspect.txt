@@ -1,0 +1,100 @@
+============================================================
+JSON SUMMARY
+============================================================
+Book:                800 Mates-in-One
+Author:              by Joel Cato
+TOC:                 False
+Chapter title pages: False
+Chapters:            8
+Total puzzles:       800
+
+  Chapter 1: 'White to Move'
+    100 puzzles  (white: 100, black: 0)  rating 473–1199, avg 1110
+    Q:20  R:20  B:20  N:20  P:12  K:8
+  Chapter 2: 'White to Move'
+    100 puzzles  (white: 100, black: 0)  rating 1206–1599, avg 1374
+    Q:20  R:20  B:20  N:20  P:12  K:8
+  Chapter 3: 'White to Move'
+    100 puzzles  (white: 100, black: 0)  rating 1600–1995, avg 1728
+    Q:26  R:20  B:20  N:20  P:12  K:2
+  Chapter 4: 'White to Move'
+    100 puzzles  (white: 100, black: 0)  rating 2000–2427, avg 2082
+    Q:27  R:21  B:20  N:20  P:12
+  Chapter 5: 'Black to Move'
+    100 puzzles  (white: 0, black: 100)  rating 845–1199, avg 1108
+    Q:20  R:20  B:20  N:20  P:12  K:8
+  Chapter 6: 'Black to Move'
+    100 puzzles  (white: 0, black: 100)  rating 1200–1598, avg 1395
+    Q:20  R:20  B:20  N:20  P:12  K:8
+  Chapter 7: 'Black to Move'
+    100 puzzles  (white: 0, black: 100)  rating 1603–1984, avg 1745
+    Q:26  R:20  B:20  N:20  P:12  K:2
+  Chapter 8: 'Black to Move'
+    100 puzzles  (white: 0, black: 100)  rating 2000–2379, avg 2075
+    Q:27  R:21  B:20  N:20  P:12
+
+  ✅  No duplicate puzzle IDs in JSON
+
+  [JSON checks: 0.000s]
+
+============================================================
+BOOK PROFILE
+============================================================
+
+  Side to move:
+    White     400  (50.0%)
+    Black     400  (50.0%)
+
+  Piece (first move):
+    Q    186  (23.2%)
+    R    162  (20.2%)
+    B    160  (20.0%)
+    N    160  (20.0%)
+    P     96  (12.0%)
+    K     36  ( 4.5%)
+
+  Rating distribution (200-pt bands):
+    Band         Count      %   histogram
+    ───────────  ─────  ─────   ────────────────────────
+     400–599        1   0.1%   █
+     800–999       20   2.5%   ███
+    1000–1199     179  22.4%   ████████████████████████
+    1200–1399     112  14.0%   ███████████████
+    1400–1599      88  11.0%   ████████████
+    1600–1799     149  18.6%   ████████████████████
+    1800–1999      51   6.4%   ███████
+    2000–2199     180  22.5%   ████████████████████████
+    2200–2399      19   2.4%   ███
+    2400–2599       1   0.1%   █
+
+  Top openings (first tag, top 10):
+    Sicilian_Defense                                 26  ( 3.2%)
+    Italian_Game                                     12  ( 1.5%)
+    Caro-Kann_Defense                                10  ( 1.2%)
+    Queens_Pawn_Game                                  8  ( 1.0%)
+    English_Opening                                   7  ( 0.9%)
+    Queens_Gambit_Declined                            7  ( 0.9%)
+    French_Defense                                    7  ( 0.9%)
+    Vienna_Game                                       6  ( 0.8%)
+    Scotch_Game                                       5  ( 0.6%)
+    Pirc_Defense                                      5  ( 0.6%)
+    (no opening tag)                                642  (80.2%)
+
+  TSV written: output/mate_in_one_800.inspect.tsv  (800 rows)  [0.002s]
+
+============================================================
+TEX VALIDATION
+============================================================
+  ✅  No \tableofcontents (toc: false)
+  ✅  No [ILLEGAL MOVE errors
+  ✅  Puzzle count: tex=800, json=800
+  ✅  No duplicate puzzle display IDs in tex
+  ✅  All 800 JSON puzzles present in tex (no gaps)
+  ✅  Blank pages only in expected positions
+  ✅  Chapter sections have recto-forcing (chapter_title_pages: false)
+
+  [tex checks: 0.002s]
+
+Total time: 0.007s
+
+All checks passed. ✅

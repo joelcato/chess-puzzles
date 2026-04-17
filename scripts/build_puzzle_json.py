@@ -6,9 +6,10 @@ Usage:
     python scripts/build_puzzle_json.py configs/mate_in_one_800.yaml
 
 Reads a YAML config file that describes a puzzle book (title, chapters, sets).
-Queries data/lichess_puzzles.sqlite for each chapter with a SINGLE query that
-fetches all candidate rows, then applies per-set selection/deduplication in
-Python. This is much faster than one query per set.
+Queries data/lichess_puzzles.sqlite for each chapter by running one indexed
+query per set and merging results in Python. This is much faster than a single
+UNION ALL query, which forces SQLite to materialise every branch as a temp
+table even when each branch has its own covering index.
 
 DB requirements:
     - puzzles table with columns:
@@ -22,6 +23,7 @@ import argparse
 import json
 import sqlite3
 import sys
+import time
 from pathlib import Path
 
 import yaml
@@ -53,19 +55,17 @@ SORT_FIELD_PY = {
 }
 
 
-def _build_set_subquery(
+def _build_set_query(
     set_spec: dict,
     global_filters: dict,
     set_index: int,
 ) -> tuple[str, list]:
-    """Build one SELECT branch (for UNION ALL) against the denormalized
-    puzzle_theme_rows table — one row per (puzzle, theme) with all puzzle
-    columns inline.  No JOINs needed; the covering index on
-    (theme, side_to_move, first_move_piece, nb_plays DESC, rating, popularity)
-    satisfies WHERE + ORDER BY + LIMIT in a single index scan.
+    """Build a single SELECT against puzzle_theme_rows for one set spec.
 
-    When a set specifies multiple themes (AND-logic), we drive from the
-    rarest theme and add EXISTS checks against puzzle_theme_rows for the rest.
+    Each query is a self-contained indexed scan — no UNION ALL wrapping.
+    SQLite uses the covering index on (theme, side_to_move, first_move_piece,
+    nb_plays DESC, rating, popularity) and returns the requested rows in
+    microseconds.
     """
     themes = set_spec.get("themes", [])
     side_to_move = set_spec.get("side_to_move")
@@ -120,6 +120,12 @@ def _build_set_subquery(
     if min_plays > 0:
         where_parts.append("r.nb_plays >= ?")
         params.append(min_plays)
+    else:
+        # nb_plays >= 1 forces SQLite to use the covering index on
+        # (theme, side_to_move, first_move_piece, nb_plays DESC, ...).
+        # Without this constraint it picks a different index and falls back
+        # to a full-table sort, making the query ~1000× slower.
+        where_parts.append("r.nb_plays >= 1")
 
     if min_popularity > 0:
         where_parts.append("r.popularity >= ?")
@@ -139,7 +145,8 @@ def _build_set_subquery(
             order_parts.append(f"r.{field} {direction}")
     order_clause = ("ORDER BY " + ", ".join(order_parts)) if order_parts else ""
 
-    limit_clause = f"LIMIT {int(count)}" if count is not None else ""
+    limit_val = count if count is not None else None
+    limit_clause = f"LIMIT {int(limit_val)}" if limit_val is not None else ""
 
     sql = f"""
   SELECT r.puzzle_id, r.fen, r.moves, r.move_count,
@@ -159,43 +166,44 @@ def fetch_chapter_puzzles(
     chapter_spec: dict,
     global_filters: dict,
     conn: sqlite3.Connection,
+    global_seen_ids: set[str],
 ) -> list[dict]:
-    """Build one UNION ALL query — one branch per set — so that all filtering,
-    sorting, and limiting happens in SQL. Python only deduplicates and
-    applies the chapter-level sort.
+    """Run one indexed SQL query per set and merge results in Python.
+
+    Running separate queries is orders of magnitude faster than a UNION ALL on
+    a large database: each query is a pure index scan (microseconds), while
+    UNION ALL forces SQLite to materialise every branch into a temp table.
+
+    Deduplication is done globally (cross-chapter) via global_seen_ids.
     """
     sets = chapter_spec.get("sets", [])
     if not sets:
         return []
 
-    branches: list[str] = []
-    all_params: list = []
-
-    for i, set_spec in enumerate(sets):
-        branch_sql, branch_params = _build_set_subquery(set_spec, global_filters, i)
-        branches.append(branch_sql)
-        all_params.extend(branch_params)
-
-    # Wrap each branch so UNION ALL preserves per-branch ORDER BY + LIMIT.
-    # SQLite requires subqueries here to honour the inner ORDER BY.
-    wrapped = [f"SELECT * FROM ({b})" for b in branches]
-    sql = "\nUNION ALL\n".join(wrapped)
-
-    cur = conn.execute(sql, all_params)
-    rows = cur.fetchall()
-
-    # Columns: COLUMNS + set_index (last column)
     puzzles: list[dict] = []
-    seen_ids: set[str] = set()
-    for row in rows:
-        pid = row[0]
-        if pid in seen_ids:
-            continue
-        seen_ids.add(pid)
-        p = dict(zip(COLUMNS, row[:13]))
-        p["moves"] = p["moves"].split() if p["moves"] else []
-        p["_set_index"] = row[13]
-        puzzles.append(p)
+
+    for set_idx, set_spec in enumerate(sets):
+        sql, params = _build_set_query(set_spec, global_filters, set_idx)
+
+        target_count = set_spec.get("count")
+        added = 0
+
+        for row in conn.execute(sql, params):
+            if target_count is not None and added >= target_count:
+                break
+
+            pid = row[0]
+
+            # Cross-chapter deduplication
+            if pid in global_seen_ids:
+                continue
+
+            global_seen_ids.add(pid)
+            added += 1
+            p = dict(zip(COLUMNS, row[:13]))
+            p["moves"] = p["moves"].split() if p["moves"] else []
+            p["_set_index"] = set_idx
+            puzzles.append(p)
 
     return puzzles
 
@@ -223,15 +231,22 @@ def python_sort_key(sort_specs: list[dict]):
     return key
 
 
-def build_chapter(chapter_spec: dict, global_filters: dict, conn: sqlite3.Connection) -> dict:
+def build_chapter(
+    chapter_spec: dict,
+    global_filters: dict,
+    conn: sqlite3.Connection,
+    global_seen_ids: set[str],
+) -> dict:
     """Fetch all puzzles for a chapter via a single UNION ALL SQL query,
     then deduplicate and apply the chapter-level sort in Python."""
     title = chapter_spec["title"]
     print(f"  Chapter: {title}", end="", flush=True)
+    t0 = time.perf_counter()
 
     # Single DB round-trip: all sets combined into one UNION ALL query
-    all_puzzles = fetch_chapter_puzzles(chapter_spec, global_filters, conn)
-    print(f" — {len(all_puzzles)} puzzles selected", end="")
+    all_puzzles = fetch_chapter_puzzles(chapter_spec, global_filters, conn, global_seen_ids)
+    elapsed = time.perf_counter() - t0
+    print(f" — {len(all_puzzles)} puzzles selected ({elapsed:.2f}s)", end="")
 
     # Apply chapter-level sort (e.g. nb_plays desc to interleave piece types)
     chapter_sort = chapter_spec.get("sort")
@@ -267,13 +282,14 @@ def build_document(config: dict, conn: sqlite3.Connection) -> dict:
     chapters_spec = config.get("chapters", [])
     chapters = []
     total_puzzles = 0
+    global_seen_ids: set[str] = set()  # shared across all chapters to prevent cross-chapter dups
 
     for chapter_spec in chapters_spec:
         # Inject default_chapter_sort if chapter has no explicit sort
         if default_chapter_sort and "sort" not in chapter_spec:
             chapter_spec = dict(chapter_spec)
             chapter_spec["sort"] = default_chapter_sort
-        chapter = build_chapter(chapter_spec, global_filters, conn)
+        chapter = build_chapter(chapter_spec, global_filters, conn, global_seen_ids)
         chapters.append(chapter)
         total_puzzles += chapter["puzzle_count"]
 

@@ -5,9 +5,11 @@ Book inspector: summarise a puzzle JSON and optionally validate a generated .tex
 Usage:
     python3 scripts/inspect_book.py data/mate_in_one_400.json
     python3 scripts/inspect_book.py data/mate_in_one_400.json output/mate_in_one_400.tex
+    python3 scripts/inspect_book.py data/mate_in_one_400.json output/mate_in_one_400.tex --config configs/mate_in_one_400.yaml
     python3 scripts/inspect_book.py data/mating_patterns_100_by_theme.json output/mating_patterns_100_by_theme.tex
 
-JSON output: per-chapter stats (puzzle count, piece distribution, rating range) + TSV written
+JSON output: per-chapter stats (puzzle count, piece distribution, rating range) + book
+             profile (side/piece/rating distributions, top openings) + TSV written
              to output/<stem>.inspect.tsv
 
 TeX validation checks:
@@ -18,6 +20,11 @@ TeX validation checks:
     5.  Blank pages only in known-good positions
     6.  Chapter boundaries use \\cleardoublepage (when chapter_title_pages: true)
     7.  Chapter boundaries use a recto-forcing pattern (when chapter_title_pages: true)
+
+JSON extra checks:
+    8.  No duplicate puzzle IDs across all chapters
+    9.  No castling moves in King-piece puzzles (first_move_piece == K)
+    10. (optional, --config) per-chapter puzzle counts match YAML config targets
 """
 
 import argparse
@@ -25,6 +32,7 @@ import csv
 import json
 import re
 import sys
+import time
 from collections import defaultdict
 from pathlib import Path
 
@@ -144,6 +152,86 @@ def write_tsv(data: dict, tsv_path: Path) -> int:
         w.writeheader()
         w.writerows(rows)
     return len(rows)
+
+
+# ── Book profile ─────────────────────────────────────────────────────────────
+
+def build_profile(data: dict) -> list[str]:
+    """Return formatted lines for the BOOK PROFILE section."""
+    all_puzzles = [p for ch in data.get("chapters", []) for p in ch.get("puzzles", [])]
+    n = len(all_puzzles)
+    if n == 0:
+        return ["  (no puzzles)"]
+
+    lines: list[str] = []
+
+    # ── Side distribution ─────────────────────────────────────────────────────
+    side_counts: dict[str, int] = defaultdict(int)
+    for p in all_puzzles:
+        s = p.get("side_to_move", "?")
+        label = "White" if s in ("w", "white") else "Black" if s in ("b", "black") else s.capitalize()
+        side_counts[label] += 1
+
+    lines.append("  Side to move:")
+    for side in ["White", "Black"]:
+        ct = side_counts.get(side, 0)
+        lines.append(f"    {side:<8} {ct:>4}  ({100 * ct / n:4.1f}%)")
+    lines.append("")
+
+    # ── Piece distribution ────────────────────────────────────────────────────
+    piece_counts: dict[str, int] = defaultdict(int)
+    for p in all_puzzles:
+        piece_counts[p.get("first_move_piece", "?").upper()] += 1
+
+    lines.append("  Piece (first move):")
+    for pc in PIECE_ORDER:
+        ct = piece_counts.get(pc, 0)
+        if ct:
+            lines.append(f"    {pc}   {ct:>4}  ({100 * ct / n:4.1f}%)")
+    if piece_counts.get("?"):
+        lines.append(f"    ?   {piece_counts['?']:>4}  ({100 * piece_counts['?'] / n:4.1f}%)")
+    lines.append("")
+
+    # ── Rating distribution (200-pt bands) ────────────────────────────────────
+    ratings = [p["rating"] for p in all_puzzles if isinstance(p.get("rating"), int)]
+    if ratings:
+        BAND = 200
+        lo_band = (min(ratings) // BAND) * BAND
+        hi_band = ((max(ratings) // BAND) + 1) * BAND
+        band_counts: dict[int, int] = {b: 0 for b in range(lo_band, hi_band, BAND)}
+        for r in ratings:
+            band_counts[(r // BAND) * BAND] += 1
+
+        max_ct = max(band_counts.values()) or 1
+        BAR_WIDTH = 24
+        lines.append(f"  Rating distribution (200-pt bands):")
+        lines.append(f"    {'Band':<11}  {'Count':>5}  {'%':>5}   histogram")
+        lines.append(f"    {'─' * 11}  {'─' * 5}  {'─' * 5}   {'─' * BAR_WIDTH}")
+        for b, ct in sorted(band_counts.items()):
+            if ct == 0:
+                continue
+            bar = "█" * max(1, round(BAR_WIDTH * ct / max_ct))
+            lines.append(f"    {b:4d}–{b + BAND - 1:<4d}   {ct:>5}  {100 * ct / n:4.1f}%   {bar}")
+        lines.append("")
+
+    # ── Top openings ─────────────────────────────────────────────────────────
+    opening_counts: dict[str, int] = defaultdict(int)
+    for p in all_puzzles:
+        tags = (p.get("opening_tags") or "").strip()
+        if tags:
+            # Take the first tag as the opening family
+            opening_counts[tags.split()[0]] += 1
+    if opening_counts:
+        top = sorted(opening_counts.items(), key=lambda x: -x[1])[:10]
+        lines.append("  Top openings (first tag, top 10):")
+        for name, ct in top:
+            lines.append(f"    {name:<45}  {ct:>4}  ({100 * ct / n:4.1f}%)")
+        no_opening = n - sum(opening_counts.values())
+        if no_opening:
+            lines.append(f"    {'(no opening tag)':<45}  {no_opening:>4}  ({100 * no_opening / n:4.1f}%)")
+        lines.append("")
+
+    return lines
 
 
 # ── TeX validation ────────────────────────────────────────────────────────────
@@ -333,6 +421,87 @@ def validate_tex(tex: str, data: dict) -> list[Check]:
     return checks
 
 
+def check_config_counts(data: dict, config: dict) -> list[Check]:
+    """Cross-check per-chapter puzzle counts and piece distributions against
+    the YAML config's declared set counts."""
+    checks: list[Check] = []
+    chapters_spec = config.get("chapters", [])
+    chapters_data = data.get("chapters", [])
+
+    if len(chapters_spec) != len(chapters_data):
+        checks.append(Check(
+            "YAML chapter count matches JSON",
+            False,
+            f"YAML has {len(chapters_spec)} chapters, JSON has {len(chapters_data)}",
+        ))
+        return checks
+
+    checks.append(Check("YAML chapter count matches JSON", True))
+
+    for ch_idx, (ch_spec, ch_data) in enumerate(zip(chapters_spec, chapters_data), 1):
+        sets = ch_spec.get("sets", [])
+        expected_total = sum(s.get("count", 0) for s in sets)
+        actual_total = len(ch_data.get("puzzles", []))
+
+        # Per-piece expected counts from set specs
+        piece_expected: dict[str, int] = defaultdict(int)
+        for s in sets:
+            piece = s.get("first_move_piece", "").upper()
+            cnt = s.get("count", 0)
+            if piece:
+                piece_expected[piece] += cnt
+
+        # Per-piece actual counts
+        piece_actual: dict[str, int] = defaultdict(int)
+        for p in ch_data.get("puzzles", []):
+            pc = (p.get("first_move_piece") or "?").upper()
+            piece_actual[pc] += 1
+
+        ch_title = ch_spec.get("title", f"Chapter {ch_idx}")
+
+        # Total count check
+        count_ok = actual_total == expected_total
+        detail = "" if count_ok else f"expected {expected_total}, got {actual_total}"
+        checks.append(Check(
+            f"Ch{ch_idx} '{ch_title}': total count",
+            count_ok,
+            detail,
+        ))
+
+        # Per-piece count check
+        for piece, exp_count in piece_expected.items():
+            act_count = piece_actual.get(piece, 0)
+            piece_ok = act_count == exp_count
+            piece_detail = "" if piece_ok else f"expected {exp_count}, got {act_count}"
+            checks.append(Check(
+                f"Ch{ch_idx} '{ch_title}': {piece} count",
+                piece_ok,
+                piece_detail,
+            ))
+
+    return checks
+
+
+# ── Tee stdout to file ───────────────────────────────────────────────────────
+
+class _Tee:
+    """Write to both a file and the original stdout simultaneously."""
+    def __init__(self, file_path: Path, original):
+        self._file = file_path.open("w", encoding="utf-8")
+        self._orig = original
+
+    def write(self, data: str) -> int:
+        self._file.write(data)
+        return self._orig.write(data)
+
+    def flush(self) -> None:
+        self._file.flush()
+        self._orig.flush()
+
+    def close(self) -> None:
+        self._file.close()
+
+
 # ── Entry point ───────────────────────────────────────────────────────────────
 
 def main() -> None:
@@ -341,6 +510,10 @@ def main() -> None:
     )
     parser.add_argument("json_file", help="Path to the book JSON (e.g. data/mate_in_one_400.json)")
     parser.add_argument("tex_file", nargs="?", help="Path to the generated .tex (optional)")
+    parser.add_argument(
+        "--config", default=None,
+        help="Path to the YAML config (e.g. configs/mate_in_one_400.yaml); enables count cross-checks",
+    )
     args = parser.parse_args()
 
     json_path = Path(args.json_file)
@@ -350,22 +523,82 @@ def main() -> None:
         print(f"Error: JSON not found: {json_path}", file=sys.stderr)
         sys.exit(1)
 
+    t_start = time.perf_counter()
+
     with json_path.open("r", encoding="utf-8") as f:
         data = json.load(f)
 
-    # ── JSON summary ─────────────────────────────────────────────────────────
+    # ── Tee stdout to report file ─────────────────────────────────────────────
+    report_path = OUTPUT_DIR / f"{json_path.stem}.inspect.txt"
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    tee = _Tee(report_path, sys.stdout)
+    sys.stdout = tee  # type: ignore
+
+    try:
+        passed = _run(args, data, json_path, t_start)
+    finally:
+        sys.stdout = tee._orig
+        tee.close()
+
+    print(f"  Report written: {report_path.relative_to(BASE_DIR)}")
+    if not passed:
+        sys.exit(1)
+
+
+def _run(args, data: dict, json_path: Path, t_start: float) -> None:
+    t0 = time.perf_counter()
     print("=" * 60)
     print("JSON SUMMARY")
     print("=" * 60)
     summary_lines, warnings = inspect_json(data)
     print("\n".join(summary_lines))
     for w in warnings:
-        print(f"  ⚠️   {w}")
+        print(f"  \u26a0\ufe0f   {w}")
+    print(f"\n  [JSON checks: {time.perf_counter() - t0:.3f}s]")
+
+    # ── Book profile ─────────────────────────────────────────────────────────
+    print()
+    print("=" * 60)
+    print("BOOK PROFILE")
+    print("=" * 60)
+    print()
+    for line in build_profile(data):
+        print(line)
 
     # ── TSV ──────────────────────────────────────────────────────────────────
+    t0 = time.perf_counter()
     tsv_path = OUTPUT_DIR / f"{json_path.stem}.inspect.tsv"
     row_count = write_tsv(data, tsv_path)
-    print(f"\n  TSV written: {tsv_path.relative_to(BASE_DIR)}  ({row_count} rows)")
+    print(f"  TSV written: {tsv_path.relative_to(BASE_DIR)}  ({row_count} rows)  [{time.perf_counter() - t0:.3f}s]")
+
+    all_passed = not warnings
+
+    # ── YAML config cross-check ───────────────────────────────────────────────
+    if args.config:
+        try:
+            import yaml  # type: ignore
+        except ImportError:
+            print("\n  [--config skipped: pyyaml not installed]", file=sys.stderr)
+        else:
+            config_path = Path(args.config)
+            if not config_path.is_absolute():
+                config_path = BASE_DIR / config_path
+            if not config_path.exists():
+                print(f"\nError: config not found: {config_path}", file=sys.stderr)
+            else:
+                t0 = time.perf_counter()
+                with config_path.open() as f:
+                    config = yaml.safe_load(f)
+                config_checks = check_config_counts(data, config)
+                print()
+                print("=" * 60)
+                print("CONFIG CROSS-CHECK")
+                print("=" * 60)
+                for c in config_checks:
+                    print(c)
+                    if not c.passed:
+                        all_passed = False
+                print(f"\n  [config checks: {time.perf_counter() - t0:.3f}s]")
 
     # ── TeX validation ────────────────────────────────────────────────────────
     if args.tex_file:
@@ -374,8 +607,9 @@ def main() -> None:
             tex_path = BASE_DIR / tex_path
         if not tex_path.exists():
             print(f"\nError: tex file not found: {tex_path}", file=sys.stderr)
-            sys.exit(1)
+            return False
 
+        t0 = time.perf_counter()
         tex = tex_path.read_text(encoding="utf-8")
         checks = validate_tex(tex, data)
 
@@ -383,18 +617,21 @@ def main() -> None:
         print("=" * 60)
         print("TEX VALIDATION")
         print("=" * 60)
-        all_passed = True
         for c in checks:
             print(c)
             if not c.passed:
                 all_passed = False
+        print(f"\n  [tex checks: {time.perf_counter() - t0:.3f}s]")
 
-        print()
-        if all_passed:
-            print("All checks passed. ✅")
-        else:
-            print("Some checks FAILED. ❌")
-            sys.exit(1)
+    print()
+    print(f"Total time: {time.perf_counter() - t_start:.3f}s")
+    print()
+    if all_passed:
+        print("All checks passed. \u2705")
+        return True
+    else:
+        print("Some checks FAILED. \u274c")
+        return False
 
 
 if __name__ == "__main__":

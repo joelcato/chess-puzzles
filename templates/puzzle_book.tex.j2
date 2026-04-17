@@ -1,0 +1,248 @@
+% !TEX program = pdflatex
+% !TEX jobname = <{ document_name }>
+\documentclass[12pt,twoside]{article}
+\usepackage[
+    paperwidth=6in,
+    paperheight=9in,
+    includefoot,
+    twoside,
+    inner=0.75in,     % gutter (binding) for ~550 pages per KDP guidance
+    outer=0.25in,     % outside margin
+    top=0.25in,
+    bottom=0.50in
+]{geometry}
+\usepackage[LSB1,T1]{fontenc}
+\usepackage{xcolor}
+\usepackage{chessboard}
+\usepackage{chessfss}
+\usepackage{fancyhdr}
+\usepackage{ifoddpage}
+\usepackage{hyperref}
+\usepackage{ragged2e}
+\usepackage{tocloft}
+
+\setcounter{tocdepth}{1}
+\hfuzz=20pt
+\hbadness=10000
+
+\setcounter{page}{<{ start_page }>}
+\setlength{\footskip}{30pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\newcommand{\coordfont}{\rmfamily\bfseries}
+\setfigfontfamily{goodcompanions2}
+
+\setboardfontcolors{
+    blackfield=black!60
+}
+
+\setchessboard{
+    boardfontsize=18pt,
+    boardfontfamily=goodcompanions2,
+    boardfontencoding=LSB1,
+    borderwidth=0.5pt,
+    bordercolor=black,
+    showmover=false,
+    labelleft=true,
+    labelbottom=true,
+    labelleftwidth=1.2ex,
+    labelbottomlift=1.2\baselineskip,
+    labelfont=\coordfont,
+    labelfontsize=7pt
+}
+
+\def\SideToMoveFromFEN#1 #2 #3\relax{#2}
+
+\newcommand{\RenderPuzzleBoard}[1]{%
+    \edef\PuzzleSideToMove{\expandafter\SideToMoveFromFEN#1 \relax}%
+    \if b\PuzzleSideToMove
+        \chessboard[setfen={#1},inverse=true]%
+    \else
+        \chessboard[setfen={#1}]%
+    \fi
+}
+
+\newcommand{\PuzzleCell}[2]{%
+    \begin{minipage}[t]{0.46\textwidth}
+        \centering
+        \RenderPuzzleBoard{#2}
+
+        \vspace{0.15em}
+        {\small\bfseries Puzzle #1}
+
+        \vspace{0.45em}
+    \end{minipage}
+}
+
+\begin{document}
+
+%% ── Front matter ────────────────────────────────────────────────────────────
+
+\thispagestyle{empty}
+
+\vspace*{0.16\textheight}
+
+\begin{center}
+{\Huge\bfseries <{ book_title }>\par}
+<# subtitle block #>
+<% if book_subtitle %>
+\vspace{1.8em}
+\begin{minipage}{0.82\textwidth}
+\centering
+\large <{ book_subtitle }>\par
+\end{minipage}
+<% endif %>
+\end{center}
+
+\vspace*{0.14\textheight}
+
+\begin{center}
+\begin{minipage}{0.52\textwidth}
+\centering
+{\LARGE\bfseries <{ book_author }>\par}
+\end{minipage}
+\end{center}
+
+\vfill
+
+\begin{center}
+{\normalsize <{ book_publisher }>\par}
+\end{center}
+
+\newpage
+
+\thispagestyle{empty}
+
+\vspace*{0.72\textheight}
+
+<% if verso_text %>
+\begin{center}
+\small
+<{ verso_text }>
+\end{center}
+<% else %>
+\null
+<% endif %>
+
+\newpage
+
+%% ── Table of contents ───────────────────────────────────────────────────────
+
+<% if show_toc %>
+\thispagestyle{empty}
+
+\vspace*{0.05\textheight}
+
+\begingroup
+\renewcommand{\contentsname}{Contents}
+\setlength{\cftbeforesecskip}{0pt}
+\setlength{\cftaftertoctitleskip}{1.2em}
+\begin{center}
+\begin{minipage}[t][0.82\textheight][s]{0.92\textwidth}
+\centering
+\normalsize
+\renewcommand{\baselinestretch}{1.18}\selectfont
+\tableofcontents
+\vspace*{0pt plus 1fill}
+\end{minipage}
+\end{center}
+\endgroup
+
+\newpage
+<% endif %>
+
+%% ── Chapters ────────────────────────────────────────────────────────────────
+
+<% for chapter in chapters %>
+<% if show_chapter_title_pages %>
+\cleardoublepage
+
+\thispagestyle{empty}
+\phantomsection
+
+\vspace*{0.34\textheight}
+
+\begin{center}
+{\Huge\bfseries <{ chapter.label }>\par}
+\end{center}
+
+\vfill
+\addcontentsline{toc}{section}{<{ chapter.label }>}
+\newpage\null\thispagestyle{empty}\newpage
+<% else %>
+\newpage
+\checkoddpage\ifoddpage\else\null\thispagestyle{empty}\newpage\fi
+\addcontentsline{toc}{section}{<{ chapter.label }>}
+<% endif %>
+
+<% for section in chapter.sections %>
+<% for page in section.pages %>
+\begin{center}
+\Large\bfseries <{ chapter.label }>
+
+\vspace{0.15em}
+\normalsize <{ section.subtitle }>
+\end{center}
+
+\vspace{0.35em}
+
+\noindent\hspace*{-0.08in}
+<% if page.cells[0] %>\PuzzleCell{<{ page.cells[0].display_id }>}{<{ page.cells[0].fen }>}<% else %>\begin{minipage}[t]{0.46\textwidth}\mbox{}\end{minipage}<% endif %>
+\hspace{0.02\textwidth}
+<% if page.cells[1] %>\PuzzleCell{<{ page.cells[1].display_id }>}{<{ page.cells[1].fen }>}<% else %>\begin{minipage}[t]{0.46\textwidth}\mbox{}\end{minipage}<% endif %>
+
+\vspace{0.1em}
+
+\noindent\hspace*{-0.08in}
+<% if page.cells[2] %>\PuzzleCell{<{ page.cells[2].display_id }>}{<{ page.cells[2].fen }>}<% else %>\begin{minipage}[t]{0.46\textwidth}\mbox{}\end{minipage}<% endif %>
+\hspace{0.02\textwidth}
+<% if page.cells[3] %>\PuzzleCell{<{ page.cells[3].display_id }>}{<{ page.cells[3].fen }>}<% else %>\begin{minipage}[t]{0.46\textwidth}\mbox{}\end{minipage}<% endif %>
+
+\vfill
+
+\noindent\rule{\textwidth}{0.4pt}
+
+\vspace{0.15em}
+
+\noindent\makebox[\textwidth][c]{\small\bfseries Solutions}
+
+\vspace{0.75em}
+
+{\footnotesize\sloppy
+\noindent
+% Parent solutions container
+\begin{minipage}[t]{\textwidth}
+  % Left solutions
+    \begin{minipage}[c]{0.47\textwidth}
+        <% if page.cells[0] %>{\bfseries <{ page.cells[0].display_id }>.} <{ page.cells[0].solution }><% endif %>
+
+        \vspace{0.45em}
+
+        <% if page.cells[2] %>{\bfseries <{ page.cells[2].display_id }>.} <{ page.cells[2].solution }><% endif %>
+    \end{minipage}
+        \hfill
+  % Vertical divider
+    \begin{minipage}[c][4.9\baselineskip][c]{0.02\textwidth}
+        \centering\rule{0.4pt}{4.7\baselineskip}
+    \end{minipage}
+    \hfill
+  % Right solutions
+    \begin{minipage}[c]{0.47\textwidth}
+        <% if page.cells[1] %>{\bfseries <{ page.cells[1].display_id }>.} <{ page.cells[1].solution }><% endif %>
+
+        \vspace{0.45em}
+
+        <% if page.cells[3] %>{\bfseries <{ page.cells[3].display_id }>.} <{ page.cells[3].solution }><% endif %>
+    \end{minipage}
+\end{minipage}
+}
+<% if not page.is_last %>\newpage<% endif %>
+<% endfor %>
+<% endfor %>
+<% endfor %>
+
+\end{document}
