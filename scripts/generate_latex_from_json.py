@@ -179,28 +179,25 @@ def build_context(document: dict[str, Any], start_page: int) -> dict[str, Any]:
         for puzzle in puzzles:
             pid = puzzle.get("puzzle_id") or puzzle.get("id", "")
             puzzle["source_id"] = pid
-            puzzle["display_id"] = str(global_display_id)
             puzzle_by_id[pid] = puzzle
-            global_display_id += 1
 
         chapter_groups = chapter.get("groups") or {
             "white_to_move": [p for p in puzzles if chess.Board(p["fen"]).turn == chess.WHITE],
             "black_to_move": [p for p in puzzles if chess.Board(p["fen"]).turn == chess.BLACK],
         }
 
-        # Propagate display_id into the group dicts
-        for grouped_puzzles in chapter_groups.values():
-            for gp in grouped_puzzles:
-                pid = gp.get("puzzle_id") or gp.get("id", "")
-                source = puzzle_by_id.get(pid)
-                if source is not None:
-                    gp["display_id"] = source["display_id"]
-
         raw_sections = [
             ("White to Move", chapter_groups.get("white_to_move", [])),
             ("Black to Move", chapter_groups.get("black_to_move", [])),
         ]
         nonempty = [(sub, pzls) for sub, pzls in raw_sections if pzls]
+
+        # Assign display IDs in section render order (white before black) so
+        # puzzle numbers in the TeX are sequential as they appear on the page.
+        for _, section_puzzles in nonempty:
+            for gp in section_puzzles:
+                gp["display_id"] = str(global_display_id)
+                global_display_id += 1
 
         sections_ctx: list[dict[str, Any]] = []
         for sec_idx, (subtitle, section_puzzles) in enumerate(nonempty):

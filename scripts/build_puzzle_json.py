@@ -167,7 +167,7 @@ def fetch_chapter_puzzles(
     global_filters: dict,
     conn: sqlite3.Connection,
     global_seen_ids: set[str],
-) -> list[dict]:
+) -> tuple[list[dict], list[dict]]:
     """Run one indexed SQL query per set and merge results in Python.
 
     Running separate queries is orders of magnitude faster than a UNION ALL on
@@ -175,12 +175,16 @@ def fetch_chapter_puzzles(
     UNION ALL forces SQLite to materialise every branch into a temp table.
 
     Deduplication is done globally (cross-chapter) via global_seen_ids.
+
+    Returns (puzzles, set_deliveries) where set_deliveries records how many
+    puzzles each set requested vs actually delivered (for inspector reporting).
     """
     sets = chapter_spec.get("sets", [])
     if not sets:
-        return []
+        return [], []
 
     puzzles: list[dict] = []
+    set_deliveries: list[dict] = []
 
     for set_idx, set_spec in enumerate(sets):
         sql, params = _build_set_query(set_spec, global_filters, set_idx)
@@ -205,7 +209,13 @@ def fetch_chapter_puzzles(
             p["_set_index"] = set_idx
             puzzles.append(p)
 
-    return puzzles
+        set_deliveries.append({
+            "set_index": set_idx,
+            "count_requested": target_count,
+            "count_delivered": added,
+        })
+
+    return puzzles, set_deliveries
 
 
 def python_sort_key(sort_specs: list[dict]):
@@ -244,7 +254,7 @@ def build_chapter(
     t0 = time.perf_counter()
 
     # Single DB round-trip: all sets combined into one UNION ALL query
-    all_puzzles = fetch_chapter_puzzles(chapter_spec, global_filters, conn, global_seen_ids)
+    all_puzzles, set_deliveries = fetch_chapter_puzzles(chapter_spec, global_filters, conn, global_seen_ids)
     elapsed = time.perf_counter() - t0
     print(f" — {len(all_puzzles)} puzzles selected ({elapsed:.2f}s)", end="")
 
@@ -267,6 +277,7 @@ def build_chapter(
         "white_to_move_count": len(white_puzzles),
         "black_to_move_count": len(black_puzzles),
         "puzzles": clean_puzzles,
+        "set_deliveries": set_deliveries,
         "groups": {
             "white_to_move": white_puzzles,
             "black_to_move": black_puzzles,

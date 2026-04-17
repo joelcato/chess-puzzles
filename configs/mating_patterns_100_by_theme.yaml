@@ -14,8 +14,9 @@
 # the within-set order. Omit chapter-level sort to preserve set order.
 
 book:
-  title: "Chess Puzzle Book"
-  subtitle: "Mating Patterns"
+  output_json: "data/mate_in_one_800.json"
+  title: "Mating Patterns"
+  subtitle: "2000 checkmate puzzles organized by theme"
   author: "by Joel Cato"
   publisher: "Covington Press"
   toc: true

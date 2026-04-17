@@ -1,0 +1,139 @@
+============================================================
+JSON SUMMARY
+============================================================
+Book:                Mating Patterns
+Author:              by Joel Cato
+TOC:                 True
+Chapter title pages: True
+Chapters:            19
+Total puzzles:       1979
+
+  Chapter 1: 'Back Rank Mate'
+    108 puzzles  (white: 52, black: 56)  rating 600–2706, avg 1770
+    Q:65  R:30  B:2  N:10  P:1
+  Chapter 2: 'Double Bishop Mate'
+    104 puzzles  (white: 56, black: 48)  rating 600–2480, avg 1620
+    Q:58  R:10  B:31  N:2  P:3
+  Chapter 3: "Boden's Mate"
+    104 puzzles  (white: 52, black: 52)  rating 600–2346, avg 1669
+    Q:62  R:10  B:28  N:4
+  Chapter 4: 'Opera Mate'
+    104 puzzles  (white: 56, black: 48)  rating 600–2780, avg 1790
+    Q:41  R:48  B:7  N:7  K:1
+  Chapter 5: "Pillsbury's Mate"
+    104 puzzles  (white: 55, black: 49)  rating 600–2816, avg 1792
+    Q:28  R:41  B:22  N:9  P:3  K:1
+  Chapter 6: 'Smothered Mate'
+    104 puzzles  (white: 56, black: 48)  rating 600–2706, avg 1636
+    Q:45  R:3  B:3  N:53
+  Chapter 7: 'Arabian Mate'
+    104 puzzles  (white: 52, black: 52)  rating 604–2903, avg 1776
+    Q:21  R:36  B:5  N:41  P:1
+  Chapter 8: 'Epaulette Mate'
+    103 puzzles  (white: 50, black: 53)  rating 600–2826, avg 1793
+    Q:36  R:41  B:3  N:13  P:8  K:2
+  Chapter 9: "Anastasia's Mate"
+    104 puzzles  (white: 60, black: 44)  rating 601–2625, avg 1754
+    Q:22  R:29  B:7  N:45  P:1
+  Chapter 10: 'Hook Mate'
+    100 puzzles  (white: 54, black: 46)  rating 609–2765, avg 1814
+    Q:17  R:61  B:5  N:12  P:4  K:1
+  Chapter 11: "Swallow's Tail Mate"
+    108 puzzles  (white: 56, black: 52)  rating 601–2707, avg 1805
+    Q:75  R:18  B:7  N:4  P:4
+  Chapter 12: 'Blind Swine Mate'
+    102 puzzles  (white: 55, black: 47)  rating 747–2713, avg 1773
+    Q:13  R:76  B:2  N:5  P:3  K:3
+  Chapter 13: 'Corner Mate'
+    104 puzzles  (white: 60, black: 44)  rating 619–3037, avg 1836
+    Q:20  R:42  B:5  N:32  P:4  K:1
+  Chapter 14: 'Dovetail Mate'
+    104 puzzles  (white: 56, black: 48)  rating 656–2846, avg 1827
+    Q:72  R:18  B:7  N:3  P:4
+  Chapter 15: "Morphy's Mate"
+    108 puzzles  (white: 52, black: 56)  rating 622–2940, avg 1845
+    Q:23  R:23  B:44  N:7  P:10  K:1
+  Chapter 16: 'Triangle Mate'
+    104 puzzles  (white: 56, black: 48)  rating 658–2761, avg 1830
+    Q:44  R:46  B:4  N:6  P:4
+  Chapter 17: 'Kill Box Mate'
+    106 puzzles  (white: 56, black: 50)  rating 601–2974, avg 1838
+    Q:39  R:54  B:5  N:5  P:3
+  Chapter 18: 'Vukovic Mate'
+    101 puzzles  (white: 55, black: 46)  rating 697–2576, avg 1779
+    Q:3  R:51  B:4  N:37  P:4  K:2
+  Chapter 19: 'Balestra Mate'
+    103 puzzles  (white: 55, black: 48)  rating 748–2783, avg 1755
+    Q:36  R:16  B:42  N:4  P:5
+
+  ✅  No duplicate puzzle IDs in JSON
+
+  [JSON checks: 0.001s]
+
+============================================================
+BOOK PROFILE
+============================================================
+
+  Side to move:
+    White    1044  (52.8%)
+    Black     935  (47.2%)
+
+  Piece (first move):
+    Q    720  (36.4%)
+    R    653  (33.0%)
+    B    233  (11.8%)
+    N    299  (15.1%)
+    P     62  ( 3.1%)
+    K     12  ( 0.6%)
+
+  Rating distribution (200-pt bands):
+    Band         Count      %   histogram
+    ───────────  ─────  ─────   ────────────────────────
+     600–799      100   5.1%   ████████
+     800–999      152   7.7%   ████████████
+    1000–1199     150   7.6%   ████████████
+    1200–1399     152   7.7%   ████████████
+    1400–1599     154   7.8%   ████████████
+    1600–1799     193   9.8%   ███████████████
+    1800–1999     207  10.5%   █████████████████
+    2000–2199     212  10.7%   █████████████████
+    2200–2399     227  11.5%   ██████████████████
+    2400–2599     301  15.2%   ████████████████████████
+    2600–2799     122   6.2%   ██████████
+    2800–2999       8   0.4%   █
+    3000–3199       1   0.1%   █
+
+  Top openings (first tag, top 10):
+    Sicilian_Defense                                 36  ( 1.8%)
+    Caro-Kann_Defense                                23  ( 1.2%)
+    French_Defense                                   21  ( 1.1%)
+    Scandinavian_Defense                             20  ( 1.0%)
+    Italian_Game                                     18  ( 0.9%)
+    Queens_Pawn_Game                                 16  ( 0.8%)
+    Scotch_Game                                      15  ( 0.8%)
+    Bird_Opening                                     10  ( 0.5%)
+    Kings_Gambit_Accepted                             9  ( 0.5%)
+    Bishops_Opening                                   8  ( 0.4%)
+    (no opening tag)                               1674  (84.6%)
+
+  TSV written: output/mating_patterns_100_by_theme.inspect.tsv  (1979 rows)  [0.003s]
+
+============================================================
+TEX VALIDATION
+============================================================
+  ✅  \tableofcontents present (toc: true)
+  ✅  No [ILLEGAL MOVE errors
+  ✅  Puzzle numbering is sequential (1 … N)
+  ✅  Puzzle count: tex=1979, json=1979
+  ✅  No duplicate puzzle display IDs in tex
+  ✅  All 1979 JSON puzzles present in tex (no gaps)
+  ✅  TeX puzzle order matches JSON render order
+  ✅  Blank pages only in expected positions
+  ✅  Chapter boundaries use \cleardoublepage (chapter_title_pages: true)
+  ✅  Chapter title pages followed by blank verso (puzzles start on recto)
+
+  [tex checks: 0.005s]
+
+Total time: 0.018s
+
+All checks passed. ✅

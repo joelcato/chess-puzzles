@@ -35,7 +35,7 @@ Total puzzles:       800
 
   ✅  No duplicate puzzle IDs in JSON
 
-  [JSON checks: 0.000s]
+  [JSON checks: 0.001s]
 
 ============================================================
 BOOK PROFILE
@@ -91,10 +91,10 @@ TEX VALIDATION
   ✅  No duplicate puzzle display IDs in tex
   ✅  All 800 JSON puzzles present in tex (no gaps)
   ✅  Blank pages only in expected positions
-  ✅  Chapter sections have recto-forcing (chapter_title_pages: false)
+  ✅  Chapter sections use plain page break (no recto-forcing)
 
   [tex checks: 0.002s]
 
-Total time: 0.007s
+Total time: 0.008s
 
 All checks passed. ✅

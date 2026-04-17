@@ -19,7 +19,8 @@ TeX validation checks:
     4.  No duplicate puzzle display IDs in \\PuzzleCell calls
     5.  Blank pages only in known-good positions
     6.  Chapter boundaries use \\cleardoublepage (when chapter_title_pages: true)
-    7.  Chapter boundaries use a recto-forcing pattern (when chapter_title_pages: true)
+    7.  Chapter title pages followed by blank verso (when chapter_title_pages: true)
+    8b. Chapter sections use plain page break — no recto-forcing (when chapter_title_pages: false)
 
 JSON extra checks:
     8.  No duplicate puzzle IDs across all chapters
@@ -131,7 +132,16 @@ def write_tsv(data: dict, tsv_path: Path) -> int:
     global_num = 1
     for ch_idx, ch in enumerate(data.get("chapters", []), 1):
         ch_title = ch.get("title") or ch.get("label", f"Chapter {ch_idx}")
-        for p in ch.get("puzzles", []):
+        # Iterate in render order (white first, then black) so puzzle_num and
+        # side_to_move match the actual book layout.
+        groups = ch.get("groups", {})
+        if groups:
+            ordered: list[dict] = []
+            ordered.extend(groups.get("white_to_move", []))
+            ordered.extend(groups.get("black_to_move", []))
+        else:
+            ordered = ch.get("puzzles", [])
+        for p in ordered:
             rows.append({
                 "chapter_num":      ch_idx,
                 "chapter_title":    ch_title,
@@ -289,6 +299,26 @@ def validate_tex(tex: str, data: dict) -> list[Check]:
 
     # ── 3. Puzzle count matches JSON ──────────────────────────────────────────
     puzzle_cells = re.findall(r"\\PuzzleCell\{([^}]+)\}", tex)
+
+    # ── 3b. Puzzle numbering is sequential (1, 2, 3 … N) ─────────────────────
+    out_of_order = [
+        (i + 1, int(cid))
+        for i, cid in enumerate(puzzle_cells)
+        if not cid.isdigit() or int(cid) != i + 1
+    ]
+    sequential = not out_of_order
+    if out_of_order:
+        examples = ", ".join(
+            f"pos {pos}: got {got}" for pos, got in out_of_order[:5]
+        )
+        seq_detail = f"Non-sequential IDs ({len(out_of_order)} total): {examples}"
+    else:
+        seq_detail = ""
+    checks.append(Check(
+        "Puzzle numbering is sequential (1 … N)",
+        sequential,
+        seq_detail,
+    ))
     count_match  = len(puzzle_cells) == json_total
     checks.append(Check(
         f"Puzzle count: tex={len(puzzle_cells)}, json={json_total}",
@@ -326,6 +356,39 @@ def validate_tex(tex: str, data: dict) -> list[Check]:
         f"All {json_total} JSON puzzles present in tex (no gaps)",
         all_present,
         "  ".join(detail_parts),
+    ))
+
+    # ── 4c. Puzzle render order in TeX matches JSON group order ───────────────
+    # Extract (display_id, fen) pairs from the TeX in document order.
+    tex_ordered_fens = re.findall(r"\\PuzzleCell\{[^}]+\}\{([^}]+)\}", tex)
+    # Build expected FEN order from JSON: white_to_move first, then black_to_move.
+    json_ordered_fens: list[str] = []
+    for ch in data.get("chapters", []):
+        groups = ch.get("groups", {})
+        if groups:
+            for p in groups.get("white_to_move", []):
+                json_ordered_fens.append(p.get("display_fen") or p.get("fen", ""))
+            for p in groups.get("black_to_move", []):
+                json_ordered_fens.append(p.get("display_fen") or p.get("fen", ""))
+        else:
+            for p in ch.get("puzzles", []):
+                json_ordered_fens.append(p.get("display_fen") or p.get("fen", ""))
+    order_mismatches = [
+        i + 1
+        for i, (tf, jf) in enumerate(zip(tex_ordered_fens, json_ordered_fens))
+        if tf != jf
+    ]
+    order_ok = not order_mismatches and len(tex_ordered_fens) == len(json_ordered_fens)
+    if order_mismatches:
+        order_detail = f"FEN mismatch at positions: {order_mismatches[:5]}"
+    elif len(tex_ordered_fens) != len(json_ordered_fens):
+        order_detail = f"FEN count differs: tex={len(tex_ordered_fens)}, json={len(json_ordered_fens)}"
+    else:
+        order_detail = ""
+    checks.append(Check(
+        "TeX puzzle order matches JSON render order",
+        order_ok,
+        order_detail,
     ))
 
     # ── 5. Blank pages only in known-good positions ───────────────────────────
@@ -400,22 +463,16 @@ def validate_tex(tex: str, data: dict) -> list[Check]:
         ))
 
     else:
-        # chapter_title_pages: false — sections are invisible, content flows continuously.
-        # Recto placement is not enforced in the current implementation; note if missing.
-        recto_forced: list[int] = []
+        # chapter_title_pages: false — chapters flow continuously; no recto-forcing expected.
+        bad_recto: list[int] = []
         for idx in chapter_start_lines:
             lookback = _window(lines, idx, before=4, after=0)
             if r"\checkoddpage" in lookback or r"\ifoddpage" in lookback:
-                recto_forced.append(idx + 1)
-        all_forced = len(recto_forced) == len(chapter_start_lines)
+                bad_recto.append(idx + 1)
         checks.append(Check(
-            "Chapter sections have recto-forcing (chapter_title_pages: false)",
-            all_forced,
-            (
-                f"Sections at lines {[i + 1 for i in chapter_start_lines if i + 1 not in recto_forced]} "
-                f"use plain \\newpage — content may start on verso. "
-                f"Use force_next_content_to_recto() to enforce recto placement."
-            ) if not all_forced else "",
+            "Chapter sections use plain page break (no recto-forcing)",
+            not bad_recto,
+            f"Unexpected recto-forcing at lines: {bad_recto}" if bad_recto else "",
         ))
 
     return checks
@@ -427,6 +484,23 @@ def check_config_counts(data: dict, config: dict) -> list[Check]:
     checks: list[Check] = []
     chapters_spec = config.get("chapters", [])
     chapters_data = data.get("chapters", [])
+
+    # ── Total puzzle count at a glance ────────────────────────────────────────
+    expected_grand_total = sum(
+        sum(s.get("count", 0) for s in ch.get("sets", []))
+        for ch in chapters_spec
+    )
+    actual_grand_total = sum(len(ch.get("puzzles", [])) for ch in chapters_data)
+    grand_ok = actual_grand_total == expected_grand_total
+    grand_detail = (
+        f"short by {expected_grand_total - actual_grand_total}"
+        if not grand_ok else ""
+    )
+    checks.append(Check(
+        f"Total puzzles: {actual_grand_total} / expected {expected_grand_total}",
+        grand_ok,
+        grand_detail,
+    ))
 
     if len(chapters_spec) != len(chapters_data):
         checks.append(Check(
@@ -458,15 +532,47 @@ def check_config_counts(data: dict, config: dict) -> list[Check]:
             piece_actual[pc] += 1
 
         ch_title = ch_spec.get("title", f"Chapter {ch_idx}")
-
-        # Total count check
         count_ok = actual_total == expected_total
-        detail = "" if count_ok else f"expected {expected_total}, got {actual_total}"
-        checks.append(Check(
-            f"Ch{ch_idx} '{ch_title}': total count",
-            count_ok,
-            detail,
-        ))
+
+        if count_ok:
+            checks.append(Check(
+                f"Ch{ch_idx} '{ch_title}': total count",
+                True,
+            ))
+        else:
+            # Build per-set breakdown using set_deliveries stored in JSON
+            set_deliveries = ch_data.get("set_deliveries", [])
+            _SIDE = {"white": "w", "black": "b", "w": "w", "b": "b"}
+            failing_lines: list[str] = []
+            n_pass = 0
+            for si, s_spec in enumerate(sets):
+                req = s_spec.get("count", 0)
+                delivered = (
+                    set_deliveries[si]["count_delivered"]
+                    if si < len(set_deliveries) else "?"
+                )
+                if delivered == req:
+                    n_pass += 1
+                else:
+                    side_abbr = _SIDE.get(str(s_spec.get("side_to_move", "")).lower(), "?")
+                    rating = s_spec.get("rating")
+                    rating_str = f"{rating[0]}\u2013{rating[1]}" if rating else "any"
+                    piece = s_spec.get("first_move_piece", "")
+                    piece_str = f"  {piece.upper()}" if piece else ""
+                    failing_lines.append(
+                        f"\u2717  Set {si:2d}  {side_abbr}  {rating_str:<11}{piece_str}  req {req}, got {delivered}"
+                    )
+            n_fail = len(sets) - n_pass
+            header = (
+                f"expected {expected_total}, got {actual_total}"
+                f"  ({len(sets)} sets: {n_pass} \u2713, {n_fail} \u2717)"
+            )
+            detail = "\n       ".join([header] + failing_lines)
+            checks.append(Check(
+                f"Ch{ch_idx} '{ch_title}': total count",
+                False,
+                detail,
+            ))
 
         # Per-piece count check
         for piece, exp_count in piece_expected.items():
